@@ -8,3 +8,6 @@ Ao utilizar os softwares já bem sucedidos e semelhantes ao ExpLab, pude percebe
 O ExpLab tem uma sintaxe muito parecida com a das linguagems C, C++ e Java. É uma linguagem case insensitive e as variáveis não precisam ser declaradas com tipos definidos. Os tipos das variáveis são detectados automaticamente pelo interpretador, conforme o valor, ou expressão atribuido a variável.
 
 Por enquanto, essa é a descrição do projeto que já tem pronta uma versão funcional com todos os recursos descritos acima. Estou publicando através do GitHub, um software interpretador e linguagem de programação já finalizado. Claro, sempre há algo para melhorar ou acrescentar, então, pretendo dar continuidade ao projeto e, talvez conseguir colaboradores interessados no projeto.
+
+<h1>Exemplos</h1>
+
