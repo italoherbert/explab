@@ -1,0 +1,43 @@
+
+div#layout-sul {
+	margin-top: 1em;
+	padding: 0.6em;			
+	font-size: 1.2em;
+	text-align: center;
+	
+	border-radius: 0.35em;	
+	
+	background-color: #aab2e4;
+	border: 2px solid #000;	
+	color: #000;
+}
+
+div#layout-sul .ass {					
+	font-family: "Times New Roman", Times, Serif;
+	font-style: italic;	
+	
+	font-weight: bolder;
+	text-align: center;
+	
+	color: #000;	
+	text-shadow: -1px -1px 3px #FFF, 1px 1px 3px #FFF;
+}
+
+div#layout-sul .termos {
+	font-size: 1em;
+}
+
+div#layout-sul .termos a {
+	padding: 0.2em 0.2em;
+	color: #00A;	
+	text-shadow: -1px -1px 3px #FFF, 1px 1px 3px #FFF;
+}
+
+
+@media screen and ( max-width: 40em ) {			
+	div#layout-sul {
+		border-radius: 0;
+		border: none;	
+		border-top: 2px solid #000;
+	}	
+}
