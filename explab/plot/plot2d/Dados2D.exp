@@ -1,0 +1,18 @@
+pacote explab.plot.plot2d;
+
+classe Dados2D {
+
+    xvetor = [];
+    yvetor = [];
+
+    legenda = null;
+
+    ponto = novo PontoConfig();
+    linha = novo LinhaConfig();   
+    
+    func setDados( xvet, yvet ) {
+        este.xvetor = xvet;
+        este.yvetor = yvet;
+    }
+
+}

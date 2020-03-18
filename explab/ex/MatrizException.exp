@@ -1,0 +1,13 @@
+pacote explab.ex;
+
+classe MatrizException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+

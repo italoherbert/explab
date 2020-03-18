@@ -1,0 +1,22 @@
+pacote a;
+
+use a.b.c.Retangulo;
+use a.b.c.Circulo;
+use a.b.Quadrado;
+
+use a.impr.Impr;
+
+classe Principal {
+
+    func main() {
+        quad = novo Quadrado( 10 );
+        ret = novo Retangulo( 10, 10 );
+        circ = novo Circulo( 10 );
+
+        impr = novo Impr();
+        impr.imp( quad );
+        impr.imp( ret );
+        impr.imp( circ );
+    }
+
+}

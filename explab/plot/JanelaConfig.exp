@@ -1,0 +1,18 @@
+pacote explab.plot;
+
+classe JanelaConfig {
+
+    titulo = "ExpLab - Aplicação";
+    largura = 400;
+    altura = 400;
+
+
+    construtor() {}
+
+    construtor( titulo, l, a ) {
+        esta.titulo = titulo;
+        este.largura = l;
+        este.altura = a;
+    }
+
+}

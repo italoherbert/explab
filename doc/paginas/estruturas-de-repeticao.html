@@ -1,0 +1,221 @@
+
+<div>			
+	<h3 class="titulo">Estruturas de repetição (loops)</h3>
+		
+	<p>A linguagem EXPLAB suporta comando (estruturas) que permitem repetir a execução de um bloco de código dependendo do resultado de uma expressão booleana.</p>	
+			
+	<p>Uma característica dos blocos de código, tanto de instruções de repetição, quanto condicionais, é que as variáveis e demais recursos declarados dentro do bloco têm 
+	escopo local, são acessíveis apenas dentro do bloco. No entanto, caso, por exemplo, uma variável declarada fora do bloco de instruções for alterada dentro dele, a alteração 
+	é feita na variável externa mesmos, ao invés de uma nova variável local ser criada, a variavel externa tem seu valor alterado.</p>	
+	
+	<p>Se a parte da estrutura que opcionalmente espera um bloco de código tiver apenas uma instrução, não várias, pode-se omitir os abre e fecha chaves. Por exemplo: 
+	Veja o código abaixo</p>
+	
+<pre class="codigo-fonte">
+<code>
+para( i = 0; i &lt;= 10; i++ )
+    se i % 2 == 0
+        exibaln "O número "+i+" é par!";
+    senao
+        exibaln "O número "+i+" é impar!";
+</code>
+</pre>
+
+	<p>Veja agora outra forma de escrever o código acima, preservando a mesma funcionalidade:</p>
+
+<pre class="codigo-fonte">
+<code>
+para( i = 0; i &lt;= 10; i++ ) {
+    se i % 2 == 0
+        exibaln "O número "+i+" é par!";
+    senao exibaln "O número "+i+" é impar!";			
+}
+</code>
+</pre>	
+
+	<p>Ou, ainda, veja outra forma de escrever o código acima:</p>
+
+<pre class="codigo-fonte">
+<code>
+para( i = 0; i &lt;= 10; i++ ) {
+    se ( i % 2 == 0 ) {
+        exibaln "O número "+i+" é par!";
+    } senao {
+        exibaln "O número "+i+" é impar!";		
+    }
+}
+</code>
+</pre>
+	
+	<h3 id="enquanto">Comando (ENQUANTO)</h3>
+	
+	<p>Como já dito anteriormente, o comando ENQUANTO permite repetir um conjunto de instruções até que determinada condição (expressão booleana) seja satisfeita. Isto é, 
+	até que a expressão booleana utilizada como condição para a estrutura ENQUANTO retorne o valor falso. Veja abaixo um pseudo-codigo que ilustra o funcionamento do comando:</p>
+		
+	<blockquote>
+<pre>
+ENQUANTO ( uma determinada condição for verdadeira ) FAÇA
+    { execute este bloco de instruções }
+</pre>
+	</blockquote>
+	
+	<p>Agora, vamos a um exemplo prático que elucida melhor a lógica descrita acima. O exemplo abaixo mostra os números de 1 a 10, sem utilizar os comandos exiba ou exibaln 
+	10 vezes:</p>
+	
+<pre class="codigo-fonte">
+<code>
+i = 1;
+enquanto ( i &lt;= 10 ) {
+    exiba i+"  ";
+    i++;
+}
+</code>
+</pre>
+
+	<p>Veja abaixo um exemplo equivalente ao exemplo acima:</p>
+	
+<pre class="codigo-fonte">
+<code>
+i = 1;
+enquanto ( i &lt;= 10 )
+    exiba (i++)+"  ";
+</code>
+</pre>
+	
+	<p>Veja abaixo outro exemplo de utilização da instrução ou estrutura ENQUANTO, um exemplo que calcula o fatorial de um número:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn n;
+
+i = n;
+fat = 1;
+enquanto i > 0 {
+    fat *= i;
+    i--;
+}
+
+exibaln "O fatorial de "+n+" é: "+fat;
+</code>
+</pre>
+
+	<h3 id="para">O comando PARA</h3>
+	
+	<p>O comando PARA também permite repetir um conjunto de instruções até que determinada condição (expressão booleana) seja satisfeita. Isto é, 
+	até que a expressão booleana utilizada como condição para a estrutura PARA retorne o valor falso. Ele se assemelha ao comando enquanto. Tudo que é 
+	possível fazer com o comando enquanto é possível com o comando for, e vice-versa. Veja abaixo um pseudo-codigo que ilustra o funcionamento do comando:</p>
+	
+	<blockquote>
+<pre>
+PARA ( var1 = valor1, var2 = valor2, ... varn = valorn; 
+       repita enquanto esta condição for verdadeira; 
+       incremento1, incremento2, ..., incrementon ) FAÇA
+    { execute este bloco de instruções }
+</pre>
+	</blockquote>
+	
+	<p>Vejamos o exemplo do fatorial, só que agora, implementado com o comando PARA:</p>
+
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn n;
+
+fat = 1;
+para( i = n; i > 0; i-- )
+    fat *= i;
+
+exibaln "O fatorial de "+n+" é: "+fat;
+</code>
+</pre>
+
+	<p>Agora, o exemplo que imprime o maior e o menor de um vetor de números:</p>
+			
+<pre class="codigo-fonte">
+<code>
+vet = [ 1 2 4 5 2 1 10 2 5 0 2 8 ];
+len = matnc( vet );
+maior = -inf;
+menor = inf;
+para( i = 0; i &lt; len; i++ ) {
+    se ( vet( i ) &gt; maior )
+        maior = vet( i );
+    se ( vet( i ) &lt; menor )
+        menor = vet( i );
+}
+
+exibaln "O maior é: "+maior;
+exibaln "O menor é: "+menor;
+</code>
+</pre>			
+
+	<h3 id="faca/enquanto">O comando FACA/ENQUANTO</h3>
+	
+	<p>O comando FACA/ENQUANTO também permite repetir um conjunto de instruções até que determinada condição (expressão booleana) seja satisfeita. Isto é, 
+	até que a expressão booleana utilizada como condição para a estrutura FACA/ENQUANTO retorne o valor falso. Ele se assemelha aos comandos ENQUANTO e PARA. Tudo que é 
+	possível fazer com os comandos ENQUANTO e PARA, é possível com o comando FACA/ENQUANTO, e vice-versa. No entanto, há casos que o comando FACA/ENQUANTO é 
+	uma melhor escolha que os comandos ENQUANTO e PARA e, claro, existem casos em que o comando ENQUANTO ou o comando PARA são mais adequados. 
+	Veja abaixo um pseudo-codigo que ilustra o funcionamento do comando:</p>
+	
+	<blockquote>
+<pre>
+FACA 
+    { execute este bloco de instruções }
+ENQUANTO ( uma determinada condição for verdadeira );
+</pre>
+	</blockquote>
+	
+	<p>O comando FACA/ENQUANTO é mais adequado quando se deseja que algo seja executado pelo menos uma vez antes de verificar se a condição de parada da execução da estrutura 
+	tem valor verdade. Veja o exemplo abaixo em que, considero que o comando FACA/ENQUANTO é uma boa escolha:</p>
+	
+<pre class="codigo-fonte">
+<code>
+op = 's';
+faca {
+    exiba "Informe um número: ";
+    leialn n;
+	
+    eh_primo = verdade;
+    para ( i = 2; eh_primo &amp; i &lt; n/2; i++ ) {
+        se ( n % i == 0 ) {
+            eh_primo = falso;
+        }
+    }
+	
+    exibaln;
+	
+    se eh_primo {
+        exibaln "O número "+n+" é primo!";
+    } senao {
+        exibaln "O número "+n+" não é primo!";	
+    }
+	
+    exibaln;
+    exibaln 'Deseja verificar outro número?';
+    exibaln '  (S) para sim';
+    exibaln '  (N ou outro) para não';
+    exiba '>> ';
+    leialn op:string;
+
+    exibaln;
+	
+} enquanto ( minusculas( op ) == 's' );
+</code>
+</pre>
+		
+	<p>O programa acima solicita que o usuário informe um número para verificá-lo se ele é um número primo e, então imprimir uma mensagem correspondente. Após isso, 
+	o programa mostra um pequeno menu, com duas opções para o usuário, continuar a execução e informar outro número para, o mesmo ser também verificado e a 
+	devida mensagem ser mostrada, ou parar a execução do programa digitando um valor diferente de 'S' e de 's'. Repare na função minusculas que converte o valor 
+	informado e armazenado na variável op para string minuscula.</p>
+	
+	<p>Repare também que a variável op está declarada inicialmente fora da instrução FACA/ENQUANTO. Isso é necessário porque ela é utilizada na expressão 
+	booleana de condição da instrução. Como a instrução executa um bloco de código, recursos são alocados para este bloco de código. Isso significa 
+	que as variáveis, funções ou quaisquer declarações dentro do bloco de código têm escopo local, são acessíveis apenas dentro do bloco onde foram 
+	declarados. Porém, se a variável tiver sido declarada fora do bloco, como é o caso da variável "op", e alterada dentro do bloco, ao invés de uma 
+	nova variável local ser criada para ser acessível apenas dentro do bloco, o valor da variável externa ao bloco é alterado, permitindo assim que 
+	a variável "op", nesse exemplo, seja alterada dentro do bloco de instruções e acessada fora dele, isto é, na condição do comando ENQUANTO (externa ao 
+	bloco que termina com o fecha chaves antes da instrução de nome ENQUANTO.</p>
+	
+			
+</div>

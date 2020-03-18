@@ -1,0 +1,49 @@
+classe E1 extende Exception {  
+    super.mensagem = "E1 - Primeira mensagem de erro personalizada.!";    
+}
+
+classe E2 extende Exception {
+    super.mensagem = "E2 - Segunda mensagem de erro personalizada.!";    
+}
+
+classe A {
+    
+    b = novo B();
+
+    func aa( x ) tratar E1 {
+        tente {			
+            retorne b.bb( x );
+        } capture ( E2 e ) {
+            lance novo E1();
+        } finalize {
+            exibaln "FINALIZOU E RETORNOU!";
+        }
+    }
+
+}
+
+classe B {
+
+    func bb( x ) tratar E2 {
+        se ( x == 1 ) 
+            lance novo E2();
+        retorne x;
+    }
+
+}
+
+a = novo A();
+
+tente {
+    x = a.aa( 1 );
+} capture ( E1 e ) {
+    e.imprimeErros();
+}
+
+exibaln;
+
+tente {
+    x = a.aa( 2 );
+} capture ( E1 e ) {
+    e.imprimeErros();
+}

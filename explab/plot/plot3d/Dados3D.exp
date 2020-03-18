@@ -1,0 +1,22 @@
+pacote explab.plot.plot3d;
+
+classe Dados3D {
+
+    xvetor = [];
+    yvetor = [];
+    zvetor = [];
+
+    legenda = null;
+
+    ponto = novo PontoConfig();
+    linha = novo LinhaConfig(); 
+    poligono = novo PoligonoConfig();    
+
+    func setDados( xvet, yvet, zvet ) {
+        este.xvetor = xvet;
+        este.yvetor = yvet;
+        este.zvetor = zvet;
+    }
+   
+}
+

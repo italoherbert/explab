@@ -1,0 +1,62 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">
+        
+    <pagina url="${doc.paginas}/expressoes-aritmeticas.html">   
+        <conteudo>
+            <chave nome="aritmeticas" peso="10" />
+            <chave nome="aritmetica" peso="10" />
+            <chave nome="expressões" peso="10" />
+            <chave nome="expressão" peso="10" />
+            <chave nome="expressao" peso="10" />
+            <chave nome="expressoes" peso="10" />
+            <chave nome="operadores" peso="8" />
+            <chave nome="soma" peso="5" />
+            <chave nome="subtração" peso="5" />
+            <chave nome="multiplicação" peso="5" />
+            <chave nome="divisão" peso="5" />
+            <chave nome="resto" peso="5" />
+            <chave nome="potência" peso="5" />
+            <chave nome="+" peso="5" />
+            <chave nome="-" peso="10" />
+            <chave nome="*" peso="10" />
+            <chave nome="/" peso="10" />
+            <chave nome="^" peso="10" />
+            <chave nome="%" peso="10" />
+            <chave nome="+=" peso="10" />
+            <chave nome="-=" peso="10" />
+            <chave nome="*=" peso="10" />
+            <chave nome="/=" peso="10" />
+            <chave nome="%=" peso="10" />
+            <chave nome=".+" peso="5" />
+            <chave nome=".-" peso="10" />
+            <chave nome=".*" peso="10" />
+            <chave nome="./" peso="10" />
+            <chave nome=".^" peso="10" />
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas}/expressoes-booleanas.html">   
+        <conteudo>
+            <chave nome="booleana" peso="10" />
+            <chave nome="booleanas" peso="10" />
+            <chave nome="expressões" peso="10" />
+            <chave nome="expressão" peso="10" />
+            <chave nome="operadores" peso="7" />
+            <chave nome="&amp;" peso="10" />
+            <chave nome="|" peso="10" />
+            <chave nome="#" peso="10" />
+            <chave nome="!" peso="10" />
+            <chave nome="ou" peso="10" />
+            <chave nome="não" peso="10" />
+            <chave nome="nao" peso="10" />
+            <chave nome="exclusivo" peso="10" />
+            <chave nome="and" peso="10" />
+            <chave nome="or" peso="10" />
+            <chave nome="not" peso="10" />
+            <chave nome="xor" peso="10" />
+        </conteudo>
+    </pagina>
+    
+</conteudos>

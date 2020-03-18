@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">
+        
+    <pagina url="${doc.paginas}/estruturas-de-repeticao.html">
+        <conteudo>
+            <chave nome="repetição" peso="10" />
+            <chave nome="loop" peso="10" />
+            <chave nome="bloco" peso="5" />
+            <chave nome="codigo" peso="5" />
+        </conteudo>
+        <conteudo id="enquanto">
+            <chave nome="enquanto" peso="10" />
+            <chave nome="while" peso="10" />
+            <chave nome="faça" peso="8" />                        
+        </conteudo>
+        <conteudo id="para">
+            <chave nome="para" peso="10" />
+            <chave nome="for" peso="10" />
+            <chave nome="faça" peso="8" />   
+        </conteudo>
+        <conteudo id="faca/enquanto">
+            <chave nome="faca/enquanto" peso="10" />
+            <chave nome="do" peso="10" />    
+            <chave nome="faça" peso="8" />    
+            <chave nome="while" peso="7" />    
+        </conteudo>
+    </pagina>
+    
+</conteudos>
+
