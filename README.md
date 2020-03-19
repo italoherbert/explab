@@ -158,4 +158,5 @@ exibaln a.b.c2.multiplica();   // Nesse ponto c2.a vale 1 e c2.b vale 1, logo im
 # Considerações finais
 
 <p>A linguagem ExpLab suporta muito mais do que o que foi exposto nos exemplos deste texto. Visite a documentação completa em: 
-<a href="https://www.github.io/italoherbert/explab"
+	<a href="https://italoherbert.github.io/explab/">https://italoherbert.github.io/explab/</a>
+</p>
