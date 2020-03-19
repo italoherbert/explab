@@ -1,14 +1,14 @@
 # explab
 
-O ExpLab é um interpretador e linguagem de programação: interpretada, orientada a objetos e a matemática. Ela suporta as estruturas básicas de uma linguagem de programação OO como, por exemplo, os comandos: SE, COMPARE/CASO, ENQUANTO, PARA... inclusive, também suporta definição e chamada de funções, expressões aritméticas e booleans, classes, objetos como variáveis instâncias de classes, herança de classes, tratamento de exceções, organização das classes em pacotes, etc. Inclusive, como linguagem de programação orientada a matemática, a linguagem ExpLab tem suporte a operações com vetores e matrizes e plotagem e visualização de dados e funções matemáticas em 2D e 3D.
+<p>O ExpLab é um interpretador e linguagem de programação: interpretada, orientada a objetos e a matemática. Ela suporta as estruturas básicas de uma linguagem de programação OO como, por exemplo, os comandos: SE, COMPARE/CASO, ENQUANTO, PARA... inclusive, também suporta definição e chamada de funções, expressões aritméticas e booleans, classes, objetos como variáveis instâncias de classes, herança de classes, tratamento de exceções, organização das classes em pacotes, etc. Inclusive, como linguagem de programação orientada a matemática, a linguagem ExpLab tem suporte a operações com vetores e matrizes e plotagem e visualização de dados e funções matemáticas em 2D e 3D.</p>
 
-Trata-se de um software semelhante a outros já consagrados como: MatLab, SciLab e GNU Octave.
+<p>Trata-se de um software semelhante a outros já consagrados como: MatLab, SciLab e GNU Octave.</p>
 
-Ao utilizar os softwares já bem sucedidos e semelhantes ao ExpLab, pude perceber que, suas linguagens de script parecem não ser Orientadas a Objetos. Por isso, o suporte a orientação a objetos pelo ExpLab parece ser um diferencial do interpretador. Inclusive, considero o ExpLab como uma ótima escolha para o ensino de programação básica por suportar todos os recursos de linguagens como, por exemplo, a linguagem pascal e ter comandos e palavras chaves em português.
+<p>Ao utilizar os softwares já bem sucedidos e semelhantes ao ExpLab, pude perceber que, suas linguagens de script parecem não ser Orientadas a Objetos. Por isso, o suporte a orientação a objetos pelo ExpLab parece ser um diferencial do interpretador. Inclusive, considero o ExpLab como uma ótima escolha para o ensino de programação básica por suportar todos os recursos de linguagens como, por exemplo, a linguagem pascal e ter comandos e palavras chaves em português.</p>
 
-O ExpLab tem uma sintaxe muito parecida com a das linguagems C, C++ e Java. É uma linguagem case insensitive e as variáveis não precisam ser declaradas com tipos definidos. Os tipos das variáveis são detectados automaticamente pelo interpretador, conforme o valor, ou expressão atribuido a variável.
+<p>O ExpLab tem uma sintaxe muito parecida com a das linguagems C, C++ e Java. É uma linguagem case insensitive e as variáveis não precisam ser declaradas com tipos definidos. Os tipos das variáveis são detectados automaticamente pelo interpretador, conforme o valor, ou expressão atribuido a variável.</p>
 
-Por enquanto, essa é a descrição do projeto que já tem pronta uma versão funcional com todos os recursos descritos acima. Estou publicando através do GitHub, um software interpretador e linguagem de programação já finalizado. Claro, sempre há algo para melhorar ou acrescentar, então, pretendo dar continuidade ao projeto e, talvez conseguir colaboradores interessados no projeto.
+<p>Por enquanto, essa é a descrição do projeto que já tem pronta uma versão funcional com todos os recursos descritos acima. Estou publicando através do GitHub, um software interpretador e linguagem de programação já finalizado. Claro, sempre há algo para melhorar ou acrescentar, então, pretendo dar continuidade ao projeto e, talvez conseguir colaboradores interessados no projeto.</p>
 
 # Exemplo 1
 
@@ -154,3 +154,8 @@ exibaln a.result;              // imprime o valor de a.result: 4
 exibaln a.b.c1.multiplica();   // Nesse ponto c1.a vale 4 e c2.a vale 10, logo imprime: 40
 exibaln a.b.c2.multiplica();   // Nesse ponto c2.a vale 1 e c2.b vale 1, logo imprime: 1
 </pre>
+
+# Considerações finais
+
+<p>A linguagem ExpLab suporta muito mais do que o que foi exposto nos exemplos deste texto. Visite a documentação completa em: 
+<a href="https://www.github.io/italoherbert/explab"
