@@ -1,4 +1,5 @@
 # explab
+
 O ExpLab é um interpretador e linguagem de programação: interpretada, orientada a objetos e a matemática. Ela suporta as estruturas básicas de uma linguagem de programação OO como, por exemplo, os comandos: SE, COMPARE/CASO, ENQUANTO, PARA... inclusive, também suporta definição e chamada de funções, expressões aritméticas e booleans, classes, objetos como variáveis instâncias de classes, herança de classes, tratamento de exceções, organização das classes em pacotes, etc. Inclusive, como linguagem de programação orientada a matemática, a linguagem ExpLab tem suporte a operações com vetores e matrizes e plotagem e visualização de dados e funções matemáticas em 2D e 3D.
 
 Trata-se de um software semelhante a outros já consagrados como: MatLab, SciLab e GNU Octave.
@@ -9,5 +10,25 @@ O ExpLab tem uma sintaxe muito parecida com a das linguagems C, C++ e Java. É u
 
 Por enquanto, essa é a descrição do projeto que já tem pronta uma versão funcional com todos os recursos descritos acima. Estou publicando através do GitHub, um software interpretador e linguagem de programação já finalizado. Claro, sempre há algo para melhorar ou acrescentar, então, pretendo dar continuidade ao projeto e, talvez conseguir colaboradores interessados no projeto.
 
-<h1>Exemplos</h1>
+# exemplos
 
+func fatorial1( n ) {
+  se n < 1 
+    retorne 1;
+  retorne n * fatorial1( n-1 );
+}
+
+func fatorial2( n ) {
+  result = 1;
+  para( i = 2; i <= n; i++ )
+    result &#42;= i;
+  retorne result;
+}
+
+num = 5;
+a = fatorial1( num );
+b = fatorial2( num );
+
+exibaln "Fatorial de "+num+"= "+a;    // exibe Fatorial de 5= 120
+exibaln "Fatorial de "+num+"= "+b;    // exibe Fatorial de 5= 120 
+exibaln a == b;                       // exibe verdade
