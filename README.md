@@ -155,6 +155,166 @@ exibaln a.b.c1.multiplica();   // Nesse ponto c1.a vale 4 e c2.a vale 10, logo i
 exibaln a.b.c2.multiplica();   // Nesse ponto c2.a vale 1 e c2.b vale 1, logo imprime: 1
 </pre>
 
+# Exemplo de plotágem 2D
+	
+<p><u><b>Exemplo 1:</b></u>	Esse exemplo plota o gráfico da função cosseno com x variando no intervalo de -pi a pi e a função seno no mesmo intervalo.</p>
+		
+<pre>
+<code>
+f = novo Func2D( -pi, pi );             // instancia a classe Func2D com os intervalos de X  
+f.y1 = -2.0;                            // seta o primeiro intervalo de y
+f.y2 = 2.0;                             // seta o segundo intervalo de y
+f.limitarY = verdade;                   // Com esse atributo setado para verdade, o intervalo 
+                                        // de y será considerado na construção do gráfico
+
+f.xcompleto = verdade;                  // Com esse atributo setado para verdade, a função 
+                                        // é desenhada de acordo com o intervalo de x do 
+                                        // plano cartesiano, mesmo que este seja maior que os 
+                                        // intervalos de x da função
+
+f.legenda = "cosseno";                  // adiciona uma legenda para a função
+f.linha.cor = novo RGB( 0, 0, 255 );    // seta a cor da função no gráfico
+
+f.fun = func( x ) {                     // define a função que será utilizada para o cálculo 
+    retorne cos( x );                   // dos valores de y no plano cartesiano
+};
+
+f2 = novo Func2D( -pi, pi );
+f2.xcompleto = verdade;
+f2.legenda = "seno";
+f2.linha.cor = novo RGB( 255, 0, 0 );
+
+f2.fun = func( x ) {
+    retorne sen( x );
+};
+
+pc = novo PC2D();                        // instancia a classe PC2D
+pc.titulo = "Senos e Cossenos";          // seta o título do plano cartesiano
+pc.xrotulo = "Eixo X";                   // seta o rótulo do eixo x
+pc.yrotulo = "Eixo Y";                   // seta o rótulo do eixo y
+pc.graficos[] = f;                       // adiciona o objeto f ao vetor de graficos
+pc.graficos[] = f2;                      // adiciona o objeto f2 ao vetor de graficos
+
+plot( pc );                              // plota o gráfico
+</code>
+</pre>
+
+<p>Veja abaixo o gráfico resultante da execução das instruções acima:</p>	
+
+<div class="imagem">
+	<figure>
+		<img class="borda" src="img/classe_PC2D_ex2.gif" alt="Exemplo de plotagem de funções em 2D" />
+	</figure>
+</div>
+
+# Exemplo de plotagem em 3D
+	
+<p><u><b>Exemplo 1:</b></u> Este exemplo desenha uma malha com base na função seno em conjunto com o calculo da distância entre dois pontos da hipotenusa de um triângulo de catetos iguais a "x" e "y". O calculo é feito para todos os vertices da malha.</p>
+	
+<pre>
+<code>
+x = vetesp( -pi, pi, 30 );         // gera 30 valores no intervalo de -pi a pi
+y = x;                             // faz uma cópia dos 30 valores do vetor x e armazena em y 
+
+xx = xmalhagrade( x, y );          // gera uma matriz com o número de linhas do número de elementos 
+                                   // gerados para o vetor y. O vetor x é repetido em cada 
+                                   // linha da matriz xx
+
+yy = ymalhagrade( x, y );          // gera uma matriz com o número de colunas do número de elementos 
+                                   // gerados para o vetor x. O vetor y é repetido em cada coluna 
+                                   // da matriz yy. (Obs: as matrizes xx e yy têm a mesma dimensão)
+
+z = sen( sqrt( xx^2 + yy^2 ) );    // matriz z gerada a partir das matrizes xx e yy seguindo a fórmula 
+                                   // da função que se deseje plotar. Isso tem efeito nos vertices da 
+                                   // malha gerada e representada nas matrizes xx e yy
+
+superficie = novo Superficie3D();    // instancia a classe Superficie3D
+superficie.somenteMalha = verdade; // configura a superfície para não preencher faces, apenas arestas
+
+superficie.setDados( x, y, z );    // seta os vetores x, y e a matriz z. 
+                                   // Obs: Se poderia utilizar os atributos xvetor, yvetor, zmat  
+                                   // diretamente, ao invés da função setDados!
+
+pc = novo PC3D();                    // instancia o objeto da classe PC3D
+pc.graficos[] = superficie;           // adiciona o objeto superfície ao vetor de dados
+
+plot3d( pc );                      // plota o gráfico
+</code>
+</pre>
+
+	<p>Veja abaixo o resultado da execução do script acima:</p>
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_PC3D_ex1.gif" alt="Exemplo de plotagem de dados em 3D" />
+		</figure>
+	</div>
+
+
+	<p><u><b>Exemplo 2:</b></u> Este exemplo gera dois grupos de dados: uma superfície e uma sequência de arestas ligadas por vertices componentes 
+	de uma função matemática.</p>
+<pre>
+<code>
+x = vetesp( 2, 4, 10 );           // gera 10 valores no intervalo de 2 a 4
+y = vetesp( 1, 3, 10 );           // gera 10 valores no intervalo de 1 a 3
+xx = xmalhagrade( x, y );         // gera a matriz x da malha
+yy = ymalhagrade( x, y );         // gera a matriz y da malha
+z = (xx-3)^2 - (yy-2)^2;          // gera a matriz z a partir das matrizes xx e yy
+
+superficie = novo Superficie3D(); // instancia a classe Superficie3D
+superficie.xvetor = x;            // seta o vetor x
+superficie.yvetor = y;            // seta o vetor y
+superficie.zmat = z;              // seta a matriz z
+
+pc = novo PC3D();                 // instancia a classe PC3D
+pc.graficos[] = superficie;       // adiciona o objeto superficie ao vetor de graficos
+
+plot3d( pc );                     // plota o gráfico
+</code>
+</pre>
+
+<p>Veja abaixo o resultado da execução do script acima:</p>
+
+<div class="imagem">
+	<figure>
+		<img class="borda" src="img/classe_Superficie3D_ex2.gif" alt="Exemplo de plotagem de uma superfície e dados em 3D" />
+	</figure>
+</div>
+	
+	<p><u><b>Exemplo 3:</b></u> Este exemplo desenha um conjunto de segmentos de linhas interligados por vértices formando curvas circulares em 3D. Para tanto, 
+	são calculados os valores (x, y e z) dos vértices dos segmentos de linhas interligados.</p>
+
+<pre class="codigo-fonte">
+<code>
+z = [-5:0.05:5];                  // gera dados entre -5 e 5 com incremento de 0,05
+                                  // e armazena em z
+                                  // Isso funciona de modo parecido (mas não igual) a 
+                                  // função vetesp (com exceção de a distância entre as
+                                  // extremidades do intervalo serem perfeitamente 
+                                  // divisiveis pelo incremento) - é o caso!
+
+x = cos( 2*pi*z );                // gera um vetor x em função de z
+y = sen( 2*pi*z );                // gera um vetor y em função de z
+
+dados = novo Dados3D();             // instancia a classe Dados3D
+dados.setDados( x, y, z );        // seta os vetores x, y e z (que têm mesma dimensão)
+dados.legenda = "segmentos";      // seta a legenda do gráfico de dados
+
+pc = novo PC3D();                   // instancia a classe PC3D
+pc.graficos[] = dados;               // adiciona o objeto dados ao vetor de graficos
+
+plot3d( pc );                     // plota o gráfico
+</code>
+</pre>
+
+<p>Veja abaixo o resultado da execução do script acima:</p>
+
+<div class="imagem">
+	<figure>
+		<img class="borda" src="img/classe_PC3D_ex4.gif" alt="Exemplo de plotagem de dados em 3D" />
+	</figure>
+</div>
+
 # Considerações finais
 
 <p>A linguagem ExpLab suporta muito mais do que o que foi exposto nos exemplos deste texto. Visite a documentação completa em: 
