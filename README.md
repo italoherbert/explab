@@ -157,7 +157,7 @@ exibaln a.b.c2.multiplica();   // Nesse ponto c2.a vale 1 e c2.b vale 1, logo im
 
 # Exemplo de plotágem 2D
 	
-<p><u><b>Exemplo 1:</b></u>	Esse exemplo plota o gráfico da função cosseno com x variando no intervalo de -pi a pi e a função seno no mesmo intervalo.</p>
+<p><u><b>Exemplo 1:</b></u> Esse exemplo plota o gráfico da função cosseno com x variando no intervalo de -pi a pi e a função seno no mesmo intervalo.</p>
 		
 <pre>
 <code>
@@ -201,7 +201,7 @@ plot( pc );                              // plota o gráfico
 
 <p>Veja abaixo o gráfico resultante da execução das instruções acima:</p>	
 
-<div class="imagem">
+<div style="text-align:center">
 	<figure>
 		<img class="borda" src="img/classe_PC2D_ex2.gif" alt="Exemplo de plotagem de funções em 2D" />
 	</figure>
@@ -244,7 +244,7 @@ plot3d( pc );                      // plota o gráfico
 
 <p>Veja abaixo o resultado da execução do script acima:</p>
 
-<div class="imagem">
+<div  style="text-align:center">
 	<figure>
 		<img class="borda" src="img/classe_PC3D_ex1.gif" alt="Exemplo de plotagem de dados em 3D" />
 	</figure>
@@ -274,16 +274,15 @@ plot3d( pc );                     // plota o gráfico
 
 <p>Veja abaixo o resultado da execução do script acima:</p>
 
-<div class="imagem">
+<div style="text-align:center">
 	<figure>
 		<img class="borda" src="img/classe_Superficie3D_ex2.gif" alt="Exemplo de plotagem de uma superfície e dados em 3D" />
 	</figure>
 </div>
 	
-	<p><u><b>Exemplo 3:</b></u> Este exemplo desenha um conjunto de segmentos de linhas interligados por vértices formando curvas circulares em 3D. Para tanto, 
-	são calculados os valores (x, y e z) dos vértices dos segmentos de linhas interligados.</p>
+<p><u><b>Exemplo 3:</b></u> Este exemplo desenha um conjunto de segmentos de linhas interligados por vértices formando curvas circulares em 3D. Para tanto, são calculados os valores (x, y e z) dos vértices dos segmentos de linhas interligados.</p>
 
-<pre class="codigo-fonte">
+<pre>
 <code>
 z = [-5:0.05:5];                  // gera dados entre -5 e 5 com incremento de 0,05
                                   // e armazena em z
@@ -308,7 +307,7 @@ plot3d( pc );                     // plota o gráfico
 
 <p>Veja abaixo o resultado da execução do script acima:</p>
 
-<div class="imagem">
+<div style="text-align:center">
 	<figure>
 		<img class="borda" src="img/classe_PC3D_ex4.gif" alt="Exemplo de plotagem de dados em 3D" />
 	</figure>
