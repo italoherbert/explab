@@ -12,6 +12,7 @@ Por enquanto, essa é a descrição do projeto que já tem pronta uma versão fu
 
 # exemplos
 
+<pre>
 func fatorial1( n ) {
   se n < 1 
     retorne 1;
@@ -32,3 +33,4 @@ b = fatorial2( num );
 exibaln "Fatorial de "+num+"= "+a;    // exibe Fatorial de 5= 120
 exibaln "Fatorial de "+num+"= "+b;    // exibe Fatorial de 5= 120 
 exibaln a == b;                       // exibe verdade
+</pre>
