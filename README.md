@@ -67,7 +67,7 @@ exibaln b;   // exiba a matriz (vetor) &#91; 40 49 60 &#93;
 
 # Exemplo 3
 
-<p>Lê um número e verifica se número é primo</p>
+<p>Lê um número e verifica se número é par ou impar. Solicita novo número se o número informado for não real. Um exemplo de tratamento de exceções.</p>
 
 <pre>
 terminar = verdade;
@@ -93,4 +93,64 @@ faca &#123;
         terminar = ( resp != 'S' &amp; resp != 'SIM' ); 		
     &#125;	
 &#125; enquanto ( !terminar );
+</pre>
+
+# Exemplo 4
+
+<p>Exemplo de orientação a objetos:</p>
+
+<pre>
+classe A {	
+    b = novo B();
+    b.a = b.c1.multiplica();  // nesse ponto "a" de "c1" vale 2 e "b de "c1" vale 2
+                              // logo, a função multiplica retorna 4
+	
+    b.b = b.c2.multiplica();  // aqui b.b recebe o resultado da função multiplica do objeto c2.
+                              // como c2.a vale 1 e c2.b vale 1, a função retorna 1
+	
+    result = b.multiplica();  // nesse ponto, b.a vale 4 e b.b vale 1, Logo result passa a 
+                              // valer 4
+    classe B {
+        a = 4;
+        b = 5;
+		
+        c1 = novo C();
+        c1.a = 2;
+		
+        c2 = novo C();
+        c2.b = 1;
+		
+        func alteraC1( a, b ) {   // os parâmetros a e b não têm nada há ver com os 	
+            c1.a = a;             // atributos "a" e "b" dessa classe
+            c1.b = b;
+        }
+		
+        func alteraC2( a, b ) {
+            c2.a = a;
+            c2.b = b;
+        }
+		
+        func multiplica() {   // diferente de chamar c1.multiplica() ou c2.multiplica()
+            retorne a*b;
+        }
+		
+        classe C {
+            a = 1;
+            b = 2;
+			
+            func multiplica() {
+                retorne a*b;
+            }
+        }	
+    }
+}
+
+a = novo A();                  // Não é válido fazer algo tipo: "novo a.B(); ou novo A.B();"
+
+a.b.alteraC1( a.b.a, 10 );     // Nesse ponto, "a.b.a" vale 4 "a.b.c1.a" passa a valer 4 e 
+                               // "a.b.c1.b" passa a valer 10
+
+exibaln a.result;              // imprime o valor de a.result: 4
+exibaln a.b.c1.multiplica();   // Nesse ponto c1.a vale 4 e c2.a vale 10, logo imprime: 40
+exibaln a.b.c2.multiplica();   // Nesse ponto c2.a vale 1 e c2.b vale 1, logo imprime: 1
 </pre>
