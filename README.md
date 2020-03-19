@@ -242,17 +242,16 @@ plot3d( pc );                      // plota o gráfico
 </code>
 </pre>
 
-	<p>Veja abaixo o resultado da execução do script acima:</p>
+<p>Veja abaixo o resultado da execução do script acima:</p>
 
-	<div class="imagem">
-		<figure>
-			<img class="borda" src="img/classe_PC3D_ex1.gif" alt="Exemplo de plotagem de dados em 3D" />
-		</figure>
-	</div>
+<div class="imagem">
+	<figure>
+		<img class="borda" src="img/classe_PC3D_ex1.gif" alt="Exemplo de plotagem de dados em 3D" />
+	</figure>
+</div>
 
+<p><u><b>Exemplo 2:</b></u> Este exemplo gera dois grupos de dados: uma superfície e uma sequência de arestas ligadas por vertices componentes de uma função matemática.</p>
 
-	<p><u><b>Exemplo 2:</b></u> Este exemplo gera dois grupos de dados: uma superfície e uma sequência de arestas ligadas por vertices componentes 
-	de uma função matemática.</p>
 <pre>
 <code>
 x = vetesp( 2, 4, 10 );           // gera 10 valores no intervalo de 2 a 4
