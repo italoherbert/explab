@@ -202,8 +202,8 @@ plot( pc );                              // plota o gráfico
 <p>Veja abaixo o gráfico resultante da execução das instruções acima:</p>	
 
 <div style="text-align:center">
-	<figure>
-		<img class="borda" src="img/classe_PC2D_ex2.gif" alt="Exemplo de plotagem de funções em 2D" />
+	<figure style="display: inline-block; margin: 0 auto">
+		<img src="img/classe_PC2D_ex2.gif" alt="Exemplo de plotagem de funções em 2D" />
 	</figure>
 </div>
 
