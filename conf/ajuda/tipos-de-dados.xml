@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">
+        
+    <pagina url="${doc.paginas}/tipos-de-dados.html">   
+        <conteudo id="real">
+            <chave nome="tipo" peso="10" />           
+            <chave nome="real" peso="10" />
+            <chave nome="numero" peso="8" />
+            <chave nome="integer" peso="4" />            
+            <chave nome="flutuante" peso="4" />            
+            <chave nome="numerica" peso="4" />
+            <chave nome="numerico" peso="4" />
+        </conteudo>
+        <conteudo id="matriz">
+            <chave nome="tipo" peso="10" />           
+            <chave nome="matriz" peso="6" />
+            <chave nome="vetor" peso="6" />
+            <chave nome="vetores" peso="6" />
+            <chave nome="unidimensional" peso="4" />
+            <chave nome="bidimensional" peso="4" />            
+        </conteudo> 
+        <conteudo id="string">
+            <chave nome="tipo" peso="10" />           
+            <chave nome="string" peso="6" />
+            <chave nome="caracter" peso="6" />
+            <chave nome="caracteres" peso="6" />
+            <chave nome="texto" peso="6" />           
+        </conteudo>
+        <conteudo id="boolean">
+            <chave nome="tipo" peso="10" />           
+            <chave nome="boolean" peso="6" />
+            <chave nome="booleano" peso="6" />
+            <chave nome="verdade" peso="3" />
+            <chave nome="falso" peso="3" />
+            <chave nome="true" peso="2" />            
+            <chave nome="false" peso="2" />            
+        </conteudo> 
+        <conteudo id="objeto">
+            <chave nome="tipo" peso="10" />           
+            <chave nome="objeto" peso="6" />
+            <chave nome="instancia" peso="6" />
+            <chave nome="atributo" peso="3" />
+            <chave nome="func" peso="3" />
+            <chave nome="construtor" peso="6" />            
+            <chave nome="classe" peso="5" />            
+            <chave nome="subclasse" peso="5" />            
+        </conteudo> 
+        <conteudo id="func">
+            <chave nome="tipo" peso="10" />           
+            <chave nome="func" peso="6" />
+            <chave nome="variavel" peso="6" />
+        </conteudo>                
+    </pagina>    
+    
+</conteudos>

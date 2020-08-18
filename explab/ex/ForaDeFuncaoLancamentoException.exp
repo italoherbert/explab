@@ -1,0 +1,14 @@
+pacote explab.ex;
+
+classe ForaDeFuncaoLancamentoException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+
+

@@ -1,0 +1,13 @@
+pacote explab.ex;
+
+classe RGBException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+

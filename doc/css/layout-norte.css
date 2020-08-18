@@ -1,0 +1,21 @@
+
+div#layout-norte {
+	height: auto;
+	padding: 2em 0.35em;	
+}
+
+div#layout-norte img.logo {
+	position: relative;
+	display: inline-block;
+	margin: 0.5em 0;
+}
+
+@media screen and ( max-width: 40em ) {
+	div#layout-norte {
+		text-align: left;
+	}
+	
+	div#layout-norte img.logo {
+		width: 50%;
+	}		
+}

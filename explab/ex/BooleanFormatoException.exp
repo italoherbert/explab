@@ -1,0 +1,14 @@
+pacote explab.ex;
+
+classe BooleanFormatoException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+
+

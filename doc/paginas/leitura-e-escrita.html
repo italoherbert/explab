@@ -1,0 +1,151 @@
+
+<div>			
+	<h3 class="titulo">Leitura e escrita</h3>
+		
+	<p>A linguagem EXPLAB também oferece comandos para entrada e saída. Assim como em tantas outras linguagems de programação, o EXPLAB suporta a leitura de variáveis. 
+	Lembrando que o tipo da variável é identificado automaticamente e, é também possível, escrever na tela do interpretador da linguagem EXPLAB.</p>
+	
+	<p><b>Atenção:</b>Se você digitar uma variável ou expressão no interpretador do EXPLAB sem finalizar com ponto e vírgula, 
+	o valor correspondente ao da variável ou expressão será mostrado na tela. Veja a imagem abaixo:</p>
+	
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/leitura_e_escrita_valor_mostrado.gif" alt="Exemplo impressão do valor de uma variável" />
+		</figure>
+	</div>
+	
+	<span id="exiba"></span>
+	<span id="exibaln"></span>
+	<h3>exiba X exibaln</h3>
+	
+	<p>Os dois comandos, tanto o exiba, quanto o exibaln imprimem o resultado de valores ou concatenação de vários valores de quaisquer tipos na tela do interpretador. 
+	Porém, o comando exibaln faz uma coisa a mais que o comando exiba: ele executa um pula linha, posicionando o cursor na linha seguinte para o que for impresso daí em 
+	diante seja impresso já na próxima linha, não na linha atual.</p>
+	
+	<span id="leialn"></span>
+	
+	<h3>Exemplos de uso:</h3>
+	
+	<p><b>Exemplo 1: </b>O exemplo abaixo imprime uma mensagem na tela e espera até que o usuário digite um valor de entrada para 
+	ser lido e armazenado em uma variável. Após a leitura concluída, o programa diz se o número é par ou se é impar ou, ainda, se não é um número.</p>			
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn a;   // este é o comando de leitura e ele suporta expressões numéricas, 
+            // booleanas e de tipo string, além de matrizes e qualquer valor válido
+
+se ( a % 2 == 0 ) 
+	exibaln "O número é par!";
+senao exibaln "O número é impar!";
+</code>
+</pre>		
+		
+</div>
+
+	<p><b>Exemplo 2: </b>O exemplo abaixo imprime o valor digitado formatado conforme o modo que é mostrado no interpretador do EXPLAB.</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um valor ou expressão: ";
+leialn a;   
+
+exibaln a;
+</code>
+</pre>		
+		
+</div>
+
+	<p><b>Exemplo 3: </b>Experimente executar o comando de leitura mostrado abaixo no interpretador do EXPLAB. Informe diferentes tipos de dados 
+	e veja o resultado!</p>
+	
+<pre class="codigo-fonte">
+<code>
+leialn a;  // nesse caso o ponto e virgula é opcional, já que a função não retorna nenhum valor de saída
+a          
+</code>
+</pre>	
+
+	<p><b>Exemplo 4: </b>Agora um exemplo de leitura de uma string. Veja abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe uma matriz: ";
+leialn a;       // Por exemplo informe [ 1 2 3; 4 5 6 ];
+
+exibaln a;
+
+exiba "Informe outra matriz: ";
+leialn a:string;  // Informe novamente a matriz [ 1 2 3; 4 5 6 ]
+                  // repare que aqui você está explicitando o tipo 
+                  // da variável (o tipo string)
+				  
+exibaln a;       
+</code>
+</pre>	
+	
+	<p>Veja abaixo o resultado da execução do script acima:</p>
+	
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/leitura_e_escrita_ex4.gif" alt="Exemplo impressão do valor de uma variável" />
+		</figure>
+	</div>
+	
+
+
+	<p><b>Exemplo 5: </b>Agora um exemplo de uso da função exiba (não a exibaln!). Esse exemplo imprime os números de um a dez na mesma linha. Veja abaixo:</p>
+
+<pre class="codigo-fonte">
+<code>
+para ( i = 1; i &lt;=10; i++ )
+	exiba i+"  ";
+</code>
+</pre>
+
+	<p>Veja abaixo o resultado:</p>
+	
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/leitura_e_escrita_ex5.gif" alt="Exemplo impressão do valor de uma variável" />
+		</figure>
+	</div>
+	
+	<h3 id="salve">A função SALVE</h3>
+	
+	<p>A função SALVE pode ser utilizada para salvar os dados numéricos reais armazenados em uma matriz. Para tanto, é necessário informar o nome do arquivo de 
+	destino (se o arquivo estiver em na raiz ou em alguma subpasta do diretório corrente - "lembre-se do comando CD e da variável scriptdir".) e o nome da 
+	variável, ou, mesmo o valor pode ser passado diretamente sem armazená-lo em uma variável. Também é possível informar o caminho absoluto do arquivo que será 
+	criado para armazenar os elementos da matriz. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = identidade( 5 );
+salve( 'a.mat', a );
+
+salve( 'b.txt', [1 2 3;4 5 6] );
+</code>
+</pre>
+	
+	<p>Experimente rodar esses exemplos e faça alterações para visualizar os diferentes resultados.</p>
+	
+	<h3 id="carregue">A função CARREGUE</h3>
+	
+	<p>A função CARREGUE faz justamente o inverso da função SALVE. Essas funções podem ser utilizadas em conjunto. Você tanto pode gerar dados em outros softwares ou 
+	linguagens de programação e salvá-los em um arquivo texto, quanto pode gerar manualmente os dados digitando-os, por exemplo, no aplicativo bloco de notas. Claro, outro 
+	modo de gerar dados carregaveis é através da função mostrada anteriormente: a função SALVE.</p>
+	
+	<p>Para que os dados possam ser carregados através da função CARREGUE, é necessário que os dados estejam no devido formato. Isto é, simplesmente, os elementos de uma linha 
+	deve estar separado por espaços e os caracteres de cada linha do arquivo são carregados como elementos da linha correspondente. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = preenche( 8, 6, 4 );    // gera uma matriz 8x6 preenchida com 4 para todos os elementos dela
+salve( 'a.mat', a );        // salva a matriz no arquivo "a.mat"
+
+b = carregue( 'a.mat' );    // carrega os dados salvos anteriormente e os armazena na variável "b"
+exibaln b;                  // exibe a matriz carregada
+</code>
+</pre>	
+
+</div>

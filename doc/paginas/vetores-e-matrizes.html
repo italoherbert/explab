@@ -1,0 +1,235 @@
+
+<div>			
+	<h3 class="titulo">Vetores e matrizes</h3>
+		
+	<p>A linguagem EXPLAB tem suporte a definição e manipulação direta de vetores e matrizes como variáveis. O vetor (ou lista) é referido aqui como uma 
+	matriz unidimensional (com apenas uma linha) e é possível utilizá-la como uma lista de variáveis de qualquer tipo suportado pelo EXPLAB. É possível 
+	declarar um vetor ou matriz de strings, objetos, variáveis tipo função, valores booleanos, etc. Obs, é possível uma mesma matriz ter elementos de tipos 
+	diferentes. Como será visto mais adiante, é possível utilizar submatrizes ou vetores para compor uma só matriz resultante.</p>
+	
+	<h3 id="vetores">Definição de vetores (Matrizes unidimensionais)</h3>
+	
+	<p>Para definir um simples vetor de elementos, basta seguir uma das seguintes sintaxes:</p>
+	
+	<blockquote>
+		[ elemento1 elemento2... elementon ] 
+		<br /> 
+		[ elemento1, elemento2, ..., elementon].
+	</blockquote>
+	
+	<p>Perceba que os elementos podem ser, tanto separados por espaços quanto por vírgulas. No entanto, vale esclarecer que, em alguns casos, faz-se necessária 
+	a separação por vírgulas, ao invés da utilização de espaços para separar os elementos. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = [ 1 2 3 ];      // a recebe os valores 1, 2 e 3
+b = [ -1, -2, -3 ]; // b recebe os valores -1, -2 e -3
+
+c = [ -1 -2 -3 ];   // c recebe apenas um valor, o valor -6!
+                    // Isso acontece porque o interpretador aceita 
+                    // expressões aritméticas como elementos da matriz ou vetor, 
+                    // Logo, ele entente que -1 -2 -3 compõem uma unica expressão e, então, 
+                    // calcula ela. O resultado é -6. Assim, a matriz "c" recebe apenas 
+                    // um elemento. Trata-se de uma matriz de dimensão 1x1
+
+exibaln a;
+exibaln b;
+exibaln c;
+</code>
+</pre>
+
+	<p>Perceba no exemplo acima que, caso se deseje separar expressões aritméticas de outros elementos da matriz, deve-se utilizar a vírgula para separar, já que o 
+	espaço é suportado para separar operandos e operadores das expressões aritméticas. Veja abaixo outro exemplo para esclarecer melhor a necessidade, ou não, da 
+	separação dos elementos por vírgulas:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exibaln [ -1+2^sen(pi) -e^(-1) ];   // exibe uma matriz com o elemento -0,3679
+exibaln [ -1+2^sen(pi), -e^(-1) ];  // exibe uma matriz com dois elementos: 0,0000 -0,3679
+</code>
+</pre>
+
+	<h3 id="arrays">Vetores unidimensionais como arrays ou listas</h3>
+	
+	<p>O EXPLAB permite a utilização de vetores unidimensionais como listas de variáveis, sendo possível o acesso e alteração diretos a seus elementos. Uma observação 
+	importante é que os elementos são acessados/alterados por meio de seus índices numéricos que são sequenciais, começando do zero. Por exemplo, em um vetor de 3 elementos, 
+	o primeiro elemento é referenciado pelo índice 0, o segundo, pelo índice 1 e o terceiro, pelo índice 2. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = [ "a", verdade, 1.0^(rquad( abs( 36-100 ) ) ), -Inf, "xxx" ];  // a recebe os elementos: 
+                                                                  // a, verdade,  1, -&#8734, xxx
+
+exibaln a(0);  // o valor da posição 0 (o primeiro elemento do vetor) é exibido, logo, o valor exibido é: a
+exibaln a(2);  // o valor da posição 2 (o terceiro elemento) é exibido, logo, o valor exibido é: 1
+
+a(1) = falso;  // o segundo elemento que valia verdade, passa a valer falso
+
+a(3) = "" + a(0) + "bc";  // o quarto elemento que valia -&#8734 passa a valer: abc 
+                          // (concatenação do elemento de índice 0 com a string "bc").
+                          // perceba a necessidade de inicializar com "", pois é necessário 
+                          // indicar ao interpretador que trata-se de uma expressão tipo string					  
+
+exibaln a;           // é exibido o vetor a: a, falso, 1, abc, xxx
+
+a[] = 5;             // um novo elemento é adicionado ao final da lista, ele é o número real 5
+
+classe A {}          // declara classe de nome A
+
+a[] = novo A();      // aciciona um objeto, instância da classe A ao final do vetor. 
+
+exibaln a;           // é exibido: a, falso, 1, abc, xxx, 5, A#1
+</code>
+</pre>
+	
+	<h3 id="matrizes">Vetores bidimensionais (Matrizes)</h3>
+	
+	<p>Para definir uma matriz basta pensar nela como tendo vetores unidimensionais como linhas, a separação dos elementos das linhas segue a mesma sintaxe e lógica 
+	da separação de elementos para os vetores unidimensionais. Mas, quanto trata-se de uma matriz com número de linhas maior que 1, é necessário, também, separar essas 
+	linhas por um caractere na declaração da matriz. Esse caractere de separação de linhas é o ponto e vírgula. Observe a seguir a sintaxe para declaração de matrizes:</p>
+		
+	<blockquote>
+		[ elemento11 elemento12... elemento1N ; elemento21 elemento22 ... elemento2N, ... , elementoN1, elementoN2, ..., elementoNN ] 
+		<br /> 
+		[ elemento11, elemento12, ..., elemento1N ; elemento21, elemento22, ..., elemento2N ; ... ; elementoN1, elementoN2, ..., elementoNN ] 
+	</blockquote>
+	
+	<p>Perceba que os elementos das colunas são separados por espaços ou por vírgulas e as linhas são separadas por ponto e vírgula.</p>
+	
+	<p>Para o acesso e alteração dos elementos da matriz, basta informar o indice da linha e o da coluna. Como com os vetores unidimensionais, esses índices são sequenciais e 
+	se iniciam em zero. É possível também acessar uma linha inteira ou coluna inteira através do caractere especial : (dois pontos). Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = [ 1 2 3; 4 5 6; 7 8 9 ];  // declaração de matriz
+b = a(0,2) + a(1,1);          // acessa elemento (0,2) que corresponde ao elemento da 
+                              // linha 1 coluna 3. Esse elemento é o número 3
+                              // após acessar o elemento de índices (0,2), acessa o de 
+                              // índices (1,1), que é o número 5. Realiza a soma e a 
+                              // variável "b" recebe o valor 8;							  
+
+c = a(0,1) * a(2,1);          // segue a mesma lógica do valor da expressão atribuido a "b",
+                              // "c" passa a valer 2*8, isto é, 16
+							  
+a(1,:) = [ b b b ];           // acessa a linha 1 (de índice 0) e todas as colunas desta linha, 
+                              // são alteradas com os elementos correspondentes aos valores 
+                              // do vetor [ b b b ], isto é, [ 8 8 8 ]
+							  
+a(:,2) = [ c; c; c ];         // acessa a coluna 3 (de índice 2) e todas as linhas desta coluna, 
+                              // então substitui os valores desses elementos pelos elementos do 
+                              // vetor [ c; c; c ], isto é, [ 16; 16; 16 ]. Perceba que esse vetor 
+                              // é de ordem 3x1, e não 1x3. 
+                              // Isso porque seus elementos estão separados por ponto e vírgula, não 
+                              // por vírgulas ou espaços! E é necessário um vetor vertical para 
+                              // ser atribuido a uma coluna							  
+
+exibaln a;	                  // exibe a matriz a, após as alterações da linha 2 (de índice 1) e da 
+                              // coluna 3 (de índice 2). O resultado é a matriz:
+                              // [ 1 2 16; 8 8 16; 7 8 16 ]	
+
+exibaln a(:);                 // se os elementos de uma matriz bidimensional é acessada assim, seus elementos 
+                              // são organizados na vertical. Isto é, se a matriz tem dimensão 3x3, a matriz 
+                              // resultante de a(:) é de dimensão 9x1. A matriz impressa é a sequência de todas
+                              // as colunas. Isto é: [ 1; 8; 7; 2; 8; 8; 16; 16; 16 ]
+                              						  
+exibaln a(:,:);               // imprime a matriz inteira: [ 1 2 16; 8 8 16; 7 8 16 ]. a(:,:) é o mesmo que apenas a
+
+d = a(:,1);                   // d recebe a matriz linha correspondente a coluna de índice 1. Isto é: [ 2; 8; 8 ]
+ 
+exibaln d;                    // exibe a matriz d
+</code>
+</pre>
+
+		
+	<p>A mesma lógica do exemplo acima para acesso e manipulação dos elementos de uma matriz bidimensional, pode ser aplicada a matrizes de 
+	elementos não necessariamente reais. Outra observação importante a ser feita é sobre a adição de novos elementos através do operador []. Esse operador 
+	de adição do elemento no final da lista, é suportado apenas em se tratando de vetores unidimensionais, não é suportado por matrizes. No entanto, é possível 
+	expandir uma matriz alterando valores de indices acima da ordem da matriz. Isto é, para uma matriz 3x3, pode-se alterar o valor do elemento (4, 4) e assim a matriz 
+	passa a ser de ordem 5x5, e os valores das novas linhas e colunas adicionadas, com exceção do elemento de índice (4, 4) são alterados para valores padrão, de 
+	acordo com o tipo da matriz. Veja outro exemplo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = [ 1 2; 3 4 ];
+a( 3, 3 ) = 5;
+
+exibaln a;   // exibe a matriz: [ 1 2 0 0; 3 4 0 0; 0 0 0 0; 0 0 0 5 ];
+
+b = [ "aaa" verdade ];
+b[] = "ccc";
+
+classe C {}
+
+b( 3 ) = novo C();
+
+exibaln b;   // exibe o vetor unidimensional: [ aaa verdade ccc C#1 ] 
+
+c = [ novo C(), verdade; verdade 1.2 ];
+c(2, 2) = falso;
+
+exibaln c;     // exibe a matriz: [ C#2 verdade 0; verdade 1.2 0; 0 0 falso ]
+</code>
+</pre>
+		
+		
+	<h3 id="submatrizes">Matrizes compostas de submatrizes</h3>		
+
+	<p>Também é possível a definição se submatrizes dentro de matrizes para que, como resultado, uma outra matriz seja gerada. Mas, claro, há algumas restrições relacionadas a 
+	dimensão dessas sumbatrizes. Veja os exemplos abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = [ [1 2]; [3 4] ];               // a recebe [ 1 2; 3 4 ]
+b = [ 1 2 3; 4 5 6 ];
+c = [ 7 8 9; 10 11 12 ];
+
+d = [ b c; b c ];                   // d recebe [ 1 2 3 7 8 9; 4 5 6 10 11 12; 1 2 3 7 8 9; 4 5 6 10 11 12 ];
+f = [ 1 2 3 4 [ 5 6 7 ] 8 9 ];      // f recebe [ 1 2 3 4 5 6 7 8 9 ];
+
+g = [ [ 1 2; 3 4] [ 5 6; 7 8]; [ 9 10;11 12 ] [ [ 13; 14] [15; 16] ] ];  
+
+                                    // g recebe [ 1 2 5 6; 3 4 7 8; 9 10 13 15; 11 12 14 16 ];
+
+h = [ b(1,:) c(0,:) 0 f ];          // h recebe [ 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 ];
+i = [ [1 2 3;4 5 6]; [1 2 3;4 5 6;7 8 9] ];    // i recebe [ 1 2 3;4 5 6; 1 2 3; 4 5 6; 7 8 9 ];
+
+exibaln a;
+exibaln b;
+exibaln c;
+exibaln d;
+exibaln f;
+exibaln g;
+exibaln h;
+exibaln i;
+
+// j = [ 1 2; [ 3 4 5] ]            // incompatibilidade de dimensões da submatriz com a 
+                                    // primeira linha da matriz j. A primeira linha tem 2 colunas, 
+                                    // é como se fosse uma matriz 1x2, e a matriz da segunda linha 
+                                    // tem dimensão 1x3. 1x3 é incompatível com 1x2
+									
+// k = [ [ 1 2 3; 4 5 6]; [7 8; 9 10] ]   // incompatibilidade na dimensão das duas submatrizes:
+                                          // a primeira tem dimensão 2x3, e a segunda: 2x2	
+</code>
+</pre>
+
+<div class="box">
+	<span class="box-titulo">Atenção:</span>
+	
+	<p>O tipo matriz não é um tipo objeto. Logo, se uma variável tipo matriz for atribuida a outra, uma cópia da 
+	matriz é atribuida e não uma referência. Veja o exemplo abaixo: </p>
+</div>
+
+<pre class="codigo-fonte">
+<code>
+a=[1 2 3;4 5 6];
+
+b=a;
+
+a(1,:)=[7 8 9];
+
+exibaln a;   // exibe [ 1 2 3; 7 8 9 ]; 
+exibaln b;	 // exibe [ 1 2 3; 4 5 6 ];
+</code>
+</pre>
+		
+</div>

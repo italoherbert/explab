@@ -1,0 +1,13 @@
+
+facaenquanto1_v12 = 1;
+faca {
+    compare( facaenquanto1_v12 ) {
+        caso 1:
+            facaenquanto1_v11 = 10;
+            facaenquanto1_v12 = 2;
+            pare;
+        caso 2:
+            facaenquanto1_v11 = 2;
+            pare;
+    };
+} enquanto ( facaenquanto1_v11 > 3 );

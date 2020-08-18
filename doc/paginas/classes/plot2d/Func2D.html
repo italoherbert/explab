@@ -1,0 +1,187 @@
+
+<div>			
+	<h3 class="titulo">Classe Func2D</h3>
+		
+	<p>Esta classe pode ser utilizada em conjunto com a classe PC2D e o comando plot para plotagem de um gráfico com base em intervalos de x e/ou de y e a 
+	definição de uma função matemática com expressão numérica de retorno para o calculo dos valores de y.</p>
+
+	<h3>Atributos</h3>
+
+	<table class="tabela">
+		<thead>
+			<tr>
+				<th class="nome">Nome</th>
+				<th class="normal">Tipo</th>
+				<th class="normal">Valor padrão</th>
+				<th class="normal">Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nome">x1</td>
+				<td class="normal">real</td>
+				<td class="normal">-1</td>
+				<td class="normal">
+					Extremidade inferior do intervalo de x
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">x2</td>
+				<td class="normal">real</td>
+				<td class="normal">1</td>
+				<td class="normal">
+					Extremidade posterior do intervalo de x
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">y1</td>
+				<td class="normal">real</td>
+				<td class="normal">-1</td>
+				<td class="normal">
+					Extremidade inferior do intervalo de y
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">y2</td>
+				<td class="normal">real</td>
+				<td class="normal">1</td>
+				<td class="normal">
+					Extremidade posterior do intervalo de y
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">limitarY</td>
+				<td class="normal">boolean</td>
+				<td class="normal">falso</td>
+				<td class="normal">
+					ativa ou desativa o intervalo de y. Se desativado, o intervalo de y é calculado automaticamente, sem limita-lo (ou expandi-lo) aos valores y1 e y2
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">xcompleto</td>
+				<td class="normal">boolean</td>
+				<td class="normal">falso</td>
+				<td class="normal">
+					ativa ou desativa que o intervalo de x da função herde do intervalo de x do plano cartesiano, mesmo que este seja maior que o intervalo 
+					de x configurado para a função
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">fun</td>
+				<td class="normal">func</td>
+				<td class="normal">func( x ) { retorne x }</td>
+				<td class="normal">
+					É neste atributo que deve ser setado a variável função (A função pode ser definida diretamente).
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">legenda</td>
+				<td class="normal">string</td>
+				<td class="normal">null</td>
+				<td class="normal">
+					Texto com a legenda associada a função a ser plotada. Se valer null, a legenda é omitida no gráfico
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">ponto</td>
+				<td class="normal">PontoConfig</td>
+				<td class="normal">um objeto</td>
+				<td class="normal">
+					Permite a configuração dos pontos de cada dado. É possível configurar a visibilidade, cor e ráio da forma que é 
+					pintada se a visibilidade estiver ativada					
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">linha</td>
+				<td class="normal">LinhaConfig</td>
+				<td class="normal">um objeto</td>
+				<td class="normal">
+					Permite a configuração das linhas que ligam cada dado. É possível configurar a visibilidade e a cor
+				</td>
+			</tr>			
+		</tbody>
+	</table>
+
+	<h3>Construtores</h3>
+
+	<p class="fprototipo">construtor()</p>
+	<blockquote>
+		Se a classe for instanciada com o construtor vasio, os valores padrão são assumidos.
+	</blockquote>
+
+	<p class="fprototipo">construtor( real, real )</p>
+	<blockquote>
+		Esse construtor recebe como parâmetro os valores do intervalo de x (x1 e x2) e os seta nas devidas variáveis.
+	</blockquote>
+
+	<p class="fprototipo">construtor( real, real, func )</p>
+	<blockquote>
+		Este construtor recebe como parâmetro os valores do intervalo de x (x1 e x2) e uma variável tipo função. Os 
+		valores são setados nas devidas variáveis
+	</blockquote>
+
+	<h3>Funções</h3>
+	
+	<p>Esta classe não tem funções definidas</p>
+
+	<h3>Exemplo de uso</h3>
+
+	<p>Esse exemplo plota o gráfico da função cosseno com x variando no intervalo de -pi a pi. No entanto, foi utilizada a classe Func2D, ao 
+	invés de se optar por gerar os dados correspondentes aos pontos que compõem a função e utilizar a classe Dados2D. O objeto Func2D foi configurado com mais flexibilidade 
+	do que com a utilização da classe Dados2D.</p>
+		
+<pre class="codigo-fonte">
+<code>
+f = novo Func2D( -pi, pi );             // instancia a classe Func2D com os intervalos de X  
+f.y1 = -2.0;                            // seta o primeiro intervalo de y
+f.y2 = 2.0;                             // seta o segundo intervalo de y
+f.limitarY = verdade;                   // Com esse atributo setado para verdade, o intervalo 
+                                        // de y será considerado na construção do gráfico
+
+f.xcompleto = verdade;                  // Com esse atributo setado para verdade, a função 
+                                        // é desenhada de acordo com o intervalo de x do 
+                                        // plano cartesiano, mesmo que este seja maior que os 
+                                        // intervalos de x da função
+
+f.legenda = "cosseno";                  // adiciona uma legenda para a função
+f.linha.cor = novo RGB( 0, 0, 255 );    // seta a cor da função no gráfico
+
+f.fun = func( x ) {                     // define a função que será utilizada para o cálculo 
+    retorne cos( x );                   // dos valores de y no plano cartesiano
+};
+
+pc = novo PC2D();      
+pc.graficos[] = f;                      // adiciona o objeto f ao vetor de graficos
+
+plot( pc );                             // plota o gráfico
+</code>
+</pre>
+
+	</p>Veja baixo o resultado da plotagem:</p>
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_PC2D_ex2.gif" alt="Exemplo de plotagem de funções em 2D" />
+		</figure>
+	</div>
+
+	<h3>Outras configurações</h3>
+
+<pre class="codigo-fonte">
+<code>
+f = novo Func2D();            // instancia a classe Func2D
+f.ponto.visivel = verdade;    // configura os pontos de dados para visíveis
+f.ponto.cor.r = 255;          // altera a porção de cor vermelha do ponto para 255
+f.ponto.cor.g = 0;            // altera a porção de cor verde do ponto para 0
+f.ponto.cor.b = 0;            // altera a porção de cor azul do ponto para 0 
+f.ponto.raio = 3;
+
+f.linha.visivel = verdade;    // configura as linhas que ligam os dados para visíveis
+f.linha.cor.r = 0;            // altera a porção de cor vermelha das linhas para 0
+f.linha.cor.g = 255;          // altera a porção de cor verde das linhas para 255
+f.linha.cor.b = 0;            // altera a porção de cor azul das linhas para 0
+</code>
+</pre>
+		
+
+</div>

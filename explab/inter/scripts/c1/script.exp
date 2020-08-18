@@ -1,0 +1,32 @@
+classe A {
+    base = 2;
+	
+    func potencia( expoente ) {
+        retorne base^expoente;
+    }
+}
+
+a1 = novo A();             // instância da classe A
+a2 = novo A();             // a palavra reservada "novo" é utilizada para criação de uma nova instância
+a3 = novo A();             // a nova instância criada da classe A é atribuida a uma variável (um objeto)
+a4 = novo A();
+a5 = novo A();
+
+a1.base = 10;              // alteração do atributo base do objeto de nome a1
+a2.base = 2;               // alteração do atributo base do objeto de nome a2 
+
+a3.base = 4;               // o atributo base do objeto a1 não tem nada há ver com o atributo base do objeto a2
+a4.base = 5;               // Em OO, os atributos e métodos são encapsulados em um objeto e são vinculados só a ele.
+a5.base = 3;               // Não são vinculados a classe, mas sim a instância dela (ao objeto)
+                           // com exceção de linguagems que suportam recursos estáticos que são vinculados a classe, 
+                           // o EXPLAB não suporta recursos estáticos						   
+
+w = a1.potencia( 2 );  // imprime 100
+x = a1.potencia( 3 );  // imprime 1000
+
+y = a2.potencia( 8 );  // imprime 256
+z = a3.potencia( 3 );  // imprime 64
+ww = a4.potencia( 2 );  // imprime 25
+xx = a5.potencia( 4 );  // imprime 81
+
+zz = a1.potencia( 4 );  // imprime 10000, perceba que não foi necessário alterar a variável base!

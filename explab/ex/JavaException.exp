@@ -1,0 +1,12 @@
+pacote explab.ex;
+
+classe JavaException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+

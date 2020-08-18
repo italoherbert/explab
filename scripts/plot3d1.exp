@@ -1,0 +1,33 @@
+x = vetesp( 2, 4, 10 );           // gera 10 valores no intervalo de 2 a 4
+y = vetesp( 1, 3, 10 );           // gera 10 valores no intervalo de 1 a 3
+xx = xmalhagrade( x, y );         // gera a matriz x da malha
+yy = ymalhagrade( x, y );         // gera a matriz y da malha
+z = (xx-3)^2 - (yy-2)^2;          // gera a matriz z a partir das matrizes xx e yy
+
+superficie = novo Superficie3D();   // instancia a classe Superficie3D
+superficie.xvetor = x;            // seta o vetor x
+superficie.yvetor = y;            // seta o vetor y
+superficie.zmat = z;              // seta a matriz z
+
+
+z = [-1:0.1:1];                  // gera dados entre -1 e 1 com incremento de 0,05
+                                  // e armazena em z
+                                  // funciona de modo parecido (mas não igual) a 
+                                  // função vetesp
+
+x = 3+cos( 2*pi*z );                // gera um vetor x em função de z
+y = 2+sen( 2*pi*z );                // gera um vetor y em função de z
+
+dados = novo Dados3D();             // instancia a classe Dados3D
+dados.setDados( x, y, z );        // seta os vetores x, y e z (que têm mesma dimensão)
+dados.legenda = "grafo";          // seta a legenda do gráfico de dados
+dados.linha.visivel = falso;      // configura as linhas para não serem mostradas
+dados.ponto.visivel = verdade;    // configura os vértices para serem mostrados
+dados.ponto.raio = 2;             // configura o raio dos vértices para 2 pixels
+dados.ponto.cor = novo RGB( 0, 0, 255 );  // configura a cor dos vértices para azul
+
+pc = novo PC3D();                   // instancia a classe PC3D
+pc.graficos[] = dados;               // adiciona o objeto dados ao vetor de dados
+pc.graficos[] = superficie;          // adiciona o objeto superficie ao vetor de dados
+
+plot3d( pc );                     // plota o gráfico

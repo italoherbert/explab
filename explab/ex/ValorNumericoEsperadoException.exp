@@ -1,0 +1,13 @@
+pacote explab.ex;
+
+classe ValorNumericoEsperadoException extende ValorException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+

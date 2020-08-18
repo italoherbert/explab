@@ -1,0 +1,117 @@
+
+<div>			
+	<h3 class="titulo">Incrementos e decrementos</h3>
+		
+	<p>Os operadores de incremento e decremento podem ser utilizados para incrementar ou decrementar em uma unidade o valor de uma variável, ou incrementar ou decrementar 
+	em várias unidades o valor de uma variável.</p>
+			
+	<table class="tabela">
+		<thead>
+			<tr>
+				<th class="nome">Símbolo</th>
+				<th class="normal">Descrição</th>
+				<th class="normal">Exemplo</th>
+				<th class="normal">Comentário</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nome">++</td>
+				<td class="normal">Operador de incremento de um</td>
+				<td class="normal">i++ ou ++i</td>
+				<td class="normal">
+					Soma um ao valor atual de uma variável.
+					
+					<p>Se o incremento i++ estiver em uma expressão, a expressão utiliza o valor de i de antes do incremento e 
+							incrementa o valor da variável i em uma unidade após o calculo do resultado da expressão</p>
+							
+				    <p>Se o incremento ++i estiver em uma expressão, o incremento de i é executado primeiro e i passa a valer i+1, para 
+						esse novo valor de i ser utilizado no cálculo do resultado da expressão.</p>
+					
+					O resultado desse exemplo de expressão numérica é o incremento da variável i. Se i valer, por exemplo, 5, após a execução dessa instrução, passa a 
+					valer 6.
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">--</td>
+				<td class="normal">Operador de decremento de um</td>
+				<td class="normal">i-- ou --i</td>
+				<td class="normal">
+					Subtrai um do valor atual de uma variável.
+					
+					<p>Se o decremento i-- estiver em uma expressão, a expressão utiliza o valor de i de antes do decremento e 
+						decrementa o valor da variável i em uma unidade após o calculo do resultado da expressão.</p>
+						
+					<p>Se o decremento --i estiver em uma expressão, o decremento de i é executado primeiro e i passa a valer i-1, para 
+					esse novo valor de i ser utilizado no cálculo do resultado da expressão.</p>
+					
+					O resultado desse exemplo de expressão numérica é o decremento da variável i. Se i valer, por exemplo, 5, após a execução dessa instrução, passa a 
+					valer 4.
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">+=</td>
+				<td class="normal">Operador de incremento de n</td>
+				<td class="normal">i+=5;</td>
+				<td class="normal">
+					Soma um valor n ao valor atual de uma variável. Pode estar no meio de expressões numéricas e, nesse caso, é executado antes da expressão e seu novo 
+					valor resultante é o valor utilizado pela expressão no calculo do resultado dela.
+					<br /><br />
+					O resultado desse exemplo de expressão numérica é o resultado da variável i somado com 5. Se i valer, por exemplo, 6, após a execução dessa 
+					instrução, passa a valer 11.
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">-=</td>
+				<td class="normal">Operador de decremento de n</td>
+				<td class="normal">i-=5;</td>
+				<td class="normal">
+					Subtrai um valor n do valor atual de uma variável. Pode estar no meio de expressões numéricas e, nesse caso, é executado antes da expressão e seu novo 
+					valor resultante é o valor utilizado pela expressão no calculo do resultado dela.
+					<br /><br />
+					O resultado desse exemplo de expressão numérica é o resultado da variável i subtraida de 5. Se i valer, por exemplo, 7, após a execução 
+					dessa instrução, passa a valer 2.
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p>Exemplos envolvendo expressões aritméticas e operadores de incremento e decremento:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = 2;         // "a" recebe 2
+a--;           // "a" passa a valer 1
+a+=5;          // "a" passa a valer 6
+b=6;           // "b" recebe 6
+b+=4;          // "b" passa a valer 10
+a += a+b;      // "a" passa a valer 22
+b--;           // "b" passa a valer 9
+a--;           // "a" passa a valer 21
+
+exibaln a;     // exibe 21
+exibaln b;     // exibe 9
+
+i = 2;
+
+a = i++ - 2^(b-=5)*( --i ) + (i++^3);  // primeiro i++ retorna o valor sem incremento, o valor 2, depois 
+                                       // é executado b-= 5. Como b vale 9, após a execução desse decremento, 
+                                       // b passa a valer 4. Então, é executado o --i, em que, a partir desse ponto da 
+                                       // expressão, passa a valer i-1, ou seja, 1. Depois o i++ seguinte retorna 
+                                       // o valor atua de i, sem o incremento, isto é, 1. O resultado é: 
+                                       // 2 - 2^4 * 1 + 1^3 que é igual a -13 e, como houve também dois incremento i++, 
+                                       // após a expressão retornar -13, o i que já valia 1, passa a valer 3 e b 
+                                       // que valia 9, passa a valer 4. Assim, ao final: a = -13, b = 4, i = 3
+									 
+
+exibaln a;   // exibe -13
+exibaln b;   // exibe 4
+exibaln i;   // exibe 3
+
+</code>
+</pre>
+	
+<p>Atenção, é recomendado colocar sempre entre parênteses os incrementos e decrementos utilizados dentro de uma expressão aritmética, embora não seja obrigatório.</p>	
+	
+	
+</div>

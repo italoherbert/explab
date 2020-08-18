@@ -1,0 +1,17 @@
+pacote explab.ex;
+
+classe Exception {
+
+    mensagem = "";
+
+    construtor() {}
+
+    construtor( param ) {
+        se ( tipode( param ) == 'string' )
+            este.mensagem = param;
+        senao se ( param instanciade Exception )
+            este.mensagem = param.mensagem;
+    }
+
+}
+

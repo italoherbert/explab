@@ -1,0 +1,321 @@
+
+<div>			
+	<h3 class="titulo">Estruturas de decisão (SE, CASO)</h3>
+		
+	<p>A linguagem EXPLAB suporta comando (estruturas) que permitem mudar o fluxo de execução do interpretador dependendo do resultado de expressões booleanas.</p>	
+					
+	<p>Uma característica dos blocos de código, tanto de instruções de repetição, quanto condicionais, é que as variáveis e demais recursos declarados dentro do bloco têm 
+	escopo local, são acessíveis apenas dentro do bloco. No entanto, caso, por exemplo, uma variável declarada fora do bloco de instruções for alterada dentro dele, a alteração 
+	é feita na variável externa mesmos, ao invés de uma nova variável local ser criada, a variavel externa tem seu valor alterado.</p>	
+	
+	<p>Se a parte da estrutura que opcionalmente espera um bloco de código tiver apenas uma instrução, não várias, pode-se omitir os abre e fecha chaves. Por exemplo: 
+	Veja o código abaixo</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn a;
+
+se a % 2 == 0
+    exibaln "O número "+a+" é par!";
+senao
+    exibaln "O número "+a+" é impar!";
+</code>
+</pre>
+
+	<p>Veja agora outra forma de escrever o código acima, preservando a mesma funcionalidade:</p>
+
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn a;
+
+se a % 2 == 0 {
+    exibaln "O número "+a+" é par!";
+} senao {
+    exibaln "O número "+a+" é impar!";
+}
+</code>
+</pre>
+
+	<p>Os dois códigos fonte acima têm funcionalidades iguais, sendo que os abre e fecha chaves dos blocos de instrução foram omitidos no primeiro código fonte porque tais blocos 
+	contêm apenas uma instrução cada.</p>	
+	
+	<h3 id="se">Comando (SE/SENAO)</h3>
+	
+	<p>Como já dito anteriormente, o comando SE permite alterar o fluxo de execução dependendo do resultado de expressões booleanas. O comando 
+	SE segue a seguinte lógica (Veja o pseudo-código abaixo):</p>
+		
+	<blockquote>
+<pre>
+SE ( uma determinada condição for verdadeira ) ENTÃO
+    { execute este bloco de instruções }
+SENAO SE ( uma outra condição for verdadeira ) ENTÃO 
+    { execute este bloco de instruções }
+SENAO
+    { execute este conjunto de instruções }		
+</pre>
+	</blockquote>
+	
+	<p>Agora, vamos a um exemplo prático que elucida melhor a lógica descrita acima. O exemplo abaixo mostra se um número informado pelo usuário é par ou impar:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn a;
+
+se a % 2 == 0
+    exibaln "O número "+a+" é par!";
+senao
+    exibaln "O número "+a+" é impar!";
+</code>
+</pre>
+	
+	<p>O exemplo acima imprime a mensagem "Informe um número: " sem pular de linha porque foi utilizado o comando exiba e não o comando exibaln. Assim, 
+	o interpretador fica esperando que o usuário digite um valor após a mensagem impressa. Após digitar o valor e teclar enter, o programa segue a execução 
+	até a instrução SE. Então, verifica se a condição (expressão booleana) que está após o comando SE tem valor verdade ou falso. Caso verdade, executa o primeiro 
+	bloco de instruções que está logo após o primeiro abre chaves, caso contrário, se o resultado da expressão tiver valor falso, o interpretador pula para a instrução 
+	SENAO e, então, como a instrução SENAO não precisa de condição, o bloco dela que deve estar entre abre e fecha chaves é executado. Ou seja, se o número informado 
+	for 3, é exibida a mensagem "O número 3 é par!", se for informado o número 5, por exemplo, é exibida a mensagem "O número 5 é impar". Trata-se de um programa que, em 
+	resumo, solicita que o usuário informe um número e diz se esse número informado é par ou impar. O operador % é o operador de resto da divisão e, caso o resto da divisão 
+	do número informado armazenado em "a" for zero, então, significa que o número é par, caso contrário, se for diferente de zero, isto é, igual a 1, o número armazenado 
+	em "a" é impar.</p>		
+	
+	<p>Veja abaixo outro exemplo de utilização da instrução ou estrutura SE:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn n1;
+exiba "Informe outro número: ";
+leialn n2;
+
+se ( n1 &gt; n2 ) {
+    se ( n1 % 2 == 0 ) {
+        exibaln "O número "+n1+" par e maior que o número "+n2;
+    } senao {
+        exibaln "O número "+n1+" é impar e maior que o número "+n2;
+    }
+} senao se ( n1 &lt; n2 ) {
+    se ( n2 % 2 == 0 ) {
+        exibaln "O número "+n2+" é par e maior que o número "+n1;
+    } senao {
+        exibaln "O número "+n2+" é impar e maior que o número "+n1;
+    }
+} senao {
+    se ( n1 % 2 == 0 ) {
+        exibaln "Os números "+n1+" e "+n2+" são pares e iguais";
+    } senao {
+        exibaln "Os números "+n1+" e "+n2+" são impares e iguais";
+    }
+}
+</code>
+</pre>
+
+	<p>Perceba que o exemplo acima tem mesma funcionalidade do exemplo abaixo:</p>
+
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn n1;
+exiba "Informe outro número: ";
+leialn n2;
+
+se ( n1 &gt; n2 )
+    se ( n1 % 2 == 0 )
+        exibaln "O número "+n1+" par e maior que o número "+n2;
+    senao
+        exibaln "O número "+n1+" é impar e maior que o número "+n2;    
+senao se ( n1 &lt; n2 )
+    se ( n2 % 2 == 0 )
+        exibaln "O número "+n2+" é par e maior que o número "+n1;
+    senao
+        exibaln "O número "+n2+" é impar e maior que o número "+n1;    
+senao
+    se ( n1 % 2 == 0 )
+        exibaln "Os números "+n1+" e "+n2+" são pares e iguais";
+    senao
+        exibaln "Os números "+n1+" e "+n2+" são impares e iguais";
+</code>
+</pre>
+
+	<p>O exemplo acima solicita que o usuário informe dois números, então, diz se o primeiro número é maior, menor ou igual ao segundo e diz se o maior dos dois 
+	é par ou impar. Veja outro exemplo de utilização do comando SE sem SENAO:</p>
+	
+
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número: ";
+leialn a;
+
+b = rquad( a );   // Atenção: se o número a for negativo, o resultado retornado
+                  // pela função rquad é NaN
+
+se ( fracionario( b ) == 0 ) {
+	exibaln "O número "+a+" é um quadrado perfeito!";
+}
+
+se ( a % 2 == 0 ) {
+    exibaln "O número "+a+" é par!";
+} senao {
+    exibaln "O número "+a+" é impar!";
+}
+</code>
+</pre>
+
+	<h3 id="compare/casos">Comando COMPARE/CASO</h3>
+	
+	<p>O comando COMPARE/CASO tem bastante semelhança com o comando SE. É uma alternativa a ele e tudo que se pode fazer com o comando CASO, se pode também fazer 
+	com o comando SE, mas, nem tudo que se pode fazer com o comando SE, se pode fazer com o comando COMPARE/CASO! Claro, algumas vezes é mais vantágem utilizar 
+	o comando SE, outras vezes, é mais vantágem utilizar o comando COMPARE/CASO. O comando CASE segue a seguinte lógica (Veja o pseudo-código abaixo):</p>
+
+<blockquote>
+		<pre>
+COMPARE ( valor ) {
+    CASO valor1 :
+        execute este bloco de instruções
+    
+    CASO valor2 :
+        execute este bloco de instruções
+    
+    PADRAO :
+        execute este bloco de instruções    
+}
+		</pre>
+	</blockquote>	
+	
+	<p><b>Atenção:</b> os parênteses no valor logo após o comando COMPARE são opcionais.</p>
+	
+	<p>Então vamos ao exemplo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número inteiro entre -5 e 5: ";
+leialn a;
+
+se ( abs( a ) &gt;= 0 &amp; abs( a ) &lt;= 5 ) {
+    se ( a &lt; 0 ) {
+        exiba "Menos ";
+    }
+
+    compare abs( a ) {
+        caso 1:
+            exibaln "Um";
+            pare;
+        caso 2:
+            exibaln "Dois";
+            pare;	    
+        caso 3:
+            exibaln "Três";
+            pare;        
+        caso 4:
+            exibaln "Quatro";
+            pare;
+        caso 5:
+            exibaln "Cinco";
+            pare;       
+    }
+} senao {
+    exibaln "O número está fora da faixa de valores entre -5 a 5 ou não é um número real sem casas decimais.";
+}
+</code>
+</pre>
+	
+	<p>O exemplo acima imprime por extenso um número informado pelo usuário, se esse número estiver entre -5 e 5 e for um número inteiro (sem casas decimais). 
+	Caso contrário, mostra uma mensagem informando que o número informado está fora da faixa ou não é um número inteiro. Caso o valor informado não seja um 
+	número real, então uma mensagem de erro é mostrada no interpretador</p>
+
+	<p>Também é possível fazer o seguinte, veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um número inteiro entre -7 e 7: ";
+leialn a;
+
+se ( abs( a ) &gt;= 0 & abs( a ) &lt;= 7 ) {
+    se ( a &lt; 0 ) {
+        exiba "Menos ";
+    }
+
+    compare abs( a ) {
+        caso 1:
+        caso 2:
+        caso 3:
+            exibaln "Um, Dois ou Três";
+            pare;        
+        caso 4:
+            exibaln "Quatro";
+		    pare;
+        caso 5:
+        caso 6:
+        caso 7:
+            exibaln "Cinco, Seis ou Sete";        
+	        pare;       
+    }
+} senao {
+    exibaln "O número está fora da faixa de valores entre -7 a 7 ou não é um número real sem casas decimais.";
+}
+</code>
+</pre>
+
+	<p>No exemplo acima, as comparações de abs( a ) com os números 1 2 e 3 segue a lógica OU, isto é, se abs( a ) for 1 ou 2 ou 3, o programa exibe a 
+	mensagem "Um, Dois ou Três". Isso porque o comando pare não foi utilizado, nem no comando "caso 1:", nem no comando "caso 2:". Com isso, o interpretador após executar o 
+	comando "caso 1:", segue para "caso 2:" e, depois, para "caso 3:", até encontrar uma instrução "pare;" ou encontrar o fim da instrução COMPARE/CASO.</p>
+		
+	<p>Vejamos outro exemplo:</p>
+
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um valor matriz: ";
+leialn a;
+
+m1 = [ 1 2 3; 4 5 6];
+m2 = [ 1 2; 3 4 ];
+
+compare ( a ) {
+    caso m1:
+        exibaln "Você informou uma matriz igual a matriz 1";
+        pare;    
+    caso m2:
+        exibaln "Você informou uma matriz igual a matriz 2";
+        pare;
+    padrao:
+        exibaln "O valor que você informou não é um valor tipo matriz ou não corresponde a nenhuma das matrizes abaixo: ";
+        exibaln m1;
+        exibaln m2;
+        pare;
+}
+</code>
+</pre>	
+
+	<p>Também é válido utilizar tipos diferentes nas comparações do comando CASO. Veja outro exemplo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um valor: ";
+leialn a;
+
+compare a {
+    caso [ 1 2 ] :
+        exibaln "Você informou a matriz [ 1 2 ].";
+        pare;
+    caso 3:
+        exibaln "Você informou o valor três.";
+        pare;
+    caso verdade:
+        exibaln "Você informou o valor verdade.";
+        pare;
+    padrao:
+        exibaln "O valor que você informou não é um valor que correponda a um dos valores abaixo: ";
+        exibaln [1 2];
+        exibaln 3;
+        exibaln "abc";	
+        pare;
+}
+</code>
+</pre>		
+	
+	<p>Perceba que no comando "padrao:" da instrução COMPARE/CASO, a instrução "pare;" é opcional, já que, após o comando "padrao:", o fim da instrução COMPARE/CASO é encontrado 
+	de qualquer maneira.</p>
+		
+</div>

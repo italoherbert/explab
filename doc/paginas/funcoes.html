@@ -1,0 +1,171 @@
+
+<div>			
+	<h3 class="titulo">Funções</h3>
+		
+	<p>Além de trazer diversas funções nativas já prontas para utilização nos scripts e classes escritos em EXPLAB, a linguagem oferece também a possibilidade do 
+	programador criar e definir suas próprias funções. As funções podem receber valores como parâmetros de entrada e retornar um valor de saída. Veja abaixo um 
+	simples exemplo de declaração de uma função:</p>
+	
+<pre class="codigo-fonte">
+<code>
+func quadrado( a ) {
+    retorne a*a;
+}
+
+x = quadrado( 10 );
+
+exibaln x;
+</code>
+</pre>
+	
+	<p>O interpretador ao ler o script acima, faz a leitura da função de nome quadrado e a armazena como um recurso disponível para ser utilizado a partir de então. 
+	Após isso, há outra instrução no script que declara a variável x que recebe como valor o resultado da chamada e execução da função quadrado, passando como parâmetro 
+	para ela o valor numérico 10. Depois disso, exibe o valor retornado pela função e armazenado em x, isto é, 100, porque no corpo da função quadrado está o comando: 
+	"retorne a*a;" e, nesse caso, como a função foi chamada com parâmetro 10, a variável "a" da função quando ela é executada passa a valer 10 e o comando retorne leva a 
+	função a retornar o valor da expressão numérica envolvendo o parâmetro "a" como variável, isto é, "a*a". Ou seja, "10*10". Assim, a função quadrado com o parâmetro 10 
+	passado para ela, retorna o valor 100. Se fosse passado o valor 5, a função quadrado retornaria 5*5, que é 25.</p>
+	
+	<p>Agora vejamos outro exemplo. Uma função que calcula o fatorial de um número:</p>
+	
+<pre class="codigo-fonte">
+<code>
+func fatorial( a ) {
+    fat = 1;
+    i = a;
+    enquanto( i &gt; 0 ) {
+        fat *= i;
+        i--;
+    }
+    retorne fat;
+}
+
+x = fatorial( 5 );
+
+exibaln x;   // exibe 120
+</code>
+</pre>
+
+	<p>Perceba que a função é um programa, ou melhor, um subprograma, sendo que, é possível passar parâmetros para esse subprograma manipular e retornar um valor de saída.
+	Inclusive, uma função pode receber nenhum ou vários parâmetros e retornar um ou nenhum valor. Veja abaixo outro exemplo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+func imp( a ) {
+    para( i = 1; i &lt;= a; i++ )
+        exiba i+' ';    
+}
+
+imp( 10 );   // imprime todos os números de 1 a 10
+</code>
+</pre>
+
+	<p>O exemplo acima é um exemplo de função que não retorna nenhum valor. Ela apenas manipula a variável "a", imprimindo os números de 1 até "a", que, nesse caso, vale 10, 
+	que é o valor passado como parâmetro na chamada da função imp logo abaixo da declaração da função. Veja abaixo outro exemplo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+func soma( vet ) {
+    tam = matnc( vet );       // recupera o número de colunas da matriz que, nesse caso, é de ordem 1x6
+    soma = 0;
+    para( i = 0; i &lt; tam; i++ )
+        soma += vet( i );    
+    retorne soma;	
+}
+
+a = [ 1 5 6 2 9 4 ];   // vetor ou matriz de ordem 1x6
+
+s = soma( a );         // retorna o somatório dos elementos de "a" e armazena em "s"
+
+exibaln a;             // exibe a matriz "a"
+exibaln "Somatório dos elementos: "+s;     
+</code>
+</pre>
+
+	<h3 id="func-var">Funções como variáveis</h3>
+	
+	<p>O EXPLAB suporta também a declaração de funções que podem ser armazenadas em uma variável que, então, assume o tipo "func". Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>	
+func calcula( vet, f ) {
+    tam = matnc( vet );       // recupera o número de colunas da matriz que, nesse caso, é de ordem 1x6
+    result = 0;
+    para( i = 0; i &lt; tam; i++ )	
+        result = fexec( f, result, vet( i ) );   // A função "fexec" executa uma variável função 
+                                                 // passando os parametros seguintes para ela.
+
+                                                 //	Se a variável "soma" for passada como parâmetro, 
+                                                 // é executado um somatório. Se a variável "fun2" 
+                                                 // for passada como parâmetro, é realizado um cálculo 
+                                                 // através da fórmula dela: a+b^2 ou ( result + vet( i )^2 )
+    retorne result;
+}
+
+
+soma = func( a, b ) {   // declaração e atribuição de função a variável soma
+    retorne a+b;        // realiza a soma de "a" mais "b" e retorna o resultado que não é armazenado na váriavel soma
+};                      // não confunda isto, a função não é executada aqui, é apenas declarada e atribuida a variável
+
+fun2 = func( a, b ) {   // declaração e atribuição de uma função a variável mult
+    retorne a+b^2;        // realiza a multiplicação de "a" por "b" e retorna o resultado
+};
+
+a = [ 1 2 3 4 5 8 9 ];
+
+exibaln a;
+exibaln;
+exibaln "Resultado do somatório= "+calcula( a, soma );
+exibaln "Resultado da outra função= "+calcula( a, fun2 );
+</code>
+</pre>
+			
+	<h3 id="recursividade">Funções recursivas</h3>
+
+	<p>Como em outras linguagens de programação, o EXPLAB também permite a chamada a uma função dentro dela mesma. Trata-se de uma chamada recursiva! Veja o exemplo da 
+	função fatorial feita como função recursiva:</p>
+	
+<pre class="codigo-fonte">
+<code>	
+func fatorial( n ) {
+    se ( n &lt; 1 )
+        retorne 1;   // o uso do SENAO é opcional, pois, ao encontrar um comando retorne, 
+                     // a execução atual é finalizada    
+    retorne n * fatorial( n-1 );   // repare que aqui a função fatorial está sendo chamada dentro dela mesma
+}
+
+exibaln fatorial( 5 );  // exibe 120
+</code>
+</pre>
+
+	<p>Outro exemplo de aplicação de funções recursivas: a série fibbonacci:</p>
+	
+	<p>Antes, vejamos alguns dos elementos da série fibbonacci: 1 1 2 3 5 8 13 21 34...<br />
+	Perceba que cada elemento da série fibbonacci é igual a soma dos dois elementos anteriores, isto é, 2=1+1, 3=2+1, 5=3+2, 8=5+3, 34=21+13, etc.</p> 
+	
+	<p>Veja abaixo o exemplo de função recursiva que retorna um elemento da série fibbonacci pelo índice correspondente:</p>
+
+<pre class="codigo-fonte">
+<code>	
+func fib( i ) {
+    se ( i &lt; 2 )
+        retorne 1;                    // se i igual a 0 ou 1, retorna 1
+		
+    retorne fib( i-1 ) + fib( i-2 );  // se não, retorna a soma do 
+}                                     // elemento de índice i-1, mais o elemento de índice i-2
+
+
+exiba "Série fibbonacci: ";
+para( i = 0; i &lt; 10; i++ )
+    exiba fib( i )+"  ";            // exibe 1 1 2 3 5 8 13 21 34 55
+</code>
+</pre>	
+	
+	<h3>Finalizando...</h3>
+	
+	<p>Perceba que as funções são subprogramas que recebem parâmetros (valores, variáveis, expressões, etc) de entrada e retorna (ou não) um valor de saída. Nesses 
+	subprogramas, podem conter qualquer instrução, estrutura, declaração, comando suportados pela linguagem. Logo, o que é possível fazer com funções, também é possível 
+	fazer sem elas. No entanto, elas trazem grandes vantagens em reuso de código e modularização. Imagine se a cada vez que fosse necessária a chamada de uma função, fosse 
+	necessário colocar todo o código dela. Esse codigo seria repetido a cada vez que fosse necessária a utilização da função. Então, é melhor colocar partes que possam ser 
+	repetidas no código em funções e chamá-las sempre que necessário.</p>	
+					
+</div>

@@ -1,0 +1,20 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="classes.xsd">
+       
+    <classe dir="explab/plot/" arq="RGB.exp" />
+    <classe dir="explab/plot/" arq="JanelaConfig.exp" />
+    <classe dir="explab/plot/" arq="PontoConfig.exp" />
+    <classe dir="explab/plot/" arq="LinhaConfig.exp" />
+    <classe dir="explab/plot/" arq="PoligonoConfig.exp" />
+    <classe dir="explab/plot/" arq="GradeConfig.exp" />
+    <classe dir="explab/plot/plot2d/" arq="PC2D.exp" />
+    <classe dir="explab/plot/plot2d/" arq="Dados2D.exp" />
+    <classe dir="explab/plot/plot2d/" arq="Func2D.exp" />    
+    <classe dir="explab/plot/plot3d/" arq="PC3D.exp" />
+    <classe dir="explab/plot/plot3d/" arq="Dados3D.exp" />
+    <classe dir="explab/plot/plot3d/" arq="Superficie3D.exp" />
+    <classe dir="explab/plot/plot3d/" arq="Func3D.exp" />
+    
+</classes>

@@ -1,0 +1,14 @@
+pacote circulo;
+
+classe Area {	
+    raio = 0;
+
+    construtor( r ) {
+        este.raio = r;         
+    }
+	
+    func area() {
+        retorne PI * este.raio^2;     // aqui "este.raio" é opcional e referencia o atributo raio 
+                                      // criado e inicializado no construtor 		
+    }
+}
