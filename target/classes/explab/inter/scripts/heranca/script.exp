@@ -1,0 +1,68 @@
+classe Retangulo {
+
+    base = 10;
+    altura = 5;
+
+    construtor( base, altura ) {
+        este.base = base;
+        este.altura = altura;
+    }
+
+    func area() {
+        retorne base*altura;
+    }
+
+}
+
+classe Triangulo extende Retangulo {     // a classe triângulo herda os reucursos da classe Retangulo
+    
+    construtor( base, altura ) {
+        super( base, altura );           // Chamada ao construtor da classe mãe (Retangulo)
+    }
+
+    func area() {
+        retorne super.area() / 2;        // Chamada ao método "area" da classe Retângulo
+    }
+
+}
+
+classe Quadrado extende Retangulo {
+    
+    construtor( lado )  {
+        super.base = lado;                // atribuição direta aos atributos "super.base" e 
+        super.altura = lado;              // "super.altura". 
+    }
+                                          // Perceba que estes atributos estão 
+                                          // na classe mãe e, nesse caso, ao invés de atribuir  
+                                          // diretamente, poderia-se também chamar o construtor
+                                          // da classe Retangulo através da palavra reservada "super"                                          										                    
+
+}
+
+classe MeioQuadrado extende Quadrado {    // MeioQuadrado Extende Quadrado que Extende Retângulo
+
+    construtor( lado ) {
+        super( lado );                    // Chama o construtor da classe Quadrado que, por sua vêz, 		
+    }                                     // seta os atributos da classe Retângulo
+
+    func area() {        
+        retorne super.area() * 0.5;       // Outra chamada através da palavra "super". Perceba que 		
+    }                                     // a primeira classe mãe é a classe Quadrado. No entanto, 
+                                          // ela não o método procurado (a função "area"). Logo, 
+                                          // o interpretador acaba buscando pela função na classe 
+                                          // Retângulo. E ela sim, possue o método procurado e, então, 
+                                          // esse método é executado e seu resultado multiplicado por 0.5 
+                                          // com a chamada desta função (Classe MeioQuadrado)
+}
+
+quad = novo Quadrado( 100 );
+meioquad = novo MeioQuadrado( 20 );
+
+retangulo = novo Retangulo( 10, 20 );
+
+triangulo = novo Triangulo( 20, 30 );
+
+xx = quad.area();          // exibe 10000
+yy = retangulo.area();     // exibe 200
+zz = triangulo.area();     // exibe 300
+ww = meioquad.area();      // exibe 200

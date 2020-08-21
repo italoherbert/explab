@@ -1,0 +1,42 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">
+        
+    <pagina url="${doc.paginas}/tratamento-de-excecoes.html">   
+        <conteudo>
+            <chave nome="lance" peso="15" />
+            <chave nome="tratar" peso="15" />           
+            <chave nome="excecoes-personalizadas" peso="10" />
+            <chave nome="finalize" peso="15" />
+            <chave nome="lista-de-erros" peso="15" />            
+            <chave nome="exception" peso="8" />
+            <chave nome="exceptions" peso="8" />
+        </conteudo>        
+        <conteudo id="tratar">
+            <chave nome="tratar" peso="10" />           
+            <chave nome="throws" peso="6" />
+            <chave nome="exception" peso="3" />
+            <chave nome="exceptions" peso="3" />      
+        </conteudo> 
+        <conteudo id="lance">
+            <chave nome="lance" peso="15" />           
+            <chave nome="throw" peso="10" />
+            <chave nome="tratar" peso="6" />            
+        </conteudo> 
+        <conteudo id="excecoes-personalizadas">
+            <chave nome="exceções" peso="10" />           
+            <chave nome="personalizadas" peso="6" />
+            <chave nome="exception" peso="6" />
+            <chave nome="exceptions" peso="6" />
+        </conteudo>
+        <conteudo id="lista-de-erros">
+            <chave nome="pilha" peso="12" />           
+            <chave nome="fila" peso="12" />
+            <chave nome="erros" peso="10" />
+            <chave nome="printStackTrace" peso="15" />
+            <chave nome="imprime" peso="3" />            
+        </conteudo>                         
+    </pagina>    
+    
+</conteudos>
