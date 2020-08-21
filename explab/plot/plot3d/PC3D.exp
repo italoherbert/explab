@@ -1,0 +1,16 @@
+pacote explab.plot.plot3d;
+
+classe PC3D {
+    
+    janela = novo JanelaConfig();
+
+    grade = novo GradeConfig();
+    
+    titulo = "Plano Cartesiano 3D";
+    xrotulo = "Eixo X";
+    yrotulo = "Eixo Y";
+    zrotulo = "Eixo Z";
+
+    graficos = [];   
+
+}

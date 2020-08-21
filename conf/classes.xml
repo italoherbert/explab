@@ -1,0 +1,68 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<classes xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="classes.xsd">
+       
+    <classe dir="explab/plot/" arq="RGB.exp" />
+    <classe dir="explab/plot/" arq="JanelaConfig.exp" />
+    <classe dir="explab/plot/" arq="PontoConfig.exp" />
+    <classe dir="explab/plot/" arq="LinhaConfig.exp" />
+    <classe dir="explab/plot/" arq="PoligonoConfig.exp" />
+    <classe dir="explab/plot/" arq="GradeConfig.exp" />
+    <classe dir="explab/plot/plot2d/" arq="PC2D.exp" />
+    <classe dir="explab/plot/plot2d/" arq="Dados2D.exp" />
+    <classe dir="explab/plot/plot2d/" arq="Func2D.exp" />    
+    <classe dir="explab/plot/plot3d/" arq="PC3D.exp" />
+    <classe dir="explab/plot/plot3d/" arq="Dados3D.exp" />
+    <classe dir="explab/plot/plot3d/" arq="Superficie3D.exp" />
+    <classe dir="explab/plot/plot3d/" arq="Func3D.exp" />
+    
+    <classe dir="explab/ex/" arq="Exception.exp" />
+    <classe dir="explab/ex/" arq="RuntimeException.exp" />
+    <classe dir="explab/ex/" arq="ExcecaoNaoEncontradaException.exp" />    
+    
+    <classe dir="explab/ex/" arq="AjudaException.exp" />
+    <classe dir="explab/ex/" arq="BooleanExpException.exp" />
+    <classe dir="explab/ex/" arq="CMDException.exp" />
+    <classe dir="explab/ex/" arq="CaminhoInvalidoException.exp" />
+    <classe dir="explab/ex/" arq="ClasseException.exp" />
+    <classe dir="explab/ex/" arq="CompareCasoException.exp" />
+    <classe dir="explab/ex/" arq="ConfigException.exp" />
+    <classe dir="explab/ex/" arq="ConstrutorException.exp" />
+    <classe dir="explab/ex/" arq="ExcecaoCapturaOuTratamentoEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="EstouroMemoriaException.exp" />
+    <classe dir="explab/ex/" arq="ExpException.exp" />
+    <classe dir="explab/ex/" arq="ForaDeFuncaoLancamentoException.exp" />
+    <classe dir="explab/ex/" arq="FuncException.exp" />
+    <classe dir="explab/ex/" arq="ImprException.exp" />
+    <classe dir="explab/ex/" arq="IncDecException.exp" />
+    <classe dir="explab/ex/" arq="IndiceInvalidoException.exp" />
+    <classe dir="explab/ex/" arq="InstrucaoException.exp" />
+    <classe dir="explab/ex/" arq="JavaException.exp" />
+    <classe dir="explab/ex/" arq="MatrizException.exp" />
+    <classe dir="explab/ex/" arq="NomeEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="NumExpException.exp" />
+    <classe dir="explab/ex/" arq="OperacaoNaoEncontradaException.exp" />
+    <classe dir="explab/ex/" arq="PalavraReservadaException.exp" />
+    <classe dir="explab/ex/" arq="ParamException.exp" />
+    <classe dir="explab/ex/" arq="Plot3DException.exp" />
+    <classe dir="explab/ex/" arq="RGBException.exp" />
+    <classe dir="explab/ex/" arq="RealFormatoException.exp" />
+    <classe dir="explab/ex/" arq="BooleanFormatoException.exp" />
+    <classe dir="explab/ex/" arq="TermoEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="TermoNaoExisteException.exp" />
+    <classe dir="explab/ex/" arq="TermoNaoEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="TermoPosicInvalidaException.exp" />
+    <classe dir="explab/ex/" arq="ValorBooleanoEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="ValorException.exp" />
+    <classe dir="explab/ex/" arq="ValorNumericoEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="ValorNaoNuloEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="ValorObjetoEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="ValorRealEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="ValorStringEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="ValorMatrizEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="ValorMatrizRealEsperadoException.exp" />
+    <classe dir="explab/ex/" arq="VarException.exp" />
+    <classe dir="explab/ex/" arq="VarReservadaException.exp" />
+    <classe dir="explab/ex/" arq="VetException.exp" />
+</classes>

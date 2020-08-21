@@ -1,0 +1,85 @@
+<h3 class="titulo">Classe RGB</h3>
+		
+	<p>A classe RGB pode ser utilizada configurar cores através da manipulação de objetos de classes relacionadas a plotagem de funções em 2D e 3D.
+Não é necessário utilizar o comando USE para carregá-la, pois a mesma é carregada com a inicialização do software EXPLAB.</p>
+		
+	<h3>Atributos</h3>
+	
+	<table class="tabela">
+		<thead>
+			<tr>
+				<th class="nome">Nome</th>
+				<th class="normal">Tipo</th>
+				<th class="normal">Valor padrão</th>
+				<th class="normal">Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nome">r</td>
+				<td class="normal">real</td>
+				<td class="normal">0</td>
+				<td class="normal">
+					Variável que armazena a proporção de cor vermelho na cor resultante
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">g</td>
+				<td class="normal">real</td>
+				<td class="normal">0</td>
+				<td class="normal">
+					Variável que armazena a proporção de cor verde na cor resultante
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">b</td>
+				<td class="normal">real</td>
+				<td class="normal">0</td>
+				<td class="normal">
+					Variável que armazena a proporção de cor azul na cor resultante
+				</td>
+			</tr>							
+		</tbody>
+	</table>
+	
+	<p>Os valores dos atributos r, g e b devem estar no intervalo de 0 a 255. Onde, o zero representa a ausencia total da cor e o 255 corresponde a presença total da 
+	cor na mistura.</p>
+	
+	<p>Exemplo: r = 0, g = 0, b = 255, corresponde a 0% de cor vermelho, 0% de cor verde e 100% de cor azul. Logo, a cor resultante é azul.</p>
+	
+	<p>Outro exemplo: r=100, g=200, b=50, corresponde a (100/255)% de cor vermelho, (200/255)% de cor verde e (50/255)% de cor azul. Logo a cor resultante é mais verde 
+	que vermelha e tem uma menor porcentagem de azul em sua mistura.</p>
+	
+	<h3>Construtores</h3>
+	
+	<p class="fprototipo">construtor()</p>
+	<blockquote>
+		Se a classe RGB for instanciada com o construtor vazio (sem parâmetros), os valores definidos como padrão são assumidos. São eles r=0, g=0 e b=0. Cor preta.
+	</blockquote>
+
+	<p class="fprototipo">construtor( real r, real g, real b )</p> 
+	<blockquote>
+		Se a classe RGB for instanciada com três parâmetros numéricos com valores no intervalo correto, os atributos r, g e b são setados e a classe vai representar 
+		a cor correspondente a mistura das porcentagens de cores passadas para o construtor e armazenadas nessas variáveis por ele.
+	</blockquote>
+	
+	<h3>Funções</h3>
+	
+	<p>A classe RGB não possue funções definidas.</p>
+	
+	<h3>Exemplos de uso</h3>
+	
+<pre class="codigo-fonte">
+<code>
+cor = novo RGB( 0, 0, 255 );   // cor azul
+cor2 = novo RGB( 255, 0, 0 );  // cor vermelha
+cor3 = novo RGB();             // cor preta
+
+cor4 = novo RGB();
+cor4.r = 10;
+cor4.g = 100;
+cor4.b = 255;                  // após setados os valores dos atributos da classe RGB, o objeto cor4 
+                               // assume a cor correspondente a azul, com (10/255)% de vermelho e 
+                               // (100/255)% de verde							   
+</code>
+</pre>

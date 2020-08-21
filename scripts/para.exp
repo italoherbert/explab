@@ -1,0 +1,24 @@
+
+para( i=0, j=1, i=2; i < 10 & j > -10; i++, j -= 2, i *= 1, j /= 1 ) {
+    exibaln i+"  "+j;
+}
+
+para( i=0, j=1, i=2; i < 10 & j > -10; i++, j -= 2, i *= 1, j /= 1 ) {}
+
+
+para( i=0, j=1, i=2; i < 10 & j > -10; i++, j -= 2, i *= 1, j /= 1 )
+    exibaln i+"  "+j;
+
+para( i=0, j=1, i=2; i < 10 & j > -10; i++, j -= 2, i *= 1, j /= 1 ) ;
+
+para(;falso;);
+
+j = 10;
+para( ;j>0;) {
+    j--;
+    se j % 2 == 1
+        continue;
+    senao se ( j == 3 )
+        pause;    
+    exibaln j;
+}

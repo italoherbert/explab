@@ -1,0 +1,13 @@
+pacote explab.ex;
+
+classe ConfigException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+

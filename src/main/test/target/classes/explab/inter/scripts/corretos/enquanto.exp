@@ -1,0 +1,26 @@
+
+enquanto ( falso ) ;
+enquanto ( falso ){}
+
+exiba "Resultado(1)= ";
+i = 0;
+enquanto rquad(2^4)+5+i > 0 {
+    exiba i+"  ";
+    i--;
+}
+exibaln;
+
+exiba "Resultado(2)= ";
+i = 0;
+enquanto i <= 10    
+    exiba (i++)+"  ";
+
+exibaln;
+
+exiba "Resultado(3)= ";
+enquanto i <= 10    
+    para( j = 0; j < 10; j++ )
+        se i+j % 2 == 0 
+            exiba i+j+"  ";
+
+exibaln;

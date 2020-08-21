@@ -1,0 +1,30 @@
+a = [ [1 2]; [3 4] ];               // a recebe [ 1 2; 3 4 ]
+b = [ 1 2 3; 4 5 6 ];               
+c = [ 7 8 9; 10 11 12 ];
+
+d = [ b c; b c ];                   // d recebe [ 1 2 3 7 8 9; 4 5 6 10 11 12; 1 2 3 7 8 9; 4 5 6 10 11 12 ];
+f = [ 1 2 3 4 [ 5 6 7 ] 8 9 ];      // f recebe [ 1 2 3 4 5 6 7 8 9 ];
+
+g = [ [ 1 2; 3 4] [ 5 6; 7 8]; [ 9 10;11 12 ] [ [ 13; 14] [15; 16] ] ];  
+
+                                    // g recebe [ 1 2 5 6; 3 4 7 8; 9 10 13 15; 11 12 14 16 ];
+
+h = [ b(1,:) c(0,:) 0 f ];          // h recebe [ 4 5 6 7 8 9 0 1 2 3 4 5 6 7 8 9 ];
+i = [ [1 2 3;4 5 6]; [1 2 3;4 5 6;7 8 9] ];    // i recebe [ 1 2 3;4 5 6; 1 2 3; 4 5 6; 7 8 9 ];
+
+exibaln a;
+exibaln b;
+exibaln c;
+exibaln d;
+exibaln f;
+exibaln g;
+exibaln h;
+exibaln i;
+
+// j = [ 1 2; [ 3 4 5] ]            // incompatibilidade de dimensões da submatriz com a 
+                                    // primeira linha da matriz j. A primeira linha tem 2 colunas, 
+                                    // é como se fosse uma matriz 1x2, e a matriz da segunda linha 
+                                    // tem dimensão 1x3. 1x3 é incompatível com 1x2									
+									
+// k = [ [ 1 2 3; 4 5 6]; [7 8; 9 10] ]   // incompatibilidade na dimensão das duas submatrizes:
+                                          // a primeira tem dimensão 2x3, e a segunda: 2x2

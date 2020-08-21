@@ -1,0 +1,427 @@
+
+<div>			
+	<h3 class="titulo">Inicio rápido</h3>
+	
+	<p>O EXPLAB é um interpretador com suporte a uma linguagem de programação interpretada, também chamada de linguagem EXPLAB. Ela recebeu esse nome porque, 
+	inicialmente, foi projetada apenas para suporte a expressões numéricas. Logo após, coloquei o suporte a operações com matrizes nas expressões numéricas. E, 
+	então, surgiu a necessidade de oferecer suporte a expressões booleanas que, no futuro seriam (e foram) utilizadas em comandos como: SE (IF) COMPARE/CASO (Switch/case), PARA (For), 
+	ENQUANTO (While) e FACA/ENQUANTO (Do/While).</p>
+	
+	<p>O EXPLAB é uma linguagem de programação orientada a matemática porque, através dela, se pode facilmente manipular dados numéricos e formar expressões envolvendo números 
+	e matrizes reais. Além de orientada a matemática, ela é também uma linguagem Orientada a Objetos. Ela permite a definição de classes que podem ser agrupadas por pacotes 
+	importadas com o comando USE. As classes têm suporte a funções (como métodos), construtores e atributos, além de subclasses. Uma classe pode ter como atributos 
+	objetos instâncias de outras classes ou de alguma de suas subclasses. O polimorfismo é suportado por tratar-se de uma linguagem onde 
+	as variáveis e objetos não têm tipo definido explicitamente. Tais tipos de dados são identificados de modo automático pelo interpretador, conforme o valor ou 
+	expressão atribuido a variável. É possível passar objetos como parâmetros de funções e construtores e manipular diretamente os atributos e funções da classe de que o objeto é 
+	instância.</p>
+	
+	<p>A linguagem EXPLAB é CASE INSENSITIVE, ou seja, não diferencia CARACTERES MAIUSCULOS DE MINUSCULOS (Com exceção, é claro, do que está definido como string). A comparação de 
+	strings é case sensitive, mas, se pode utilizar as funções MAIUSCULAS ou MINUSCULAS para a comparação case insensitive de strings. Outro ponto interessante da linguagem 
+	é que as expressões, variáveis, chamadas a funções que retornam valores, etc, têm seus resultados mostrados na tela do interpretador. A não ser que a instrução seja finalizada com um 
+	ponto e virgula!</p>
+	
+	<p>Comentários também são suportados pelo explab. Assim como as linguagens C/C++ e Java, o explab suborta comentários de duas formas:</p>
+	
+	<blockquote>
+		<p><b>/* <i>comentario</i> */</b> ignora todos os caracteres, envolvendo também pula linhas ou quaisquer caracteres dentro deste bloco de comentários.</p>
+		<p><b>// <i>comentario...</i></b>  ignora todo o restante da linha, a partir da posição onde o comentário foi iniciado.</p>
+	</blockquote>
+	
+	
+	<h3>Palavras reservadas</h3>
+	
+	<p>As palavras reservadas não podem ser utilizadas como nome de variáveis, funções ou classes. Veja abaixo as palavras reservadas da linguagem EXPLAB:</p>
+	
+	<blockquote>
+		<table class="tabela-pr">			
+			<tr>
+				<td>func</td>											
+				<td>var</td>				
+				<td>retorne</td>				
+				<td>continue</td>
+				<td>pare</td>
+				<td>classe</td>				
+				<td>pacote</td>
+			</tr>
+			<tr>
+				<td>extende</td>
+				<td>construtor</td>
+				<td>novo</td>
+				<td>este</td>
+				<td>super</td>
+				<td>se</td>				
+				<td>senao</td>
+			</tr>
+			<tr>
+				<td>compare</td>
+				<td>caso</td>
+				<td>padrao</td>			
+				<td>para</td>
+				<td>faca</td>
+				<td>enquanto</td>
+				<td>tente</td>
+			</tr>
+			<tr>
+				<td>capture</td>
+				<td>finalize</td>			
+				<td>verdade</td>				
+				<td>falso</td>
+				<td>string</td>
+				<td>null</td>									
+				<td>liste</td>			
+			</tr>
+			<tr>
+				<td>ajuda</td>
+				<td>cd</td>
+				<td>ls</td>
+				<td>script</td>
+				<td>use</td>
+				<td>sair</td>
+				<td>exiba</td>
+			</tr>
+			<tr>
+				<td>exibaln</td>
+				<td>leialn</td>
+				<td>limpetela</td>
+				<td>lance</td>
+			</tr>
+		</table>
+	</blockquote>
+	
+	<p class="texto-obs"><b>Atenção:</b> Se a palavra reservada sair for utilizada como nome de variável, por exemplo, o interpretador não entenderá que trata-se de uma 
+	variável e, não de um comando de sair do sistema!</p>
+			
+	<h3>Os comandos liste e ajuda</h3>
+
+	<p>Com o comando liste é possível listar todas as variáveis, funções e classes globais. Veja o exemplo abaixo:</p>
+
+<pre class="codigo-fonte">
+<code>
+liste func         // lista todas as funções
+liste var          // lista todas as variáveis
+liste classe       // lista todas as classes
+
+liste func a       // lista todas as funções globais que iniciam com a letra "a"
+liste classe PC    // lista todas as classes cujo nome inicia com PC (case insensitive)
+</code>
+</pre>
+	
+	<p>Com o comando ajuda, se pode buscar ajuda no site de documentação presente na pasta "doc". Veja o exemplo abaixo: </p>
+
+<pre class="codigo-fonte">
+<code>
+liste classe       // lista todas as classes
+
+ajuda PC2D         // após visualisar os nomes das classes como resultado 
+                   // do comando anterior, se pode escolher uma para buscar
+                   // ajuda por ela
+</code>
+</pre>
+	
+	<p>O comando ajuda pode receber, inclusive, vários termos como parâmetros e, se encontrar a ajuda buscada, carrega a devida página no navegador padrão e foca
+	na parte dela que corresponde a ajuda buscada.</p>	
+		
+	<h3>Scripts</h3>
+	
+	<p>O explab suporta que, tanto definições de classes sejam definidas em arquivos de definição de classes, quanto instruções sejam escritas em um script que 
+	pode ser executado com o comando SCRIPT. O comando SCRIPT pode ser utilizado em conjunto com os comandos CD e LS e as variáveis nativas "usuariodir" e "scriptdir".
+	Por exemplo, para visualizar o resultado dessas variáveis nativas, basta digitá-las no interpretador e teclar enter. Veja o exemplo abaixo:</p>
+	
+<h4>Arquivo script.exp</h4>
+<pre class="codigo-fonte">
+<code>
+a = 1+2;  
+b = a^(abs( rquad( 25 )-3^2 ) );
+
+exibaln "a= "+a;    // exibe 3
+exibaln "b= "+b;    // exibe 3^abs(5-9) = 81
+</code>
+</pre>
+
+	<p>Veja abaixo a execução no interpretador do EXPLAB do script acima:</p>
+	
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/inicio_rapido_ex1.gif" alt="Exemplo expressão numérica" />
+		</figure>
+	</div>
+	
+	<p>Perceba que, nesse caso, a variável scriptdir aponta para: "C:/Users/italo/OneDrive/Documentos/NetBeansProjects/explab/scripts" e, como o script a ser executado 
+	de nome "script.exp" está nesse diretório, basta utilizar o comando "CD scriptdir" para mudar o diretório corrente para o correspondente ao valor da variável scriptdir.
+	Uma vez estando no diretório onde o arquivo a ser executado está, é só executar o comando "script script.exp". Obs: também se pode utilizar o caminho absoluto do 
+	arquivo para executá-lo como, nesse caso, seria: "script C:/Users/italo/OneDrive/Documentos/NetBeansProjects/explab/scripts/script.exp".</p> 
+	
+	<p>Por padrão, o diretório corrente inicial do explab corresponde ao valor da variável "usuariodir" que tem como valor o caminho para o diretório do usuário. 
+	Por exemplo: em sistemas linux, ela pode valer "/home/usuario/", em sistemas windows ela pode valer C:\Users\Usuario. Assumindo que "Usuario" é o nome do usuário logado 
+	no sistema operacional. E, claro, você pode utilizar o comando CD para alterar o diretório padrão para o diretório que você desejar armazenar seus scripts.</p>
+			
+		
+	<h3>Exemplos de utilização do EXPLAB</h3>	
+		
+	<p>Veja abaixo um exemplo suportado pela linguagem:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = [ 1 2 3; 4 5 6 ]^rquad(abs( 2-2*3 )) + (2* ((pot( 2, 4 )*PI^0)*1.0)*3)/4;  
+b = a( 1,: );
+
+exibaln a;
+exibaln b;
+</code>
+</pre>
+
+	<p>Abaixo o resultado da execução das instruções acima no interpretador EXPLAB:</p>	
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/inicio_rapido_ex2.gif" alt="Exemplo expressão numérica" />
+		</figure>
+	</div>
+
+	<p>Aqui é necessário ter atenção as regras de precedência! Primeiro, são executadas as subexpressões entre parenteses e, tanto na expressão completa quanto nas subexpressões 
+	valem as seguintes regras: O operador % (resto de divisão) tem precedência maior, logo em seguida vem o operador de potenciação ^, depois os de multiplicação * e divisão / para, 
+	então, serem realizadas as somas e subtrações. Existe também o operador ** que é utilizado para multiplicação não escalar de matrizes, e ele tem precedência inferior 
+	a de todos os outros operadores aritméticos.</p>
+	
+	<p>Veja abaixo outro exemplo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+b = 9;
+i = 2;
+
+a = i++ - 2^(b-=5)*( --i ) + (i++^3); 
+
+exibaln a;   // exibe -13
+exibaln b;   // exibe 4
+exibaln i;   // exibe 3
+
+a = b = c = 10;
+a *= b-c;
+
+exibaln a; // exibe 0
+exibaln b; // exibe 10
+exibaln c; // exibe 10
+</code>
+</pre>
+	
+	<p>Os operadores i++ e i-- executam só após a execução da expressão ser executada, logo, retornam para a expressão, seu valor atual, antes do incremento ou decremento. Já 
+	os operadores ++i e --i, são executados durante a expressão, sendo a variável alterada imediatamente e seu valor resultante tendo influência no resultado final da expressão. 
+	Os operadores +=, -=, *=, /= e %= também são suportados nas expressões e são executados também imediatamente durante a execução da expressão, tendo seus resultados, influência 
+	no resultado final da expressão.</p>	
+	
+	<p>Veja abaixo outro exemplo de quatro implementações da função fatorial, três imperativas e outra recursiva.</p>
+	
+<pre class="codigo-fonte">
+<code>
+func fat1( n ) {
+    fat = 1;
+    enquanto( n &gt; 0 ) {
+        fat *= n;
+        n--;
+    }
+	retorne fat;
+}
+
+func fat2( n ) {
+    fat = 1;
+    enquanto ( n &gt; 0 )
+       fat *= n--;
+    retorne fat;
+}
+
+func fat3( n ) {
+    fat = 1;
+    para ( i=2; i &lt;= n; i++ )
+        fat *= i;
+    retorne fat;
+}
+
+func fat4( n ) {  // recursiva
+    se n &lt; 1 
+        retorne 1;
+    retorne n * fat4( n-1 );
+}
+
+exiba "Informe um número: ";
+leialn num;
+
+exibaln "Fat1="+fat1( num );
+exibaln "Fat2="+fat2( num );
+exibaln "Fat3="+fat3( num );
+exibaln "Fat4="+fat4( num );
+</code>
+</pre>
+
+	<p>O programa acima solicita que o usuário informe um número. Caso o número informado seja, por exemplo, 5, o resultado mostrado pela chamada de cada uma das quatro funções 
+	fatorial, é 120.</p>
+	
+	<h3>Exemplo de plotágem 2D</h3>
+	
+	<p><u><b>Exemplo 1:</b></u>	Esse exemplo plota o gráfico da função cosseno com x variando no intervalo de -pi a pi e a função seno no mesmo intervalo.</p>
+		
+<pre class="codigo-fonte">
+<code>
+f = novo Func2D( -pi, pi );             // instancia a classe Func2D com os intervalos de X  
+f.y1 = -2.0;                            // seta o primeiro intervalo de y
+f.y2 = 2.0;                             // seta o segundo intervalo de y
+f.limitarY = verdade;                   // Com esse atributo setado para verdade, o intervalo 
+                                        // de y será considerado na construção do gráfico
+
+f.xcompleto = verdade;                  // Com esse atributo setado para verdade, a função 
+                                        // é desenhada de acordo com o intervalo de x do 
+                                        // plano cartesiano, mesmo que este seja maior que os 
+                                        // intervalos de x da função
+
+f.legenda = "cosseno";                  // adiciona uma legenda para a função
+f.linha.cor = novo RGB( 0, 0, 255 );    // seta a cor da função no gráfico
+
+f.fun = func( x ) {                     // define a função que será utilizada para o cálculo 
+    retorne cos( x );                   // dos valores de y no plano cartesiano
+};
+
+f2 = novo Func2D( -pi, pi );
+f2.xcompleto = verdade;
+f2.legenda = "seno";
+f2.linha.cor = novo RGB( 255, 0, 0 );
+
+f2.fun = func( x ) {
+    retorne sen( x );
+};
+
+pc = novo PC2D();                        // instancia a classe PC2D
+pc.titulo = "Senos e Cossenos";          // seta o título do plano cartesiano
+pc.xrotulo = "Eixo X";                   // seta o rótulo do eixo x
+pc.yrotulo = "Eixo Y";                   // seta o rótulo do eixo y
+pc.graficos[] = f;                       // adiciona o objeto f ao vetor de graficos
+pc.graficos[] = f2;                      // adiciona o objeto f2 ao vetor de graficos
+
+plot( pc );                              // plota o gráfico
+</code>
+</pre>
+
+	<p>Veja abaixo o gráfico resultante da execução das instruções acima:</p>	
+	
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_PC2D_ex2.gif" alt="Exemplo de plotagem de funções em 2D" />
+		</figure>
+	</div>
+
+	<h3>Exemplo de plotagem em 3D</h3>
+	
+	<p><u><b>Exemplo 1:</b></u> Este exemplo desenha uma malha com base na função seno em conjunto com o calculo da distância entre dois pontos da hipotenusa de um 
+	triângulo de catetos iguais a "x" e "y". O calculo é feito para todos os vertices da malha.</p>
+	
+<pre class="codigo-fonte">
+<code>
+x = vetesp( -pi, pi, 30 );         // gera 30 valores no intervalo de -pi a pi
+y = x;                             // faz uma cópia dos 30 valores do vetor x e armazena em y 
+
+xx = xmalhagrade( x, y );          // gera uma matriz com o número de linhas do número de elementos 
+                                   // gerados para o vetor y. O vetor x é repetido em cada 
+                                   // linha da matriz xx
+
+yy = ymalhagrade( x, y );          // gera uma matriz com o número de colunas do número de elementos 
+                                   // gerados para o vetor x. O vetor y é repetido em cada coluna 
+                                   // da matriz yy. (Obs: as matrizes xx e yy têm a mesma dimensão)
+
+z = sen( rquad( xx^2 + yy^2 ) );    // matriz z gerada a partir das matrizes xx e yy seguindo a fórmula 
+                                   // da função que se deseje plotar. Isso tem efeito nos vertices da 
+                                   // malha gerada e representada nas matrizes xx e yy
+
+superficie = novo Superficie3D();    // instancia a classe Superficie3D
+superficie.somenteMalha = verdade; // configura a superfície para não preencher faces, apenas arestas
+
+superficie.setDados( x, y, z );    // seta os vetores x, y e a matriz z. 
+                                   // Obs: Se poderia utilizar os atributos xvetor, yvetor, zmat  
+                                   // diretamente, ao invés da função setDados!
+
+pc = novo PC3D();                    // instancia o objeto da classe PC3D
+pc.graficos[] = superficie;           // adiciona o objeto superfície ao vetor de dados
+
+plot3d( pc );                      // plota o gráfico
+</code>
+</pre>
+
+	<p>Veja abaixo o resultado da execução do script acima:</p>
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_PC3D_ex1.gif" alt="Exemplo de plotagem de dados em 3D" />
+		</figure>
+	</div>
+
+
+	<p><u><b>Exemplo 2:</b></u> Este exemplo gera dois grupos de dados: uma superfície e uma sequência de arestas ligadas por vertices componentes 
+	de uma função matemática.</p>
+<pre class="codigo-fonte">
+<code>
+x = vetesp( 2, 4, 10 );           // gera 10 valores no intervalo de 2 a 4
+y = vetesp( 1, 3, 10 );           // gera 10 valores no intervalo de 1 a 3
+xx = xmalhagrade( x, y );         // gera a matriz x da malha
+yy = ymalhagrade( x, y );         // gera a matriz y da malha
+z = (xx-3)^2 - (yy-2)^2;          // gera a matriz z a partir das matrizes xx e yy
+
+superficie = novo Superficie3D(); // instancia a classe Superficie3D
+superficie.xvetor = x;            // seta o vetor x
+superficie.yvetor = y;            // seta o vetor y
+superficie.zmat = z;              // seta a matriz z
+
+pc = novo PC3D();                 // instancia a classe PC3D
+pc.graficos[] = superficie;       // adiciona o objeto superficie ao vetor de graficos
+
+plot3d( pc );                     // plota o gráfico
+</code>
+</pre>
+
+	<p>Veja abaixo o resultado da execução do script acima:</p>
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_Superficie3D_ex2.gif" alt="Exemplo de plotagem de uma superfície e dados em 3D" />
+		</figure>
+	</div>
+	
+	<p><u><b>Exemplo 3:</b></u> Este exemplo desenha um conjunto de segmentos de linhas interligados por vértices formando curvas circulares em 3D. Para tanto, 
+	são calculados os valores (x, y e z) dos vértices dos segmentos de linhas interligados.</p>
+
+<pre class="codigo-fonte">
+<code>
+z = [-5:0.05:5];                  // gera dados entre -5 e 5 com incremento de 0,05
+                                  // e armazena em z
+                                  // Isso funciona de modo parecido (mas não igual) a 
+                                  // função vetesp (com exceção de a distância entre as
+                                  // extremidades do intervalo serem perfeitamente 
+                                  // divisiveis pelo incremento) - é o caso!
+
+x = cos( 2*pi*z );                // gera um vetor x em função de z
+y = sen( 2*pi*z );                // gera um vetor y em função de z
+
+dados = novo Dados3D();             // instancia a classe Dados3D
+dados.setDados( x, y, z );        // seta os vetores x, y e z (que têm mesma dimensão)
+dados.legenda = "segmentos";      // seta a legenda do gráfico de dados
+
+pc = novo PC3D();                   // instancia a classe PC3D
+pc.graficos[] = dados;               // adiciona o objeto dados ao vetor de graficos
+
+plot3d( pc );                     // plota o gráfico
+</code>
+</pre>
+
+	<p>Veja abaixo o resultado da execução do script acima:</p>
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_PC3D_ex4.gif" alt="Exemplo de plotagem de dados em 3D" />
+		</figure>
+	</div>
+	
+	<p>E assim concluo essa breve apresentação do EXPLAB! Visite a documentação através do menu a esquerda para maiores detalhes sobre o conteúdo 
+	apresentado aqui e muito mais... O EXPLAB tem muito mais a oferecer do que o que foi mostrado nessa breve apresentação do interpretador 
+	e sua linguagem de programação.</p>
+	
+	<p>Façam-me o favor de testar o software e, caso encontrem algum pequeno defeito ou falha, ou mesmo queiram fazer comentários, críticas, sujestões de melhoramentos, etc.
+	Entrem em contato comigo! Meu e-mail é: <a href="mailto:italoherbert@outlook.com">italoherbert@outlook.com</a>
+		
+</div>

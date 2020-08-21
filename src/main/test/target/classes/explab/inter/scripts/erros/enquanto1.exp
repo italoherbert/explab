@@ -1,0 +1,9 @@
+
+i = 10;
+enquanto ( i > 1 ) {
+    j = 10;
+    exibaln j*i;
+    i--;
+}
+
+exibaln j;

@@ -1,0 +1,149 @@
+
+div#layout-pagina {
+	position: relative;
+	width: 100%;
+	min-height: 40em;	
+	padding: 1em 1.2em;
+	
+	font-size: 2em;	
+
+	border-radius: 0.35em;
+	border: 2px solid #000;
+			
+	background-color: #FFF;
+	color: #000;
+}
+
+div#layout-pagina a {
+	color: #00F;
+}
+
+div#layout-pagina .valor {
+	color : #66F;
+}
+
+div#layout-pagina div.imagem {
+	position: relative;
+	text-align: center;
+	
+}
+
+div#layout-pagina figure.imagem {
+	padding: 0.6em;	
+	display: inline-block;	
+	
+	border: 1px solid #ACF;
+	background-color: #FFF;
+}
+
+
+div#layout-pagina img.borda {	
+	border: 1px solid #000;
+}
+
+
+div#layout-pagina .conteudo {	
+	text-align: left;			
+}
+
+div#layout-pagina .pagina-rodape {
+	
+}	
+
+div#layout-pagina .titulo {	
+	position: relative;
+	margin: 0;
+	padding: 0.3em 0.5em;	
+		
+	color: #000;
+	border-bottom: 2px solid #000;
+	background-color: #EEF;
+}
+
+div#layout-pagina table.tabela {
+	border-collapse: collapse;
+	table-layout: auto;	
+	
+	margin: 0;
+	padding: 0.25em;	
+}
+
+div#layout-pagina table.tabela th {
+	text-align: left;
+	vertical-align: middle;
+	padding: 0.2em 0.5em;
+}
+
+div#layout-pagina table.tabela th, div#layout-pagina table.tabela td {
+	border: 1px solid #666;
+}
+
+div#layout-pagina table.tabela th, div#layout-pagina table.tabela td {
+	padding: 0.5em 1em;
+}
+
+div#layout-pagina table.tabela th.nome {
+	width: 3em;
+	background-color: #ACC;
+}
+
+div#layout-pagina table.tabela th.normal {
+	background-color: #BDD;
+}
+
+div#layout-pagina table.tabela td.nome {
+	width: 3em;
+	text-align: right;
+	vertical-align: middle;
+	
+	background-color: #EFF;
+}
+
+div#layout-pagina table.tabela td.normal {	
+	text-align: left;
+	vertical-align: middle;	
+}
+
+table.tabela-pr {
+	border-collapse: collapse;	
+	color: #00A;
+}
+
+table.tabela-pr td {
+	padding: 0 0.8em;
+	vertical-align: baseline;
+	text-align: left;
+}
+
+div#layout-pagina .fprototipo {
+	color: #000;
+	font-family: monospace;
+}
+
+div#layout-pagina .cabecalho-bg {
+	background-color: #ACF;
+}
+
+div#layout-pagina .ultima-alteracao {
+	margin-top: 1.2em;
+}
+
+div#layout-pagina .codigo-fonte {
+	font-family: monospace;
+	font-size: 0.8em;
+	margin: 0;
+	padding: 0 2.0em;
+	width: 100%;
+	overflow: auto;	
+}
+	
+div#layout-pagina .texto-obs {
+	margin: auto;
+	width: 80%;
+	padding: 0.35em;
+	font-size: 1em;
+	
+	background-color: #FED;
+	border: 1px solid #F80;
+}	
+	

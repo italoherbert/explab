@@ -1,0 +1,22 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">
+        
+    <pagina url="${doc.paginas}/incrementos-e-decrementos.html">
+        <conteudo>
+            <chave nome="incremento" peso="15" />
+            <chave nome="decremento" peso="15" />
+            <chave nome="incrementos" peso="15" />
+            <chave nome="decrementos" peso="15" />
+            <chave nome="++" peso="15" />
+            <chave nome="--" peso="15" />
+            <chave nome="+=" peso="15" />
+            <chave nome="-=" peso="15" />
+            <chave nome="mais" peso="10" />
+            <chave nome="menos" peso="10" />
+            <chave nome="igual" peso="5" />
+        </conteudo>
+    </pagina>
+    
+</conteudos>

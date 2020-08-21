@@ -1,0 +1,26 @@
+<?xml version="1.0"?>
+<xs:schema version="1.0"
+           xmlns:xs="http://www.w3.org/2001/XMLSchema"
+           elementFormDefault="qualified">
+    
+    <xs:element name="exception">
+        <xs:complexType>
+            <xs:attribute name="classeNome" type="xs:string" use="required" />
+            <xs:all>
+                <xs:element name="chave" minOccurs="1" maxOccurs="unbounded" /> 
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    
+    <xs:element name="exceptions" minOccurs="1" maxOccurs="1">
+        <xs:complexType>
+            <xs:all>
+                <xs:element ref="exception" minOccurs="0" maxOccurs="unbounded" /> 
+                <xs:element name="pacote" minOccurs="1" maxOccurs="1" /> 
+                <xs:element name="exception-classe-nome" minOccurs="1" maxOccurs="1" /> 
+                <xs:element name="runtime-exception-classe-nome" minOccurs="1" maxOccurs="1" /> 
+            </xs:all>
+        </xs:complexType>
+    </xs:element>
+    
+</xs:schema>

@@ -1,0 +1,79 @@
+
+nums = [ 4 3; 3 5; 2 3; 3 1; 1 1; 2 2 ];
+
+len = matnl( nums );
+para( i = 0; i < len; i++ ) {
+    n1 = nums( i, 0 );
+    n2 = nums( i, 1 );
+
+    se ( n1 > n2 )
+        se ( n1 % 2 == 0 )
+            exibaln "O número "+n1+" é par e maior que o número "+n2;
+        senao
+            exibaln "O número "+n1+" é impar e maior que o número "+n2;        
+    senao se ( n1 < n2 )
+        se ( n2 % 2 == 0 )
+            exibaln "O número "+n2+" é par e maior que o número "+n1;
+        senao
+            exibaln "O número "+n2+" é impar e maior que o número "+n1;       
+    senao
+        se ( n1 % 2 == 0 )
+            exibaln "Os números "+n1+" é "+n2+" são pares e iguais";
+        senao
+            exibaln "Os números "+n1+" é "+n2+" são impares e iguais";            
+
+    se ( n1 > n2 ) {
+        se ( n1 % 2 == 0 ) {
+            exibaln "O número "+n1+" par e maior que o número "+n2;
+        } senao {
+            exibaln "O número "+n1+" é impar e maior que o número "+n2;
+        }
+    } senao se ( n1 < n2 ) {
+        se ( n2 % 2 == 0 ) {
+            exibaln "O número "+n2+" é par e maior que o número "+n1;
+        } senao {
+            exibaln "O número "+n2+" é impar e maior que o número "+n1;
+        }
+    } senao {
+        se ( n1 % 2 == 0 ) {
+            exibaln "Os números "+n1+" e "+n2+" são pares e iguais";
+        } senao {
+            exibaln "Os números "+n1+" e "+n2+" são impares e iguais";
+        }
+    }
+}
+
+se ( 2 > 3 ) {
+    exibaln "XXX";
+}
+
+se ( 3 > 2 ) {
+    exibaln "YYY";
+}
+
+se ( 3 > 2 ) {
+    exibaln "WWW";
+} senao {
+    exibaln "ZZZ";
+}
+
+se ( 2 > 3 ) {
+    exibaln "ZZZ";
+} senao {
+    exibaln "WWW";
+}
+
+se verdade {}
+
+se falso {}
+
+se(verdade){}
+
+se(falso){}
+
+se verdade exibaln "xxx";
+
+a = falso;
+se ( a ) {
+    exibaln "AAA";
+}

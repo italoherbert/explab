@@ -1,0 +1,284 @@
+
+<div>			
+	<h3 class="titulo">Tipos e expressões</h3>
+	
+	<p>A linguagem EXPLAB permite a definição de variáveis sem a especificação do tipo de dados. O tipo da variável é detectado pelo interpretador automaticamente 
+	de acordo com o valor atribuido a ela. Veja a tabela abaixo com os tipos de variáveis suportados pelo EXPLAB:</p>
+	
+	<h3>Tipos de dados suportados</h3>
+	
+	<table class="tabela">
+		<thead>
+			<tr>
+				<th class="nome">Tipo</th>
+				<th class="normal">Exemplo</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nome">real</td>
+				<td class="normal">a = 2.05;</td>
+			</tr>
+			<tr>
+				<td class="nome">matriz</td>
+				<td class="normal">a = [1 2;3 4];</td>
+			</tr>
+			<tr>
+				<td class="nome">string</td>				
+				<td class="normal">a = "Texto...";</td>
+			</tr>
+			<tr>
+				<td class="nome">boolean</td>
+				<td class="normal">a = verdade;</td>
+			</tr>
+			<tr>
+				<td class="nome">objeto</td>
+				<td class="normal">a = novo RGB();</td>
+			</tr>
+			<tr>
+				<td class="nome">func</td>
+				<td class="normal">a = func() {};</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<p>Uma variável independente de seu tipo pode ser manipulada dos seguintes modos:</p>
+	
+	<ul>
+		<li><p>A variável pode ser declarada com um valor de acordo com algum tipo de dado ou expressão suportada pela linguagem EXPLAB;<p></li>
+		<li><p>Após declarada e inicializada, pode ser utilizada em expressões numéricas (se for do tipo real ou matriz real);</p></li>
+		<li><p>Após declarada e inicializada, pode ser utilizada em expressões booleanas (se for do tipo boolean). Expressões booleanas 
+			podem ser compostas também de comparações de variáveis de qualquer tipo, expressões numéricas, expressões tipo string, etc;</p></li>
+		<li><p>Após declarada e inicializada, pode ser utilizada em expressões tipo string (qualquer variável, independente de seu tipo, pode ser concatenada com 
+			um valor string e ser atribuida a uma variável que assume o tipo string;</p></li>			
+		<li><p>Uma variável ou expressão pode ser utilizada para ser impressa na tela através dos comandos: exiba e exibaln;</p></li>
+		<li><p>Uma variável pode ser lida e ter atribuida a ela um valor informado pelo usuário;</p></li>		
+	</ul>
+	
+	<p>Obs: é possível e suportado pelo EXPLAB a seguinte declaração de variáveis:</p>
+
+
+<pre class="codigo-fonte">
+<code>
+a = b = c = 1;
+exibaln a;      // exibe 1
+exibaln b;      // exibe 1
+exibaln c;      // exibe 1
+</code> 
+</pre>
+	
+	<h3 id="real">O tipo real</h3>
+	
+	
+	<p>O tipo real está associado a constantes e valores reais (de ponto flutuante). È possível compor expressões numéricas envolvendo valores ou variáveis do tipo 
+	real e, até, matrizes de reais. Veja o exemplo abaixo:</p>
+		
+<pre class="codigo-fonte">
+<code>
+a = 4.0;                     // a passa a valer 4
+b = 2*[1 a]^3;               // b passa a valer [2 128]
+c = 4 + [2 3.8 4.4] / 2.0;   // c passa a valer [5.0 5.9 6.2]
+
+exibaln a + b;         // exibe [6 132]
+exibaln c;             // exibe [4.0 5.9 6.2]
+</code> 
+</pre>
+
+	<p>Para mais detalhes sobre expressões envolvendo numeros reais e matrizes reais, visite a página: 
+		<a href="#" onclick="javascript:carrega_pagina( PAG_EXPS_ARITMETICAS )">expressões aritméticas</a>.
+	</p>
+	
+	
+	<h3 id="matriz">Tipo matriz</h3>
+	
+	<p>O tipo matriz pode ser declarado seguindo a sua sintáxe em que os elementos da matriz são colocados entre colchetes e separados por espaços ou vírgulas para compor 
+	as colunas e, cada conjunto de colunas deve ser separado por ponto e virgula para compor linhas da matriz. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = [1 2 3;4 5 6];
+b = 3;
+c = a^b;       // resultado corresponde a matriz [1  8  27; 64  125  216]
+
+exibaln c; 
+
+a = [ 1 -2 3; -4 5 -6]        // igual a matriz [-1 3; -4 -1] porque o interpretador 
+                              // entende que os elementos 1 e -2 compõem uma expressão numérica, 
+                              // bem como os elementos 5 e -6. Então as resolve e coloca na 
+                              // matriz resultante seus resultados: 1 - 2 = -1 e 5 - 6 = -1
+
+b = [1, -2, 3; -4, 5, -6];    // matriz 2x3. Expressões numéricas podem ser separadas por virgula
+c = [pi*2 + 1, 2, 3^4; 4, 5.6, rquad(36)%4]    // tem como matriz resultante [ 7,2832  2  81; 4  5.6  2 ]
+
+d = [ c(0,:); b(1,:) ];    // matriz de duas linhas. Na primeira é armazenado o valor da primeira linha da 
+                           // matriz c, e na segunda é armazenada a segunda linha da matriz a 
+                           // tendo como resultado [ 7,2832,  2,  81; -4,  5,  -6 ].		   
+</code>
+</pre>
+
+	<p>Para mais detalhes sobre expressões envolvendo numeros reais e matrizes reais, acesse a página: 
+		<a href="#" onclick="javascript:carrega_pagina( PAG_EXPS_ARITMETICAS )">expressões aritméticas</a>.
+	</p>
+	<p>Para mais detalhes sobre vetores e matrizes, acesse a página: 
+		<a href="#" onclick="javascript:carrega_pagina( PAG_VETORES_E_MATRIZES )">vetores e matrizes</a>.
+	</p>
+
+
+	<h3 id="string">Tipo string</h3>
+	
+	<p>O tipo string ou cadeia de caracteres pode ser utilizado para armazenar e manipular conjuntos de caracteres definidos entre aspas duplas. Veja o exemplo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+a = "Oi!\n";               // armazena a string Oi! na variável "a". Perceba que foi utilizado aspas duplas
+b = 'Meu nome é Ítalo!';   // armazena a frase na string "b". Perceba que foi utilizado apóstrofos
+                           // as strings podem ser declaradas tanto com aspas duplas quanto com apóstrofos!
+						 
+c = ""+a+b;                // concatena as strings "a" e "b" e armazena em "c". Perceba que aqui 
+                           // é necessário colocar "" no início para indicar que trata-se de uma expressão 
+                           // tipo string						   
+
+exibaln c;                 // exibe a string armazenada em "c"
+
+                           // também se pode concatenar com string valores 
+                           // de qualquer outro tipo
+
+a = 'Resultado='+(2^rquad(36+64))+' ---> '+(rquad(4) == log10(100) & pi > e);                           
+
+exibaln a;                 // exibe: Resultado=1024 ---> verdade;
+
+</code>
+</pre>
+	
+	<p>Perceba que o operador + pode ser utilizado, tanto para concatenar strings, quanto para concatenar strings com valores de outros tipos. Perceba também que 
+	as expressões booleanas devem estar entre parênteses.</p>
+	
+	
+	<h3 id="boolean">Tipo boolean</h3>		
+	
+	<p>Uma variável do tipo boolean pode assumir um entre dois valores possíveis: verdade ou falso. É possível definir variáveis e atribuir a elas expressões booleanas 
+	cujo resultado é sempre verdade ou falso. Veja o exemplo abaixo:</p>
+			
+<pre class="codigo-fonte">
+<code>
+x = verdade;
+y = falso;
+z = verdade;
+
+w = x &amp; y | x & z;             // exibe o valor verdade, porque x &amp; y é falso, mas x &amp; z é verdade, e.
+                               // falso | verdade é igual a verdade. Inclusive, em expressões booleanas, 
+                               // as operações &amp; são executadas primeiro 
+                               // que as operações |
+							   
+ww = y &amp; ( x | z );            // realiza a operação | primeiro por causa dos parenteses e o resultado é falso 
+                               // porque y tem valor falso e falso &amp; verdade é igual a falso
+
+a = 2 &gt; 4 &amp; 3 != NaN;          // 2 menor que quatro, logo 2 &gt; 4 é falso e 3 é diferente de NaN e, por isso, 
+                               // 3 != NaN é verdade. Mas, falso &amp; verdade é igual a falso
+
+exibaln x;                        // exibe verdade
+exibaln y;                        // exibe falso
+exibaln z;                        // exibe verdade
+exibaln w;                        // exibe verdade                     
+exibaln ww;                       // exibe falso
+exibaln a;                        // exibe: falso
+exibaln 2 &lt; 4 &amp; 3 != NaN;  // exibe: verdade
+</code>
+</pre>	
+
+	<p>Para mais sobre expressões booleanas detalhes visite a página: <a href="#" onclick="javascript:carrega_pagina( PAG_EXPS_BOOLEANAS )">expressões booleanas</a>.</p>
+
+
+	<h3 id="objeto">Tipo objeto</h3>
+	
+	<p>O tipo objeto é uma referência a um objeto armazenado em uma lista gerenciada pelo EXPLAB. Entra aqui o conceito de Orientação a Objetos. Onde, é possível através da 
+	linguagem EXPLAB, definir classes e criar instâncias delas, atribuindo a instância a objetos que podem ser manipulados como variáveis. Veja o exemplo abaixo: </p>
+
+<pre class="codigo-fonte">
+<code>
+classe Area {                   // classe de nome Area
+    a = 10;                     // define um atributo da classe
+    b = 10;                     // define outro atributo
+	
+    construtor() {}             // define um construtor vazio
+	
+    construtor( a, b ) {        // define um construtor que recebe 2 parâmetros
+        este.a = a;             // não confundir os parâmetros com os atributos a e b,  
+        este.b = b;             // pois, apesar de terem o mesmo nome, são variáveis diferentes.
+    }                           // por isso a necessidade, nesse caso do operador "este" que referencia 
+                                // os atributos "a" e "b", diferenciando-os dos parâmetros "a" e "b".	
+    func area_retangulo() {     // definição de função com nome "area_retangulo"
+         retorne a * b;         // retorno da função que utiliza os valores dos atributos "a" e "b" da classe
+    }
+	
+    func area_triangulo() {     // definição da função: area_triangulo
+        retorne ( a * b ) / 2;  // expressão de retorno
+    }
+	
+    func area_circulo( r ) {    // definição da função: area_circulo
+        retorne pi * r^2;       // expressão de retorno envolvendo o parâmetro "r" que não é atributo da classe
+    } 
+	
+    func impdesc() {
+        exibaln "classe Area!";
+    }
+}
+
+a = novo Area();                   // instância da classe Area armazenada no objeto/variável "a"
+
+circ_area = a.area_circulo( 10 );  // chamada da função area_circulo com parâmetro 10 para o raio. 
+
+exibaln a.area_retangulo();        // chamada da função area_retângulo, imprime 100
+exibaln a.area_triangulo();        // chamada da função area_triangulo, imprime 50
+exibaln circ_area;                 // exibe o valor de circ_area, que vale pi*10. Imprime 314,1593
+
+a2 = novo Area( 20, 20 );          // nova instância
+
+exibaln a2.area_retangulo();       // imprime 400
+exibaln a2.area_triangulo();       // imprime 200
+exibaln a2.area_circulo( 20 );     // imprime 1256,6371
+ 
+a3 = novo Area();                  // outra instância 
+a3.a = 10;                         // atribui diretamente o valor 10 ao atributo "a" da classe Area
+a3.b = 20;                         // atribui diretamente o valor 20 ao atributo "b" da classe Area
+
+exibaln a3.area_retangulo();       // exibe 200
+exibaln a3.area_triangulo();       // exibe 100
+exibaln a3.area_circulo( 30 );     // exibe 2827,4334
+
+a3.impdesc();                      // chamada de uma função sem tipo de retorno, imprime: classe area!
+</code>
+</pre>	
+
+	<h3 id="func">Tipo func</h3>
+	
+	<p>O tipo func permite a definição de uma função e atribuição dela a uma variável que pode ser passada como parâmetro para outras funções, construtores, e pode 
+	ser utilizada em conjunto com as funções tipode e fexec. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+f = func( a, b ) {                                    // define a função
+    c = a^b;                                          // calcula a potencia e armazena em "c"
+    retorne ""+a+" elevado a "+b+" é igual a: "+c;    // retorna o valor de uma expressão tipo string
+};
+
+se ( tipode( f ) == "func" ) {                        // verifica se a variável "f" é do tipo função. 
+                                                      // se for (e nesse caso é), a função tipode 
+                                                      // retorna a string "func"
+													  
+    result = fexec( f, 10, 2 );                       // executa a função "f" com os parâmetros 10 e 2 e
+	                                                  // armazena o resultado na variável "result"
+													  
+    exibaln result;                                   // exibe a expressão retornada pela função: 
+                                                      // 10 elevado a 2 é igual a 100
+													  
+} senao {                                             // caso contrário da instruçao "se"
+
+    exibaln "Não foi possível executar a função desejada!";   // Mensagem que, nesse caso, nunca 
+                                                              // é impressa, pois, a expressão booleana 
+                                                              // da instrução "se" tem valor "verdade"
+}
+</code>
+</pre>
+	
+</div>

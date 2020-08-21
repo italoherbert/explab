@@ -1,0 +1,39 @@
+use a.b.Areas;  // Areas não é o nome da classe, mas, sim, o nome do arquivo de classes sem a extensão 
+                // O comando USE funciona como um comando IMPORTE que diz ao interpretador para interpretar 
+                // e carregar as classes do arquivo a/b/Areas.exp 
+				
+area_triang1 = novo AreaTriangulo( 10, 50 );         // a função area desse objeto está configurada com 10 e 50. 
+                                                     // Logo, retorna (10*50)/2 = 250 
+													 
+area_triang2 = novo AreaTriangulo( 15, 20 );         // a função area dessa classe retorna 150 
+
+area_circulo1 = novo AreaCirculo( 10 );              // a função area dessa classe retorna 10^2*PI = 314,159... 
+area_circulo2 = novo AreaCirculo();                  // a função area dessa classe retorna 1^2*PI  = 3,14159... 
+
+area_ret1 = novo AreaRetangulo( 10, 30 );            // a função area dessa classe retorna 300 
+
+area_ret2 = novo a.b.AreaRetangulo( 100, 200 );      // a função area dessa classe retorna 20000 
+                                                     // perceba que antes do nome da classe foi 
+                                                     // utilizado o nome do pacote, nesse caso é opcional, 
+                                                     // essa possibilidade de especificar o pacote na 
+                                                     // instância da classe, só é útil quando se deseja 
+                                                     // diferenciar classes de nomes iguais, mas de 
+                                                     // pacotes diferentes!
+
+meia_area_ret2 = novo MeiaArea( area_ret2 );         // a função area dessa classe foi configurada com o objeto 
+                                                     // area_ret2. Logo retorna metade da area de "area_ret2",
+                                                     // retorna: 20000 / 2 = 10000
+													 
+meia_area_triang1 = novo MeiaArea( area_triang1 );   // a função area dessa classe retorna 250 / 2 = 125
+
+meia_area_calculador = novo MeiaAreaCalculador();    // instancia a classe MeiaAreaCalculador
+
+exibaln meia_area_calculador.area( meia_area_ret2 );    // calcula 10000 / 2. Exibe: 5000 
+exibaln meia_area_calculador.area( area_triang1 );      // calcula 250 / 2.   Exibe: 125
+exibaln meia_area_calculador.area( area_triang2 );      // calcula 150 / 2.   Exibe: 75
+exibaln meia_area_calculador.area( area_ret1 );         // calcula: 300 / 2.  Exibe: 150
+exibaln meia_area_calculador.area( area_ret2 );         // calcula 20000 / 2. Exibe: 10000
+
+
+exibaln area_circulo1.area();    // Exibe: 314,159...
+exibaln area_circulo2.area();    // Exibe: 3,14159...

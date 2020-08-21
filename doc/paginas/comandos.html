@@ -1,0 +1,224 @@
+
+<div>			
+	<h3 class="titulo">Lista de comandos</h3>
+	
+	<h3 id="script">script</h3>
+	<p>O comando script pode ser utilizado para o carregamento, interpretação e execução de um arquivo de script com conteúdo escrito de acordo com as regras da 
+	linguagem EXPLAB.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+cd scriptdir
+script s.exp
+</code>
+</pre>
+	<p>No exemplo acima, o comando CD foi utilizado para alterar o diretório corrente para o diretório correspondente ao valor da variável scriptdir. O comando CD é 
+	semelhante ao mesmo do MS-DOS e Shell do linux. Após a mudança do diretório corrente no exemplo acima, é executada a instrução SCRIPT que carrega, interpreta e executa o script 
+	de nome "s.exp" que pode conter quaisquer comandos ou declarações conforme as regras de sintaxe e semântica da linguagem EXPLAB.</p>
+	
+	
+	<h3 id="use">use</h3>
+	<p>O comando use pode ser utilizado para o carregamento e interpretação de uma classe segundo seu pacote (se declarado) seguido do nome da classe.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+cd scriptdir
+use a.b.Area;
+a = novo Area();
+b = a.quadrado( 2 );
+exibaln "Resultado="+b;
+</code>
+</pre>
+	<p>No exemplo acima, o diretório corrente é alterado para o valor da constante scriptdir. Logo em seguida, é utilizado o comando use para o carregamento e processamento 
+	do arquivo de classe correspondente a classe de nome completo "a.b.Area". Entenda que, o comando use busca a classe de nome "Area.exp" nos pacotes e subpacotes "a" e "b" 
+	presentes no diretório de scripts padrão (referenciado pela variável scriptdir). Um exemplo de caminho completo para a classe Area do exemplo acima, poderia ser: 
+	"C:/explab/scripts/a/b/Area.exp". Isso supondo que o explab foi instalado no diretório "C:/".</p>
+		
+	<p>Em seguida, no exemplo acima, uma instancia da classe área é carregada na variavel "a" (tipo objeto), após isto, o comando seguinte representa uma chamada a função quadrado da classe "Area" 
+	que recebe como parâmetro um valor real e retorna outro valor real para ser armazenado na variável "b". Na instrução seguinte, o comando exibaln é utilizado para imprimir 
+	uma expressão string na tela do interpretador EXPLAB e pular para a próxima linha do editor, imprimindo, por exemplo: Resultado=4.</p>
+		
+	<h3 id="limpetela">limpetela</h3>
+	<p>O comando limpetela pode ser utilizado para limpar a tela do interpretador.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+limpetela
+</code>
+</pre>
+	
+	<h3 id="cd">cd</h3>
+	<p>O comando cd pode ser utilizado para alterar o diretório corrente utilizado pelos comandos "use" e "script" do EXPLAB. O comando cd do EXPLAB tem bastante semelhança 
+	com o comando cd do MS-DOS e do Shell do linux.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+cd usuariodir
+script script1.exp
+</code>
+</pre>
+	<p>No exemplo acima, o comando "cd" altera o diretório corrente para o valor correspondente a constante "usuariodir" e, em seguida, carrega, interpreta e executa o script 
+	de nome "script1.exp" presente no diretório corrente.</p>
+<p>Outro exemplo:</p>
+<pre class="codigo-fonte">
+<code>
+cd usuariodir
+cd ../pastadescripts
+script script1.exp
+</code>
+</pre>
+	<p>No exemplo acima, o diretorio corrente é alterado para o valor de usuariodir e, depois, alterado para um diretório antes seguido da pasta pastadescripts. O exemplo acima 
+	poderia carregar o arquivo de acordo com o seguinte caminho: "C:/Users/pastadescripts/script1.exp". Isto supondo que "usuariodir" aponta para "C:/Users/Italo".</p>
+	
+	
+	
+	<h3 id="ls">ls</h3>
+	<p>O comando ls pode ser utilizado para listar todos os nomes de arquivos e pastas do diretório corrente (O diretório corrente pode ser configurado com o comando cd). O comando 
+	ls do EXPLAB tem semelhança com o comando ls do Shell do linux.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+cd ../pasta
+ls
+</code>
+</pre>
+	
+		
+	<h3 id="liste">liste</h3>
+	<p>O comando liste pode ser utilizado para listagem de todas as variáveis, funções ou comandos, ou mesmo, construtores ou funções de uma determinada classe. Com 
+	o comando liste é também possível listar todas as classes carregadas e todos os comandos válidos</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+liste var
+liste func
+liste classe
+liste cmd
+
+liste RGB construtor
+liste Dados3D func
+
+liste func rq    // mostra a função rquad
+liste classe pc    // exibe as classes que iniciam com as letras "pc"
+</code>
+</pre>
+	<p>No exemplo acima, a primeira chamada do comando "liste", lista todas as variáveis globais e definidas fora do escopo de uma classe ou função. A segunda chamada 
+	lista todas as funções globais e declaradas fora do escopo de alguma classe. A terceira chamada ao comando, lista os construtores da classe RGB e a quarta 
+	chamada lista as funções da classe Dados3D. A quinta chamada ao comando busca informação e lista as funções cujos nomes começarem com os caracteres "sq". Por exemplo, 
+	esse comando lista a função sqrt, descrevendo também o seu número de parâmetros.</p>
+
+
+	
+	<h3 id="exiba">exiba</h3>
+	<p>O comando exiba tem semelhança com funções como a write do PASCAL e printf da linguagem C. Sendo que não trata-se de uma função, mas, sim, de um comando. Esse comando pode 
+	ser utilizado para exibir uma expressão string que pode concatenar valores reais, boolean, objeto, entre outros tipos.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+a = 2^8;
+exiba "Resultado="+(2+3^2)+"  "+(a == 64)+"... ";
+</code>
+</pre>
+	<p>O exemplo acima resolve as expressões que estão entre parenteses que são: a primeira, uma expressão numérica que tem como resultado um valor real e a segunda, uma 
+	expressão booleana que compara o valor da variável "a" com o número 64. O exemplo acima deve imprimir: Resultado=11  verdade</p>	
+	
+	
+	<h3 id="exibaln">exibaln</h3>
+	<p>Semelhante a função exiba. Ela extende a funcionalidade da função exiba acrecida de um pula linha que tem efeito na saida padrão do interpretador EXPLAB.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+exibaln "Resultado="+(3+3*2^4);
+</code>
+</pre>
+	<p>O exemplo acima imprime: Resultado=51. Entenda que o interpretador realiza as operações aritméticas de acordo com as regras de precedência, em que, primeiro são executadas 
+	as potências, em seguida as multiplicações e divisões para, só então, executar as somas e subtrações.</p>
+
+
+	<h3 id="leialn">leialn</h3>
+	
+	<p>O comando leialn pode ser utilizado para ler um valor e armazená-lo em uma variável. O valor informado pode ser qualquer valor constante, variável, expressão 
+	booleana, aritmética ou tipo string e o resultado da execução do valor informado é armazenado na variável de leitura, como se tivesse sido atribuido o valor 
+	diretamente a ela atravez do comando de atribuição.</p>
+	<p>Exemplo de uso:</p>
+	
+<pre class="codigo-fonte">
+<code>
+exiba "Informe um numero: ";
+leialn n;
+
+exibaln "O número informado é: "+n;
+</code>
+</pre>
+
+
+	<h3 id="pare">pare</h3>
+	
+	<p>O comando pare é semelhante ao comando break das linguagens C/C++ e Java. Se for executado dentro do bloco de instruções de uma instrução de repetição ou comando 
+	COMPARE/CASE, a execução da referida instrução é finalizada.</p>
+	<p>Exemplos de uso:</p>
+	
+<pre class="codigo-fonte">
+<code>
+n = 1 + arredonda( random()*9 );
+compare n {
+    caso 1:
+        exibaln "O número sorteado corresponde ao valor 1";
+        pare;
+    caso 5:	 
+        exibaln "O número sorteado corresponde ao valor 5";
+        pare;
+    padrao : 
+        exibaln "O número sorteado é diferente de 5 e de 1. Numero sorteado="+n;
+}
+</code>
+</pre>
+
+
+	<h3 id="continue">continue</h3>
+	
+	<p>O comando continue é semelhante ao comando continue das linguagens C/C++ e Java. Se for executado dentro do bloco de instruções de uma instrução de repetição, 
+	a execução da iteração atual é finalizada, sem executar o resto do bloco de instruções na iteração atual.</p>
+	<p>Exemplos de uso:</p>
+	
+<pre class="codigo-fonte">
+<code>
+para ( i = 0; i &lt;= 10; i++ ) {
+    se i % 2 == 0
+        continue;
+	exiba i+"  ";
+}
+</code>
+</pre>
+	
+	<p>O exemplo acima exibe apenas os números impares dentro do intervalo (0 a 10).</p>
+	
+	
+	<h3 id="ajuda">ajuda</h3>
+	<p>O comando ajuda pode ser utilizado para buscar nesta documentação, ajuda e exemplos de uso de comandos, funções, classes, comandos de repetição e decisão como 
+	o SE, CASO, PARA, ENQUANTO, etc. Como o EXPLAB utiliza os comandos em português, é feito também um mapeamento que facilita o encontro das funções correspondentes as funções 
+	de interpretadores consagrados como o MatLab, SciLab e Octave.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+ajuda para
+ajuda for
+ajuda mesh
+ajuda plot
+</code>
+</pre>
+	<p>Com a execução do comando acima, é exibida uma página no navegador padrão do sistema operacional onde o EXPLAB estiver sendo utilizado. A página exibida corresponde 
+	a uma página de ajuda sobre comandos de repetição e a documentação do comando "para" presente na página é mostrada, o navegador foca automaticamente na parte da página onde a 
+	descrição e documentação do comando estiverem.</p>
+
+	
+	<h3 id="sair">sair</h3>
+	<p>O comando sair pode ser utilizado para sair do EXPLAB. Claro, outra opção é fechar a janela do interpretador.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+sair
+</code>
+</pre>
+
+</div>

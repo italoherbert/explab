@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">
+        
+    <pagina url="${doc.paginas}/graficos-e-plotagem.html">
+        <conteudo>
+            <chave nome="plot" peso="12" />
+            <chave nome="plot3d" peso="12" />
+            <chave nome="PC2D" peso="10" />
+            <chave nome="PC3D" peso="10" />
+            <chave nome="Func2D" peso="10" />
+            <chave nome="Func3D" peso="10" />
+            <chave nome="Dados2D" peso="10" />
+            <chave nome="Dados3D" peso="10" />
+            <chave nome="Superficie3D" peso="10" />
+        </conteudo>
+        <conteudo id="plotagem2d">
+            <chave nome="plot" peso="14" />
+            <chave nome="PC2D" peso="12" />
+            <chave nome="Func2D" peso="12" />
+            <chave nome="Dados2D" peso="12" />
+        </conteudo>
+        <conteudo id="plotagem3d">
+            <chave nome="plot" peso="14" />
+            <chave nome="PC3D" peso="12" />
+            <chave nome="Func3D" peso="12" />
+            <chave nome="Dados3D" peso="12" />
+            <chave nome="Superficie3D" peso="12" />
+        </conteudo>
+    </pagina>
+</conteudos>

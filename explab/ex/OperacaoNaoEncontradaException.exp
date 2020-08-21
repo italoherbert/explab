@@ -1,0 +1,13 @@
+pacote explab.ex;
+
+classe OperacaoNaoEncontradaException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+

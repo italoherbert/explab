@@ -1,0 +1,13 @@
+se1_n1 = 1;
+se1_n2 = 2;
+
+se ( se1_n1 < se1_n2 ) {
+    se1_i = 0;
+    se (falso)
+        exibaln "O número "+se1_n1+" é par e maior que o número "+se1_n2;
+    senao {
+        se1_j = 0;
+        exibaln "O número "+se1_n1+" é impar e maior que o número "+se1_n2;        
+    }
+    exibaln se1_j;
+}

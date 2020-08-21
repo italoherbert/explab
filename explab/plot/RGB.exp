@@ -1,0 +1,15 @@
+pacote explab.plot;
+
+classe RGB {
+    r = 0;
+    g = 0;
+    b = 0;
+
+    construtor() {}
+
+    construtor( r, g, b ) {
+        este.r = r;
+        este.g = g;
+        este.b = b;
+    }
+}

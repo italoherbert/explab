@@ -1,0 +1,12 @@
+
+x=vetesp( -pi, pi, 300 );
+y=cos(x);
+
+d = novo Dados2D();
+d.xvetor = x;
+d.yvetor = y;
+
+pc = novo PC2D();
+pc.graficos[] = d;
+
+plot( pc );

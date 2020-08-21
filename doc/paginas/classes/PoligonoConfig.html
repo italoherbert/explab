@@ -1,0 +1,85 @@
+
+<div>			
+	<h3 class="titulo">Classe PoligonoConfig</h3>
+		
+	<p>Esta classe pode ser utilizada em conjunto com a classe PC3D e Superficie3D para configurar os polígonos no plano cartesiano 3D que compõem 
+	uma superfície.</p>
+	
+	<h3>Atributos</h3>
+	
+	<table class="tabela">
+		<thead>
+			<tr>
+				<th class="nome">Nome</th>
+				<th class="normal">Tipo</th>
+				<th class="normal">Valor padrão</th>
+				<th class="normal">Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nome">visivel</td>
+				<td class="normal">boolean</td>
+				<td class="normal">verdade</td>
+				<td class="normal">
+					Variável que armazena um valor booleano que, se verdade, configura os polígonos para visível, se falso, configura os polígonos para não visível
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">cor</td>
+				<td class="normal">RGB</td>
+				<td class="normal">preto</td>
+				<td class="normal">
+					Objeto da classe RGB que permite a alteração e configuração da cor dos polígonos
+				</td>
+			</tr>	
+			<tr>
+				<td class="nome">gradiente</td>
+				<td class="normal">boolean</td>
+				<td class="normal">verdade</td>
+				<td class="normal">
+					Variável que armazena um valor booleano que, se verdade, configura para que os polígonos sejam pintados não com a cor especificada, mas com 
+					um gradiente que varia da cor azul a vermelho. Quanto mais alto o polígono em relação ao eixo Z, mais próximo do vermelho, quanto mais baixo o 
+					polígono em relação ao eixo Z, mais próximo da cor azul.
+				</td>
+			</tr>			
+			<tr>
+				<td class="nome">iluminar</td>
+				<td class="normal">boolean</td>
+				<td class="normal">verdade</td>
+				<td class="normal">
+					Variável que armazena um valor booleano que, se verdade, configura as linhas terem iluminação aplicada a cor delas. Se falso, configura 
+					as linhas para serem pintadas com a cor do atributo cor (sem iluminação)
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h3>Construtores</h3>
+	
+	<p>Esta classe não possue construtores definidos</p>
+	
+	<h3>Funções</h3>
+	
+	<p>Esta classe não tem funções definidas</p>
+	
+	<h3>Exemplo de uso</h3>
+	
+<pre class="codigo-fonte">
+<code>
+poligono = novo PontoConfig;
+poligono.visivel = verdade;   // polígonos visíveis
+poligono.cor.r = 255;         // quantidade de cor vermelha alterada
+poligono.cor.g = 100;         // quantidade de cor verde alterada
+poligono.cor.b = 0;           // sem quantidade de cor azul
+poligono.gradiente = falso;   // sem efeito gradiente
+poligono.iluminar = falso;    // sem efeito iluminação
+
+poligono2 = novo PontoConfig;
+poligono2.cor = novo RGB( 0, 255, 0 );  // polígonos configurados com a cor verde
+</code>
+</pre>
+		
+		
+
+</div>

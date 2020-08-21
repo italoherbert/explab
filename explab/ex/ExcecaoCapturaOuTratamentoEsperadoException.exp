@@ -1,0 +1,11 @@
+pacote explab.ex;
+
+classe ExcecaoCapturaOuTratamentoEsperadoException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}

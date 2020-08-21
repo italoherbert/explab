@@ -1,0 +1,208 @@
+
+<div>			
+	<h3 class="titulo">Classe PC2D</h3>
+		
+	<p>A classe PC2D pode ser utilizada em conjunto com a função plot para plotagem de gráficos de dados ou funções em 2D. Não é necessário utilizar o comando USE para 
+	carregá-la, pois, a mesma é carregada com a inicialização do software EXPLAB.</p>
+		
+	<h3>Atributos</h3>
+	
+	<table class="tabela">
+		<thead>
+			<tr>
+				<th class="nome">Nome</th>
+				<th class="normal">Tipo</th>
+				<th class="normal">Valor padrão</th>
+				<th class="normal">Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nome">janela</td>
+				<td class="normal">JanelaConfig</td>
+				<td class="normal">um objeto</td>
+				<td class="normal">
+					Objeto instância da classe JanelaConfig. Permite a configuração da janela do gráfico gerado com o comando plot
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">grade</td>
+				<td class="normal">GradeConfig</td>
+				<td class="normal">um objeto</td>
+				<td class="normal">
+					Objeto instância da classe GradeConfig. Permite a configuração da grade mostrada no gráfico gerado com o comando plot
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">titulo</td>
+				<td class="normal">string</td>
+				<td class="normal">Plano Cartesiano 2D</td>
+				<td class="normal">
+					Permite a alteração do título mostrado no gráfico gerado com o comando plot. Caso não queira que o título seja mostrado, basta 
+					setar esse atributo para null. Ex: pc.titulo = null;
+				</td>
+			</tr>				
+			<tr>
+				<td class="nome">xrotulo</td>
+				<td class="normal">string</td>
+				<td class="normal">Eixo X</td>
+				<td class="normal">
+					Permite a alteração do rótulo do eixo X no gráfico. Caso não queira que o rótulo seja mostrado, basta 
+					setar esse atributo para null. Ex: pc.xrotulo = null;
+				</td>
+			</tr>				
+			<tr>
+				<td class="nome">yrotulo</td>
+				<td class="normal">string</td>
+				<td class="normal">Eixo Y</td>
+				<td class="normal">
+					Permite a alteração do rótulo do eixo Y no gráfico. Caso não queira que o rótulo seja mostrado, basta 
+					setar esse atributo para null. Ex: pc.yrotulo = null;
+				</td>
+			</tr>										
+			<tr>
+				<td class="nome">graficos</td>
+				<td class="normal">matriz</td>
+				<td class="normal">Um vetor</td>
+				<td class="normal">
+					Variável tipo vetor de elementos (matriz unidimensional). Pode-se adicionar a ela objetos instâncias das classes Dados2D e/ou Func2D. 
+					Os objetos adicionados a ela são desenhados no gráfico após a chamada da função plot
+				</td>
+			</tr>			
+		</tbody>
+	</table>
+			
+	<h3>Construtores</h3>
+
+	<p>Esta classe não tem construtores definidos.</p>
+	
+	<h3>Funções</h3>
+	
+	<p>Esta classe não tem funções definidas.</p>
+	
+	<h3>Exemplos de uso</h3>
+	
+	<p><u><b>Exemplo 1:</b></u> Esse exemplo plota o gráfico de dados gerados para um vetor x no plano cartesiano e, a esse vetor x, 
+	é aplicada a função cosseno para gerar o vetor y. O resultado é uma ilustração da função cosseno com x variando no intervalo de -pi a pi.</p>
+	
+<pre class="codigo-fonte">
+<code>
+x=vetesp( -pi, pi, 300 );    // gera 300 valores de x no intervalo de -pi a pi
+y=cos(x);                    // gera os valores de y com aplicação da função 
+                             // cosseno sobre os valores de x
+
+d = novo Dados2D();          // instancia a classe Dados2D
+d.xvetor = x;                // seta o vetor de x
+d.yvetor = y;                // seta o vetor de y
+
+pc = novo PC2D();              // instancia a classe PC2D
+pc.graficos[] = d;           // adiciona o objeto d ao vetor de graficos
+
+plot( pc );                  // plota o gráfico
+</code>
+</pre>
+
+	<p>No exemplo acima, a função vetesp é utilizada para gerar 300 valores no intervalo de -pi a pi e os armazenar em x. Em 
+	seguida a variável y recebe a matriz unidimensional com os cossenos dos valores de x. Depois, a classe Dados2D é instanciada e armazenada 
+	no objeto d. Os atributos do objeto d (xvetor e yvetor) são setados com os valores das variáveis x e y. Então, é instanciada a classe PC2D 
+	no objeto pc. O objeto pc tem como atributo um vetor para armazenar objetos da classe Dados2D, chamado de "dados". Então, o objeto "d" é 
+	adicionado ao vetor de graficos para, logo em seguida, a função plot receber o objeto pc como parâmetro e gerar o gráfico correspondente a 
+	configuração do objeto pc e seus componentes. Veja abaixo o resultado da plotagem:</p>
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_PC2D_ex1.gif" alt="Exemplo de plotagem de função cosseno em 2D" />
+		</figure>
+	</div>
+	
+				
+	<p><u><b>Exemplo 2:</b></u>	Esse exemplo plota o gráfico da função cosseno com x variando no intervalo de -pi a pi e a função seno no mesmo intervalo. No entanto, 
+	foi utilizada a classe Func2D, ao invés de se optar por gerar os dados correspondentes aos pontos que compõem a função e utilizar a classe Dados2D. O objeto 
+	Func2D foi configurado com mais flexibilidade 
+	do que com a utilização da classe Dados2D.</p>
+		
+<pre class="codigo-fonte">
+<code>
+f = novo Func2D( -pi, pi );             // instancia a classe Func2D com os intervalos de X  
+f.y1 = -2.0;                            // seta o primeiro intervalo de y
+f.y2 = 2.0;                             // seta o segundo intervalo de y
+f.limitarY = verdade;                   // Com esse atributo setado para verdade, o intervalo 
+                                        // de y será considerado na construção do gráfico
+
+f.xcompleto = verdade;                  // Com esse atributo setado para verdade, a função 
+                                        // é desenhada de acordo com o intervalo de x do 
+                                        // plano cartesiano, mesmo que este seja maior que os 
+                                        // intervalos de x da função
+
+f.legenda = "cosseno";                  // adiciona uma legenda para a função
+f.linha.cor = novo RGB( 0, 0, 255 );    // seta a cor da função no gráfico
+
+f.fun = func( x ) {                     // define a função que será utilizada para o cálculo 
+    retorne cos( x );                   // dos valores de y no plano cartesiano
+};
+
+f2 = novo Func2D( -pi, pi );
+f2.xcompleto = verdade;
+f2.legenda = "seno";
+f2.linha.cor = novo RGB( 255, 0, 0 );
+
+f2.fun = func( x ) {
+    retorne sen( x );
+};
+
+pc = novo PC2D();                          // instancia a classe PC2D
+pc.titulo = "Senos e Cossenos";          // seta o título do plano cartesiano
+pc.xrotulo = "Eixo X";                   // seta o rótulo do eixo x
+pc.yrotulo = "Eixo Y";                   // seta o rótulo do eixo y
+pc.graficos[] = f;                       // adiciona o objeto f ao vetor de graficos
+pc.graficos[] = f2;                      // adiciona o objeto f2 ao vetor de graficos
+
+plot( pc );                              // plota o gráfico
+</code>
+</pre>
+
+	<p>No exemplo acima, a função Func2D é instanciada com os valores do intervalo de x passados como parâmetro para o construtor da classe. Esse intervalo varia de -pi a pi. 
+	Em seguida, é configurado o intervalo de y, alterando-se os atributos y1, y2, limitarY da classe Func2D. O atributo xcompleto da classe Func2D pode ser setado para verdade e 
+	permitir que a função seja desenhada de acordo com os intervalos do plano cartesiano. O efeito é percebido quando se tenta mover o gráfico para visualizar outras partes da 
+	função que estão além do intervalo de x configurado inicialmente. Claro, é necessário definir a função que será executada para determinar os valores para y de acordo com os 
+	valores de x. Esta função é definida e atribuida ao atributo fun da classe Func2D. Logo depois, a mesma lógica é utilizada para a configuração de outra função no objeto f2.	
+	Após isso, a classe PC2D é instanciada e os objetos instâncias das classes Func2D são adicionados ao atributo graficos (vetor de objetos instâncias da classe Func2D) 
+	da classe PC2D. Então, é chamada a função plot para plotar o gráfico conforme a configuração do objeto da classe PC2D. Repare também que os objetos das funções foram configurados 
+	com traços de cores diferentes, alterando-se o atributo linha da classe Func2D, que é um objeto instância da classe LinhaConfig. O atributo cor da classe LinhaConfig foi 
+	configurado com as cores desejadas para cada função. Para alterar a cor, foi utilizada a classe RGB que permite especificar as proporções de das cores vermelho (red), 
+	verde (green) e azul (blue), num intervalo de 0 a 255. Os rótulos também foram alterados pelo atributo legenda, bem como, o título e os rótulos dos eixos do gráfico. 
+	Veja baixo o resultado da plotagem:</p>
+
+	<div class="imagem">
+		<figure>
+			<img class="borda" src="img/classe_PC2D_ex2.gif" alt="Exemplo de plotagem de funções em 2D" />
+		</figure>
+	</div>
+	
+	<h3>Outras configurações:</h3>
+<pre class="codigo-fonte">
+<code>
+pc = novo PC2D();
+
+pc.janela.titulo = "Meu título...";      // configura o título da janela para "Meu título..."
+pc.janela.largura = 640;                 // configura a largura da janela para 640
+pc.janela.altura = 480;                  // configura a altura da janela para 480
+
+pc.grade.visivel = falso;                // configura a grade para invisível
+pc.grade.visivel = verdade;              // configura a grade para visível
+pc.grade.cor.r = 255;                    // altera a cor da grade do gráfico para 100% de vermelho
+pc.grade.cor.g = 0;                      // altera a cor da grade do gráfico para 0% de verde
+pc.grade.cor.b = 0;                      // altera a cor da grade do gráfico para 0% de azul
+</code>
+</pre>		
+	
+	<p>Tente colocar os códigos mostrados nesta página em scripts e execute-os! Experimente, após a janela com o gráfico ser mostrada, utilizar as ferramentas 
+	de: movimento, zoom e demais opções!</p>
+	
+	<p>Se sentir dificuldade para entender os exemplos apenas com a documentação desta página, visite no menu ao lado a documentação das funções globais e classes utilizadas. 
+	Visite a documentação das funções: plot, vetesp, cos, e a documentação das classes Dados2D e Func2D.</p>
+	
+	<p>Caso queira personalizar o gráfico de maneira melhor que nos exemplos mostrados aqui, experimente utilizar os atributos da classe PC2D descritos anteriormente. Consulte 
+	a documentação das classes RGB, PontoConfig, LinhaConfig, JanelaConfig e GradeConfig.</p>
+		
+</div>

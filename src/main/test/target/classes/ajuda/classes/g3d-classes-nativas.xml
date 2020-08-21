@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">        
+
+    <propriedade nome="conf.ajuda.classes.plot3d">${conf.ajuda.classes}/plot3d</propriedade>
+    <propriedade nome="doc.paginas.classes.plot3d">${doc.paginas.classes}/plot3d</propriedade>
+        
+    <pagina url="${doc.paginas.classes.plot3d}/PC3D.html"> 
+        <conteudo>
+            <chave nome="classe" peso="6" />         
+            <chave nome="graficos" peso="7" />
+            <chave nome="plot3d" peso="10" />                    
+            <chave nome="plano" peso="5" />                     
+            <chave nome="cartesiano" peso="4" />                                                      
+            <chave nome="3d" peso="9" />
+            <chave nome="função" peso="5" />                 
+            <chave nome="function" peso="5" />
+            <chave nome="PC3D" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes.plot3d}/Func3D.html"> 
+        <conteudo>            
+            <chave nome="função" peso="9" />                 
+            <chave nome="function" peso="9" /> 
+            <chave nome="Func3D" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${conf.ajuda.classes.plot3d}/Dados3D.html"> 
+        <conteudo>
+            <chave nome="dados" peso="7" />
+            <chave nome="Dados3D" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${conf.ajuda.classes.plot3d}/Superficie3D.html"> 
+        <conteudo>
+            <chave nome="dados" peso="7" />
+            <chave nome="Superficie3D" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+</conteudos>

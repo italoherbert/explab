@@ -1,0 +1,9 @@
+pacote explab.plot;
+
+classe PoligonoConfig {
+    visivel = verdade;
+    cor = novo RGB( 0, 0, 255 );
+    gradiente = verdade;
+    iluminar = verdade;
+}
+
