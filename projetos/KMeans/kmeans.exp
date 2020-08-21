@@ -1,0 +1,84 @@
+
+classe KMeans {
+    
+    func treina( dados, k ) {        
+        dim = matnc( dados );
+        centroides = zeros( k, dim );
+        para( i = 0; i < k; i++ ) 
+            centroides(i,:) = dados(i,:);                   
+                
+        convergencia = falso;
+        dados_len = matnl( dados );
+        
+        grupos = zeros( dados_len );          
+        distancias = zeros( dados_len, k );
+        
+        enquanto ( !convergencia ) {
+            para( i = 0; i < dados_len; i++ )
+                para( j = 0; j < k; j++ )                    
+                    distancias(i,j) = distancia( dados(i,:), centroides(j,:), dim );                                                                                                           
+    
+            convergencia = verdade;
+            para( i = 0; i < dados_len; i++ ) {
+                grupo = grupos( i );
+                d1 = distancias( i, grupo );
+                para( j = 0; j < k; j++ ) {
+                    d2 = distancias( i, j );
+                    se ( d2 < d1 ) {
+                        grupos( i ) = j;
+                        convergencia = falso;
+                    }
+                }
+            }             
+            
+            se ( !convergencia ) {
+                para( j = 0; j < dim; j++ ) {
+                    media = zeros( dim );
+                    cont = 0;
+                    para ( i = 0; i < dados_len; i++ ) {
+                        se ( grupos( i ) == j ) {
+                            media(j) += dados(i,j);
+                            cont++;
+                        }
+                    }
+                    media = media / cont;
+                    centroides(j,:) = media;
+                }
+            }                                      
+        }       
+        
+        retorne novo KMeansResult( dados, centroides, grupos );
+    }
+                
+    func distancia( v1, v2, dim ) {
+        d = 0;        
+        para ( i = 0; i < dim; i++ )
+             d += ( v1(i) - v2(i) )^2;
+        retorne rquad( d );
+    }   
+    
+    func sorteia_cores( centroides ) {
+        k = matnl( centroides );
+        
+        cores = zeros( k, 3 );
+        para( i = 0; i < k; i++ ) {
+            cores(i,0) = random() * 255;
+            cores(i,1) = random() * 255;
+            cores(i,2) = random() * 255;            
+        }
+        
+        retorne cores;
+    }
+    
+    classe KMeansResult {
+        dados = null;
+        grupos = null;        
+        centroides = null;        
+        construtor( dados, centroides, grupos ) {
+            este.dados = dados;
+            este.centroides = centroides;            
+            este.grupos = grupos;
+        }
+    }
+    
+}

@@ -1,0 +1,6 @@
+para( para3_v1=0, para3_v2=1, para3_v1=2; para3_v1 < 10 & para3_v2 > -10; para3_v1++, para3_v2 -= 2, para3_v1 *= 1, para3_v2 /= 1 ) {
+    int para3_v3 = para3_v1+para3_v2;
+    exibaln para3_v1+"  "+para3_v2+"  "+para3_v3;
+}
+
+exibaln para3_v1;

@@ -1,16 +1,28 @@
-f = novo func2D();
-x = vetesp( -pi, pi, 100 );
 
-f.x1 = -100;
-f.x2 = 100;
-f.limitarY = falso;
-f.xcompleto = verdade;
 
-f.fun = func( x ) {
-    retorne x^2 - 5*x +4;
+classe X {
+    a = 1;
+    b = 2;
+
+    construtor() {}
+    
+    construtor( a, b ) {
+        este.a = a;
+        este.b = b;
+    }
+
+    func f( x ) {
+        retorne (a+b)^x;
+    }
+
+    func getInstancia() {
+        retorne este;
+    }
+    
 }
 
-pc = novo PC2D();                  
-pc.graficos[] = f;
+a = novo X( 4, 7 );
 
-plot( pc );
+exibaln a.a;
+exibaln a.f( 2 );
+exibaln novo X().getInstancia().getInstancia().f( 3 );

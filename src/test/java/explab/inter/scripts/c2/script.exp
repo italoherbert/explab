@@ -1,0 +1,32 @@
+classe Area {
+
+    base = 2;
+    altura = 3;
+	
+    construtor( b, a ) {
+        base = b;
+        altura = a;
+    }
+	
+    func areaRetangulo() {
+        retorne base * altura;
+    }
+	
+    func areaTriangulo() {
+        retorne ( base * altura ) / 2;
+    }
+	
+}
+
+a1 = novo Area( 2, 4 );           // altera o atributo base de a1 para 2 e altura para 4
+a2 = novo Area( 4, 5 );           // altera a base para 4 e a altura para 5
+a3 = novo Area( 1, 10 );
+
+xx = a1.areaRetangulo();   // imprime: Area do retângulo (1)=8
+yy = a1.areaTriangulo();   // imprime: Area do triângulo (1)=4
+
+zz = a2.areaRetangulo();   // imprime: Area do retângulo (2)=20
+ww = a2.areaTriangulo();   // imprime: Area do triângulo (2)=10
+
+xxx = a3.areaRetangulo();   // imprime: Area do retângulo (3)=10
+yyy = a3.areaTriangulo();   // imprime: Area do triângulo (3)=5

@@ -5,6 +5,8 @@ classe Dados2D {
     xvetor = [];
     yvetor = [];
 
+    arestas = null;
+
     legenda = null;
 
     ponto = novo PontoConfig();

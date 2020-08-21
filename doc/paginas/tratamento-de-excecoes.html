@@ -1,0 +1,228 @@
+
+<div>			
+	<h3 class="titulo">Tratamento de exceções (Tente/Capture)</h3>
+	
+	<p>Um recurso muito importante que linguagens orientadas a objetos geralmente suporta é o tratamento de exceções. Com ele, se pode personalisar mensagens de erro, 
+	evitando que, caso um erro ocorra durante a execução, ele seja mostrado na tela. Isto é, é possível capturar o erro para personalizar o modo que ele deve ser 
+	exibido. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+terminar = verdade;
+faca {
+    exiba "Informe um numero: ";
+    leialn s:string;
+
+    tente {        
+        n = strparareal( s );
+
+        se n % 2 == 0 
+            exibaln "O número "+n+" é par!";
+        senao exibaln "O número "+n+" é impar!";
+
+        terminar = verdade;
+    } capture ( RealFormatoException e ) {
+        exibaln "Você informou um valor não real. Deseja informar outro número?";
+        exibaln " (S/Sim)   - Sim";
+        exibaln " (N/Outro) - Não";
+        exiba ">> ";
+        leialn resp:string;
+        resp = maiusculas( resp );
+        terminar = ( resp != 'S' &amp; resp != 'SIM' ); 		
+    }	
+} enquanto ( !terminar );
+</code>
+</pre>       
+        
+	<p>Perceba o uso da instrução TENTE/CAPTURE. No bloco de código da instrução ficam as instruções que correspondem a um bloco de instruções qualquer. No entanto, 
+	nele, é chamada a função "strparareal". Essa função converte um valor tipo string para número real. Mas, o que acontece se o valor passado como parâmetro para 
+	esta função não corresponder a um número real? A resposta é: Esta função gera um erro (exceção). Se esse erro não for tratado, a devida mensagem de erro é exibida 
+	na tela. Se o erro for tratado com a instrução TENTE/CAPTURE, então, o erro é capturado e um objeto de exceção é carregado para poder ser manipulado no bloco de instruções 
+	da captura do erro (ou exceção). A exceção gerada no exemplo acima é uma instância da classe "RealFormatoException" que extende "RuntimeException".</p>
+	
+	<p class="texto-obs"><b>Atenção:</b> Toda classe que herda de RuntimeException pode ter uma instância sua lançada como exceção sem a necessidade de que a mesma seja 
+	lançada dentro de um bloco TENTE/CAPTURE. Isso significa que, caso a exceção não fosse tratada no exemplo anterior, uma mensagem de erro seria mostrada. Já em classes 
+	de exceção que herdam, não de "RuntimeException", mas diretamente de: "Exception", precisa de um bloco TENTE/CAPTURE para executar, ou, caso contrário é mostrada 
+	uma mensagem de erro informando sobre a necessidade de se utilizar o bloco TENTE/CAPTURE.</p>
+	
+	<h3 id="tratar">A palavra "tratar"</h3>
+        <span id="lance"></span>
+        
+	<p>É possível especificar que tipo de exceção deve ser tratada com bloco TENTE/CAPTURE para chamada de uma determinda função. Para tanto, se pode utilizar a palavra 
+	reservada "tratar" seguida do nome da (ou das) exceções que devem ser tratadas para chamada da função. Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+func exibe_se_ate_dez( n ) tratar Exception {
+    se n &gt; 10 
+        lance novo Exception( "Número maior que 10!" );
+    exibaln n;
+}
+
+tente {
+    exiba "Informe um numero: ";
+    leialn s:string;
+    
+    n = strparareal( s );
+    exibe_se_ate_dez( n );
+} capture ( RealFormatoException e ) {
+    exibaln "O número informado não está no formato de número real!";
+} capture ( Exception e ) {
+    exibaln e.mensagem;
+}
+</code>
+</pre>
+
+	<p>No exemplo acima, uma variável do tipo string é lida e, logo em seguida, convertida para número real com seu valor armazenado na variável n. Na próxima linha, surge a 
+	chamada a função "exibe_se_ate_dez". Trata-se de uma função que, caso o número passado a ela como parâmetro seja maior que 10, ela lança uma exceção do tipo "Exception". 
+	Caso contrário, apenas imprime o número. Perceba a palavra reservada "tratar" após a definição do protótipo da função. Ela vem seguida da exceção que deve ser tratada em 
+	qualquer trecho de código que faça chamada a esta função. Caso a exceção não fosse tratada no exemplo acima, um erro seria mostrado, notificando sobre a necessidade de 
+	capturar a exceção tipo "Exception".</p>
+
+	<h3 id="excecoes-personalizadas">Exceções personalizadas</h3>
+	
+	<p>É possível, também, através da linguagem EXPLAB, a criação e utilização de tipos personalizados de exceção. Para isto, basta extender de alguma classe de exceção em que, 
+	geralmente, a classe de exceção extendida é a classe "Exception". Veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+classe MaiorQueDezException extende Exception {
+	
+	super.mensagem = "O número é maior que 10!";
+	
+}
+
+func exibe_se_ate_dez( n ) tratar MaiorQueDezException {
+    se n &gt; 10 
+        lance novo MaiorQueDezException();
+    exibaln n;
+}
+
+tente {
+    exiba "Informe um numero: ";
+    leialn s:string;
+    
+    n = strparareal( s );
+    exibe_se_ate_dez( n );
+} capture ( RealFormatoException e ) {
+    exibaln "O número informado não está no formato de número real!";
+} capture ( MaiorQueDezException e ) {
+    exibaln e.mensagem;
+}
+</code>
+</pre>
+
+	<p>Perceba que no exemplo acima foi criada uma classe personalizada de exceção: a classe "MaiorQueDezException". Repare na chamada "super.mensagem". Essa chamada altera 
+	a mensagem padrão carregada com o lançamento da exceção. Então, esse exemplo tem funcionalidade idêntica a do exemplo anterior, com diferença apenas na implementação. Isto é, 
+	foi utilizada uma classe de exceção personalisada.</p>
+	
+	<h3 id="finalize">O bloco "finalize"</h3>
+		
+	<p>O bloco finalize pode ser utilizado para que um determinado trecho de código seja executado, mesmo em caso de exceção. Por exemplo, veja o exemplo abaixo:</p>
+	
+<pre class="codigo-fonte">
+<code>
+func retorna_se_ate_dez( n ) tratar Exception {
+    tente {
+        se n &gt; 10 
+            lance novo ValorException( "Número maior que 10!" );
+        retorne n;    
+    } capture ( ValorException e ) {
+        lance novo Exception( e );
+    } finalize {
+        exibaln "FINALIZANDO MÉTODO...";
+    }
+}
+
+tente {
+    exiba "Informe um numero: ";
+    leialn s:string;
+    
+    n = strparareal( s );
+    n = retorna_se_ate_dez( n );
+    exibaln "O número lido é: "+n;
+} capture ( RealFormatoException e ) {
+    exibaln "O número informado não está no formato de número real!";
+} capture ( Exception e ) {
+    exibaln e.mensagem;
+}
+</code>
+</pre>
+
+	<p>Se você executar o código acima no interpretador EXPLAB, poderá perceber o seguinte: no corpo da função "retorna_se_ate_dez" foi declarado um bloco TENTE/CAPTURE. 
+	Nele, possivelmente, isto é, caso o valor do parâmetro seja maior que 10, uma exceção do tipo "ValorException" é gerada e capturada em seguida. Com isso, uma nova exceção 
+	é lançada: Uma exceção tipo "Exception", e, então o bloco FINALIZE é ignorado. No entanto, caso a execução do método chegue até a instrução de retorno, o bloco FINALIZE 
+	é executado antes da concretização do retorno do valor.</p>
+	
+	<h3 id="lista-de-erros">Fila de erros (exceções)</h3>
+
+	<p>Quando o tratamento de exceções envolve, por exemplo, várias funções que podem, até, estar declaradas em classes diferentes, uma lista de erros é carregada e, para 
+	exibi-la basta utilizar o método "imprimeErros". Veja o exemplo abaixo:</p>
+	
+	
+<pre class="codigo-fonte">
+<code>
+
+classe E1 extende Exception {  
+    aaa = "BBB";
+    super.mensagem = "Erro E1!";    
+    construtor( msg ) {
+        super.mensagem = msg;
+    }
+}
+
+classe E2 extende Exception {}
+
+classe A {
+    
+    b = novo B();
+
+    func aa( x ) tratar E1 {
+        tente {			
+            retorne b.bb( x );
+        } capture ( E2 e ) {
+            lance novo E1( "XXXXXXXX" );
+        } finalize {
+            exibaln "FINALIZOU E RETORNOU!";
+        }
+    }
+
+}
+
+classe B {
+
+    func bb( x ) tratar E2 {
+        se ( x == 1 ) 
+            lance novo E2();
+        retorne x;
+    }
+
+}
+
+a = novo A();
+
+tente {
+    x = a.aa( 1 );
+	exibaln x;
+} capture ( E1 e ) {
+    exibaln e.mensagem;
+}
+
+exibaln;
+
+tente {
+    x = a.aa( 2 );
+	exibaln x;
+} capture ( E1 e ) {
+    exibaln "Número diferente de 1";
+}
+</code>
+</pre>
+
+	<p>Veja abaixo o resultado da execução do script acima, supondo que ele está armazenado em um arquivo de script de nome "teste.exp":</p>
+		
+	<figure style="text-align:center">
+		<img class="imagem" src="img/tratamento-de-excecoes_ex1.gif" alt="Exemplo de tratamento de exceções" />
+	</figure>	
+
+</div>	

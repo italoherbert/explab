@@ -305,6 +305,10 @@
         <chave>ajuda.termo.nao.encontrado</chave>
     </exception>
     
+    <exception classeNome="ExcecaoCapturaOuTratamentoEsperadoException">
+        <chave>excecao.captura.ou.tratamento.esperado</chave>
+    </exception>
+    
     <exception classeNome="ExcecaoNaoEncontradaException">
         <chave>excecao.nao.encontrada.pela.chave</chave>                                                              
     </exception>

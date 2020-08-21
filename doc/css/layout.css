@@ -1,0 +1,86 @@
+
+*, *:before, *:after {
+	-webkit-box-sizing: border-box;
+	-moz-sizing: border-box;
+	box-sizing: border-box;	
+}
+
+body:before, body:after {
+	content: " ";
+	display: table;
+}
+
+body:after {
+	clear: both;
+}
+
+body {
+	margin: 0;
+	padding: 0;
+		
+	font-size: 62.5%;
+	text-align: center;		
+	
+	*zoom: 1;	
+}
+
+form {
+	margin:0;
+}
+
+img {
+	max-width: 100%;
+	
+	border: none;
+}
+
+a {	
+	text-decoration: none;	
+}
+
+a:hover {
+	text-decoration: underline;
+}
+
+a:active, a:visited {
+	color: #00A;
+}
+
+h1, h2 {
+	margin: 0;
+	padding: 0;		
+	
+	font-weight: normal;
+	font-family: "Times New Roman", Times, serif;
+}
+
+h3 {	
+	font-weight: bold;
+}
+
+div#layout {
+	width: 100%;
+	padding: 0 2em 1em 2em;
+	
+	text-align: left;
+	background-color: #FFF;
+}
+
+table#layout-centro {
+	border-collapse: collapse;
+	width: 100%;
+}
+
+table#layout-centro td.esquerda {
+	vertical-align: top;
+	text-align: left;
+	
+	width: 18em;
+}
+
+
+table#layout-centro td.direita {
+	vertical-align: top;
+	text-align: left;
+}
+

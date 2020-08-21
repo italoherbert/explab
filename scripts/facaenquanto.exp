@@ -7,7 +7,7 @@ faca {
 
 exibaln;
 
-faca
+faca    
     se i++ == 10
         exibaln "dez";
     senao exibaln "outro";    

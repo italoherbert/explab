@@ -4,7 +4,9 @@ classe Dados3D {
 
     xvetor = [];
     yvetor = [];
-    zvetor = [];
+    zvetor = [];   
+
+    arestas = null;
 
     legenda = null;
 

@@ -1,0 +1,83 @@
+
+<div>			
+	<h3 class="titulo">Classe LinhaConfig</h3>
+		
+	<p>Esta classe pode ser utilizada em conjunto com as classes PC2D e PC3D para configurar as linhas no plano cartesiano de uma função ou curva representada pelos dados 
+	que serão mostrados, após a chamada da função plot ou plot3d.</p>
+	
+	<h3>Atributos</h3>
+	
+	<table class="tabela">
+		<thead>
+			<tr>
+				<th class="nome">Nome</th>
+				<th class="normal">Tipo</th>
+				<th class="normal">Valor padrão</th>
+				<th class="normal">Descrição</th>
+			</tr>
+		</thead>
+		<tbody>
+			<tr>
+				<td class="nome">visivel</td>
+				<td class="normal">boolean</td>
+				<td class="normal">verdade</td>
+				<td class="normal">
+					Variável que armazena um valor booleano que, se verdade, configura as linhas para visível, se falso, configura as linhas para não visível
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">cor</td>
+				<td class="normal">RGB</td>
+				<td class="normal">preto</td>
+				<td class="normal">
+					Objeto da classe RGB que permite a alteração e configuração da cor das linhas
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">gradiente</td>
+				<td class="normal">boolean</td>
+				<td class="normal">verdade</td>
+				<td class="normal">
+					Variável que armazena um valor booleano que, se verdade, configura para que os polígonos sejam pintados não com a cor especificada, mas com 
+					um gradiente que varia da cor azul a vermelho. Quanto mais alto o polígono em relação ao eixo Z, mais próximo do vermelho, quanto mais baixo o 
+					polígono em relação ao eixo Z, mais próximo da cor azul.
+				</td>
+			</tr>
+			<tr>
+				<td class="nome">iluminar</td>
+				<td class="normal">boolean</td>
+				<td class="normal">verdade</td>
+				<td class="normal">
+					Variável que armazena um valor booleano que, se verdade, configura as linhas terem iluminação aplicada a cor delas. Se falso, configura 
+					as linhas para serem pintadas com a cor do atributo cor (sem iluminação)
+				</td>
+			</tr>
+		</tbody>
+	</table>
+	
+	<h3>Construtores</h3>
+	
+	<p>Esta classe não possue construtores definidos</p>
+	
+	<h3>Funções</h3>
+	
+	<p>Esta classe não tem funções definidas</p>
+	
+	<h3>Exemplo de uso</h3>
+	
+<pre class="codigo-fonte">
+<code>
+linha = novo LinhaConfig;
+linha.visivel = verdade;   // traço visível
+linha.cor.r = 255;         // quantidade de cor vermelha alterada
+linha.cor.g = 100;         // quantidade de cor verde alterada
+linha.cor.b = 0;           // sem quantidade de cor azul
+
+linha2 = novo LinhaConfig;
+linha2.cor = novo RGB( 0, 255, 0 );  // linha configurada com a cor verde
+linha2.gradiente = verdade;          // efeito gradiente aplicado as cores das linhas
+linha2.iluminar = falso;             // efeito iluminação aplicado as cores das linhas
+</code>
+</pre>	
+
+</div>

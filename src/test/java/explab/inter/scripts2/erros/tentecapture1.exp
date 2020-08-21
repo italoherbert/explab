@@ -1,0 +1,52 @@
+
+classe E1 extende RuntimeException {}
+
+classe E2 extende Exception {}
+classe E3 extende Exception {}
+
+func aa( x, y ) {
+    se ( x > 10 )
+        lance novo E3();        
+    exibaln "ZSSSSSSSSSSSS"+( x > 10 );
+    retorne x+y;
+}
+
+xx = falso;
+yy = falso;
+
+tente {
+    a = aa( 11,2 );
+    exibaln "Resultado="+a;
+} capture ( E1 | E2 e ) {
+    
+} capture( E3 e ) {
+    xx = verdade;
+} finalize {
+    yy = verdade;
+}
+
+zz = falso;
+ww = falso;
+xxx = falso;
+
+tente {
+    i = strparareal( 'a' );    
+} capture( RealFormatoException e ) {
+    zz = verdade;
+}
+
+tente {
+    i = strparareal( 'a' );    
+} capture( Exception e ) {
+    ww = verdade;
+}
+
+
+tente {
+    i = strparareal( 'a' );    
+} capture( RuntimeException e ) {
+    xxx = verdade;
+}
+
+se ( xx & yy & zz & ww & xxx )
+    lance novo Exception();

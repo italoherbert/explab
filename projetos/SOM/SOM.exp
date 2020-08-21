@@ -1,0 +1,238 @@
+
+classe SOM {         
+    
+    gradeQNH = 20;
+    gradeQNV = 20;
+    grade_espacamentos = 5;    
+    vizinhanca_hexagonal = falso;                        
+         
+    taxa_aprendizado_inicial = 0.5;
+    taxa_aprendizado_final = 0.05;
+    raio_vizinhanca_inicial = grade_espacamentos * max( gradeQNH, gradeQNV )*0.5;
+    raio_vizinhanca_final = 1;            
+    
+    func treina( amostras, qITs ) {
+        grade = gera_grade();        
+        neuronios = gera_neuronios( grade, amostras );       
+                
+        taxa_aprendizado = taxa_aprendizado_inicial;
+        raio_vizinhanca = raio_vizinhanca_inicial;
+        
+        amostras_len = matnl( amostras );
+        amostras_dim = matnc( amostras );        
+        
+        exibaln;
+        exiba "Faltam (ITs): "+qITs+"  ";
+        
+        para( it = 1; it <= qITs; it++ ) {
+            amostraI = inteiro( random() * amostras_len );
+            se ( amostraI == amostras_len )
+                 amostraI = amostras_len-1;
+            amostra = amostras( amostraI, : );
+            
+            bmu_xi = 0;
+            bmu_yi = 0;
+            bmu_d = inf;
+            para( i = 0; i < gradeQNV; i++ ) {
+                para( j = 0; j < gradeQNH; j++ ) {
+                    neuronio = neuronios(i,j);
+                    peso = neuronio.peso;                    
+                    
+                    d = 0;
+                    para( k = 0; k < amostras_dim; k++ )
+                        d += ( amostra(k) - peso(k) )^2;
+                    d = rquad( d );
+                    
+                    se ( d < bmu_d ) {
+                        bmu_yi = i;
+                        bmu_xi = j;
+                        bmu_d = d;
+                    }                                        
+                }
+            }
+            
+            para( i = 0; i < gradeQNV; i++ ) {
+                para( j = 0; j < gradeQNH; j++ ) {
+                    neuronio = neuronios(i,j);
+                    neuronio_bmu = neuronios( bmu_yi, bmu_xi );
+                    peso = neuronio.peso; 
+                    
+                    x1 = neuronio.x;
+                    y1 = neuronio.y;
+                    x2 = neuronio_bmu.x;
+                    y2 = neuronio_bmu.y;
+                            
+                    d = (y2-y1)^2 + (x2-x1)^2;
+                    vizinhanca = e^( -d / ( 2 * raio_vizinhanca^2 ) );
+                    
+                    para( k = 0; k < amostras_dim; k++ ) {
+                        neuronio.peso(k) += taxa_aprendizado * vizinhanca * ( amostra(k) - peso(k) );           
+                    }
+                }
+            }
+            
+            taxa_aprendizado = taxa_aprendizado_inicial * ( taxa_aprendizado_final / taxa_aprendizado_inicial )^( it / qITs );
+            raio_vizinhanca = raio_vizinhanca_inicial * ( raio_vizinhanca_final / raio_vizinhanca_inicial )^( it / qITs );            
+            
+            se ( it % 10 == 0 ) 
+                exiba (qITs-it)+"  ";
+        }        
+        
+        retorne neuronios;
+    }           
+            
+    func gera_neuronios( grade, amostras ) {
+        amostras_len = matnl( amostras );
+        
+        se ( amostras_len < 1 )
+            retorne [];
+            
+        amostras_len = matnl( amostras );
+        amostras_dim = matnc( amostras );       
+             
+        neuronios = zeros( gradeQNV, gradeQNH );        
+        
+        mins = zeros( amostras_dim );
+        maxs = zeros( amostras_dim );            
+        para( k = 0; k < amostras_dim; k++ ) {
+            mins(k) = inf;
+            maxs(k) = -inf;           
+        }        
+                     
+        para( i = 0; i < amostras_len; i++ ) {
+            para( k = 0; k < amostras_dim; k++ ) {
+                se ( amostras(i,k) > maxs(k) )
+                    maxs(k) = amostras(i,k);
+                se ( amostras(i,k) < mins(k) )
+                    mins(k) = amostras(i,k); 
+            }
+        }        
+                 
+        para ( i = 0; i < gradeQNV; i++ ) {
+            para ( j = 0; j < gradeQNH; j++ ) {
+                peso = zeros( amostras_dim );
+                  
+                para ( k = 0; k < amostras_dim; k++ )
+                     peso(k) = mins(k) + ( random() * abs( maxs(k) - mins(k) ) );
+                
+                x = grade(i,j).x;
+                y = grade(i,j).y;  
+                          
+                neuronios(i,j) = novo Neuronio( x, y, peso );
+            }
+        }
+        
+        retorne neuronios;
+    }     
+    
+    func gera_grade() {
+        grade_esp_y = rquad( grade_espacamentos^2 - (grade_espacamentos/2)^2 );
+        
+        grade = zeros( gradeQNV, gradeQNH );                                     
+                     
+        para( i = 0; i < gradeQNV; i++ ) {
+            para ( j = 0; j < gradeQNH; j++ ) {
+                x = y = 0;                
+                se ( vizinhanca_hexagonal ) {
+                    se ( i % 2 == 0 ) {
+                        x = j * grade_espacamentos + grade_espacamentos/2;
+                    } senao {
+                        x = j * grade_espacamentos;
+                    }
+                    y = i * grade_esp_y;
+                } senao {
+                    x = j * grade_espacamentos;
+                    y = i * grade_espacamentos;
+                }
+
+                grade(i,j) = novo Ponto( x, y );
+            }
+        }            
+            
+        retorne grade;
+    } 
+            
+    func estrutura( neuronios ) {
+        nl = matnl( neuronios );
+        nc = matnc( neuronios );
+
+        neurs_x = zeros( nl*nc );
+        neurs_y = zeros( nl*nc );
+        neurs_z = zeros( nl*nc );
+
+        cont = 0;
+        para( i = 0; i < nl; i++ ) {
+            para ( j = 0; j < nc; j++ ) {
+                neuronio = neuronios(i,j);
+                neurs_x(cont) = neuronio.peso(0);
+                neurs_y(cont) = neuronio.peso(1);
+                neurs_z(cont) = neuronio.peso(2);
+                
+                cont++;
+            }
+        }
+
+        hlen = nl * (nc-1);
+        vlen = nc * (nl-1); 
+        
+        a = zeros( hlen + vlen, 2 );
+        cont = 0;
+        para( i = 0; i < nl; i++ ) {
+            para ( j = 0; j < nc-1; j++ ) {
+                a(cont,0) = (i*nc) + j;
+                a(cont,1) = (i*nc) + j+1;               
+                cont++;
+            }                          
+        }
+                
+        para( i = 0; i < nl-1; i++ ) {
+            para ( j = 0; j < nc; j++ ) { 
+                a(cont,0) = (i*nl) + j;
+                a(cont,1) = ((i+1)*nl) + j;                
+                cont++;
+            }
+        }            
+        
+        est = novo Estrutura();
+        est.vx = neurs_x;
+        est.vy = neurs_y;
+        est.vz = neurs_z;
+        est.arestas = a;                
+        
+        retorne est;
+    }     
+    
+    func max( n1, n2 ) {
+        se ( n1 > n2 )
+            retorne n1;
+        retorne n2;   
+    }             
+    
+    classe Ponto {
+        x = 0;
+        y = 0;
+        construtor( x, y ) {
+            este.x = x; 
+            este.y = y;
+        }
+    }
+            
+    classe Neuronio {
+        x = 0;
+        y = 0;         
+        peso = null;                
+        construtor( x, y, peso ) {
+            este.x = x;
+            este.y = y;
+            este.peso = peso;
+        }
+    } 
+    
+    classe Estrutura {
+        vx = [];
+        vy = [];
+        vz = [];
+        arestas = [];
+    }
+              
+}

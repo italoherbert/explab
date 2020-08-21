@@ -27,7 +27,7 @@ dados.ponto.raio = 2;             // configura o raio dos vértices para 2 pixel
 dados.ponto.cor = novo RGB( 0, 0, 255 );  // configura a cor dos vértices para azul
 
 pc = novo PC3D();                   // instancia a classe PC3D
-pc.graficos[] = superficie;          // adiciona o objeto superficie ao vetor de dados
 pc.graficos[] = dados;               // adiciona o objeto dados ao vetor de dados
+pc.graficos[] = superficie;          // adiciona o objeto superficie ao vetor de dados
 
 plot3d( pc );                     // plota o gráfico

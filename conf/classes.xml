@@ -29,6 +29,7 @@
     <classe dir="explab/ex/" arq="CompareCasoException.exp" />
     <classe dir="explab/ex/" arq="ConfigException.exp" />
     <classe dir="explab/ex/" arq="ConstrutorException.exp" />
+    <classe dir="explab/ex/" arq="ExcecaoCapturaOuTratamentoEsperadoException.exp" />
     <classe dir="explab/ex/" arq="EstouroMemoriaException.exp" />
     <classe dir="explab/ex/" arq="ExpException.exp" />
     <classe dir="explab/ex/" arq="ForaDeFuncaoLancamentoException.exp" />

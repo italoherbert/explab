@@ -1,0 +1,6 @@
+para( i=0, j=1, i=2; i < 10 & j > -10; i++, j -= 2, i *= 1, j /= 1 ) {
+    int k = i+j;
+    exibaln i+"  "+j+"  "+k;
+}
+
+exibaln k;
