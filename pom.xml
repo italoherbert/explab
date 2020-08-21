@@ -12,10 +12,10 @@
         
         <executavel>explab-ide.exe</executavel>
         <main.classe>italo.explab_ide.ExpLabIDE</main.classe>
-        <jre.path>jre</jre.path>
+        <jre.path></jre.path>
     </properties>
                     
-    <repositories>
+    <!--repositories>
         <repository>
             <id>repositorio-local</id>
             <url>file:C:/Softwares/apache-maven-3.6.3/repositorio</url>
@@ -26,7 +26,7 @@
                 <enabled>true</enabled>
             </snapshots>
         </repository>        
-    </repositories>        
+    </repositories-->        
             
     <dependencies>                
         <dependency>
@@ -169,14 +169,14 @@
                 <configuration>
                     <archive>
                         <manifest>
-                            <mainClass>italo.explab_cmd.ExpLabCMD</mainClass>
+                            <mainClass>${main.classe}</mainClass>
                             <addClasspath>true</addClasspath>
                             <classpathPrefix>lib/</classpathPrefix>
                         </manifest>
                     </archive>
                 </configuration>                    
             </plugin>            
-            <plugin>
+            <!--plugin>
                 <groupId>com.akathist.maven.plugins.launch4j</groupId>
                 <artifactId>launch4j-maven-plugin</artifactId>
                 <version>1.5.1</version>
@@ -223,7 +223,7 @@
                         </configuration>
                     </execution>                                       
                 </executions>
-            </plugin>
+            </plugin-->
             <plugin>
                 <groupId>org.apache.maven.plugins</groupId>
                 <artifactId>maven-compiler-plugin</artifactId>

@@ -1,5 +1,5 @@
 <?xml version="1.0" encoding="UTF-8" ?>
-<testsuite tests="22" failures="0" name="explab.analisador.AnalisadorSintaticoTest" time="0.043" errors="0" skipped="0">
+<testsuite tests="22" failures="0" name="explab.analisador.AnalisadorSintaticoTest" time="0.067" errors="0" skipped="0">
   <properties>
     <property name="java.runtime.name" value="Java(TM) SE Runtime Environment"/>
     <property name="java.vm.version" value="14.0.2+12-46"/>
@@ -56,26 +56,26 @@
     <property name="sun.io.unicode.encoding" value="UnicodeLittle"/>
     <property name="sun.cpu.endian" value="little"/>
   </properties>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaChamadaFuncTest" time="0.001"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaMatrizTest" time="0"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaFacaEnquantoTest" time="0.001"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaChamadaFuncTest" time="0.002"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaMatrizTest" time="0.009"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaFacaEnquantoTest" time="0"/>
   <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaStringTest" time="0"/>
   <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaInstrucaoTest" time="0.001"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaTenteCaptureTest" time="0.002"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaBoolExpTest" time="0.002"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaCasoTest" time="0.017"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaIncDecTest" time="0"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaLeituraVarTest" time="0"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaNovoObjTest" time="0.002"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaParaTest" time="0.003"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaStringExpTest" time="0.003"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaNumExpTest" time="0.006"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaTenteCaptureTest" time="0"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaBoolExpTest" time="0.001"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaCasoTest" time="0.014"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaIncDecTest" time="0.002"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaLeituraVarTest" time="0.005"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaNovoObjTest" time="0.001"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaParaTest" time="0.001"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaStringExpTest" time="0.005"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaNumExpTest" time="0"/>
   <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaVetN1IncN2Test" time="0"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaNumRealTest" time="0"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaNumRealTest" time="0.001"/>
   <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaSeTest" time="0.002"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaCMDsTest" time="0.001"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaEnquantoTest" time="0.001"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaVarEntreParentesesTest" time="0"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaMatrizRealTest" time="0.001"/>
-  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaVarTest" time="0"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaCMDsTest" time="0.007"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaEnquantoTest" time="0.002"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaVarEntreParentesesTest" time="0.001"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaMatrizRealTest" time="0.002"/>
+  <testcase classname="explab.analisador.AnalisadorSintaticoTest" name="analisaVarTest" time="0.011"/>
 </testsuite>
