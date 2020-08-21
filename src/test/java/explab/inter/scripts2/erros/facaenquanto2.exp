@@ -1,9 +1,0 @@
-facaenquant21_v1 = 1;
-faca {
-    facaenquant21_v2 = 10;
-    exibaln facaenquant21_v1 * facaenquant21_v2;
-    facaenquant21_v1++;
-} enquanto ( facaenquant21_v1 > 3 );
-
-exibaln facaenquant21_v2;
-

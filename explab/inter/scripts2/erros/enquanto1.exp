@@ -1,9 +1,0 @@
-
-i = 10;
-enquanto ( i > 1 ) {
-    enquanto1_v1 = 10;
-    exibaln enquanto1_v1*i;
-    i--;
-}
-
-exibaln enquanto1_v1;

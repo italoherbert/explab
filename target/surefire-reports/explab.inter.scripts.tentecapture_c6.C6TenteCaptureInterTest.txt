@@ -1,4 +1,0 @@
--------------------------------------------------------------------------------
-Test set: explab.inter.scripts.tentecapture_c6.C6TenteCaptureInterTest
--------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 0.049 sec

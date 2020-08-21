@@ -1,9 +1,0 @@
-
-use circulo.Area;
-use retangulo.Area;
-
-area_retangulo = novo retangulo.Area( 10, 20 );
-area_circulo = novo circulo.Area( 10 );
-
-exibaln "Area do retângulo: "+area_retangulo.area();   // exibe: 200
-exibaln "Area do círculo: "+area_circulo.area();       // exibe: 314,159...

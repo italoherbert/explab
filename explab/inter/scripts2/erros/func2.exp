@@ -1,7 +1,0 @@
-
-func x( func1_1, func1_2 ) {
-    func1_3 = 1;
-    return func1_1+func1_2+func1_3;
-}
-
-exibaln func1_2;

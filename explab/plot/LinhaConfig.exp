@@ -1,8 +1,0 @@
-pacote explab.plot;
-
-classe LinhaConfig {
-    visivel = verdade;
-    cor = novo RGB( 0, 0, 255 );
-    gradiente = verdade;
-    iluminar = verdade;
-}

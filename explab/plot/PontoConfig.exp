@@ -1,7 +1,0 @@
-pacote explab.plot;
-
-classe PontoConfig {
-    visivel = falso;
-    raio = 5;
-    cor = novo RGB( 255, 0, 0 );
-}

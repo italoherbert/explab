@@ -1,5 +1,0 @@
-
-use a.Principal;
-
-p = novo a.Principal();
-p.main();

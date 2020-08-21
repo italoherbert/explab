@@ -1,7 +1,0 @@
-
-func x( a, b ) {
-    c = 1;
-    return a+b+c;
-}
-
-exibaln a;

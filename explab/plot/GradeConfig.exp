@@ -1,6 +1,0 @@
-pacote explab.plot;
-
-classe GradeConfig {
-    visivel = verdade;
-    cor = novo RGB();        
-}

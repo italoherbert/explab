@@ -1,3 +1,0 @@
-x=vetesp( -pi, pi, 100 );
-y=sen(x);
-plot(x,y);
