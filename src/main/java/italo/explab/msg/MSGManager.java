@@ -118,7 +118,6 @@ public class MSGManager {
                 }
                 errStream.envia( ((CodigoMSGErro)e).getMensagem() );
             } else {
-                System.out.println( e.getClasse().getName()+"  "+e.getChave() );
                 errStream.envia( "\n"+this.geraMSG( (CodigoErro)e ) );         
             }
         } else {
