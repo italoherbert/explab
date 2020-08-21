@@ -10,6 +10,7 @@ import libs.gui.arv.ArvNo;
 import italo.explab_ide.IDEErroMSGs;
 import italo.explab_ide.config.IDEConfig;
 import italo.explab_ide.gui.GUIVisivel;
+<<<<<<< HEAD
 import java.io.File;
 import java.io.FileOutputStream;
 import java.io.PrintStream;
@@ -27,6 +28,13 @@ import org.w3c.dom.Element;
 import org.w3c.dom.Node;
 import italo.explab_ide.logica.arquivo.projeto.ProjetoXMLNo;
 import italo.explab_ide.logica.arquivo.projeto.Projeto;
+=======
+import italo.explab_ide.logica.arquivo.projeto.Projeto;
+import java.io.File;
+import java.io.FileOutputStream;
+import java.io.PrintStream;
+import italo.explab_ide.logica.arquivo.projeto.ProjetoXMLNo;
+>>>>>>> origin/versao-2.2
 
 public class ProjetoCtrl {        
     
@@ -51,7 +59,11 @@ public class ProjetoCtrl {
          
         String projNome = projPastaCaminho.substring( k+1, len-1 );
         
+<<<<<<< HEAD
         List<ProjetoXMLNo> projetos = aplic.getProjetosXMLLeitor().getProjetos();
+=======
+        List<ProjetoXMLNo> projetos = aplic.getProjetosXMLManager().getProjetos();
+>>>>>>> origin/versao-2.2
         int size = projetos.size();
         boolean achou = false;
         for( int i = 0; !achou && i < size; i++ ) {
@@ -91,7 +103,11 @@ public class ProjetoCtrl {
             Projeto proj = new Projeto( projXMLNo );
             this.addProj( proj ); 
                                 
+<<<<<<< HEAD
             boolean atualizou = this.atualizaConfigXMLArquivo();
+=======
+            boolean atualizou = aplic.getProjetosXMLManager().salva( aplic.getConfig().getProjetosXMLConfigCaminho() );
+>>>>>>> origin/versao-2.2
             if ( atualizou ) {
                 guivisivel.setVisivel( false ); 
                 aplic.getMSGManager().mostraInfo( okMSGChave );                                                                               
@@ -101,6 +117,7 @@ public class ProjetoCtrl {
         } catch (IOException ex) {
             aplic.getMSGManager().mostraErro( IDEErroMSGs.ARQUIVO_IO_ERRO, projConfigArq ); 
         }                           
+<<<<<<< HEAD
     }
     
     public boolean atualizaConfigXMLArquivo() {
@@ -150,11 +167,30 @@ public class ProjetoCtrl {
     
     public ArqArvNo addProj( Projeto proj ) {
         ArqArvNo raiz = this.geraProjArvore( proj );
+=======
+    }    
+                        
+    public void carregaProjs() {                
+        for( ProjetoXMLNo no : aplic.getProjetosXMLManager().getProjetos() ) {                                    
+            Projeto proj = new Projeto( no );            
+            ArvNo raiz = aplic.getArquivoManager().geraArvRaiz( proj );
+            if ( raiz != null )
+                aplic.getGUI().getPrincipalGUI().getProjetosGUI().addProjeto( no.getNome(), raiz );                                     
+        }
+        
+        aplic.getGUI().getPrincipalGUI().getProjetosGUI().carrega();
+        aplic.getProjetosXMLManager().salva( aplic.getConfig().getProjetosXMLConfigCaminho() );
+    }
+    
+    public ArqArvNo addProj( Projeto proj ) {
+        ArqArvNo raiz = aplic.getArquivoManager().geraArvRaiz( proj );
+>>>>>>> origin/versao-2.2
         if ( raiz != null ) {
             String nome = proj.getNome();
             aplic.getGUI().getPrincipalGUI().getProjetosGUI().addProjeto( nome, raiz );                
             aplic.getGUI().getPrincipalGUI().getProjetosGUI().carrega();
             
+<<<<<<< HEAD
             aplic.getProjetosXMLLeitor().getProjetos().add( proj.getXMLNo() );
         }
         return raiz;
@@ -170,6 +206,13 @@ public class ProjetoCtrl {
         return null;
     }            
     
+=======
+            aplic.getProjetosXMLManager().getProjetos().add( proj.getXMLNo() );
+        }
+        return raiz;
+    }
+        
+>>>>>>> origin/versao-2.2
     public ArvNo getArvNo( String caminho )  {
         ArvGUITO guiTO = aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO();
         ArvNo raiz = guiTO.getNoRaiz();
@@ -177,7 +220,11 @@ public class ProjetoCtrl {
     }
     
     public ArvNo getArvNo( ArvNo no, String sisarqCaminho ) {
+<<<<<<< HEAD
         if ( aplic.getConfig().getComparador().igual(no.getSisArqCaminho(), sisarqCaminho ) )
+=======
+        if ( aplic.getConfig().getComparador().igual( no.getSisArqCaminho(), sisarqCaminho ) )
+>>>>>>> origin/versao-2.2
             return no;
         
         if ( no.isPasta() && !no.isVazio() ) {

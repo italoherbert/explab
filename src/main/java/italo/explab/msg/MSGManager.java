@@ -118,6 +118,10 @@ public class MSGManager {
                 }
                 errStream.envia( ((CodigoMSGErro)e).getMensagem() );
             } else {
+<<<<<<< HEAD
+=======
+                System.out.println( e.getClasse().getName()+"  "+e.getChave() );
+>>>>>>> origin/versao-2.2
                 errStream.envia( "\n"+this.geraMSG( (CodigoErro)e ) );         
             }
         } else {

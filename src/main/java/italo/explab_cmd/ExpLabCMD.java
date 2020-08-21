@@ -14,6 +14,7 @@ public class ExpLabCMD {
     public static void main(String[] args) {        
         SplashGUI splash = new SplashGUI();
         splash.setVisible( true );
+<<<<<<< HEAD
         SwingUtilities.invokeLater( () -> {
             Aplic aplic = new Aplic();
             CMDGUI gui = aplic.getGUI();
@@ -36,6 +37,32 @@ public class ExpLabCMD {
                 gui.getInterGUI().getGUITO().addCMDTexto( ex.getMessage() ); 
             }                                    
             gui.getInterGUI().setVisible( true );
+=======
+        
+        Aplic aplic = new Aplic();
+        CMDGUI gui = aplic.getGUI();
+
+        InterGUIControlador interControlador = new InterGUIControlador( aplic );            
+        CMDExpLabControlador expLabCMDControlador = new CMDExpLabControlador( aplic );
+
+        gui.getInterGUI().setInterGUIListener( interControlador );
+        aplic.getExpLab().setExpLabAplic( expLabCMDControlador );
+
+        try {       
+            OutStreamControlador streamControlador = new OutStreamControlador( aplic );
+
+            InterIni ini = new InterIni();
+            ini.setErrStream( streamControlador );
+            ini.setOutStream( streamControlador ); 
+
+            aplic.getExpLab().inicializa( ini );                
+        } catch ( InterException ex ) {
+            gui.getInterGUI().getGUITO().addCMDTexto( ex.getMessage() ); 
+        }     
+            
+    SwingUtilities.invokeLater( () -> {
+        gui.getInterGUI().setVisible( true );
+>>>>>>> origin/versao-2.2
             splash.setVisible( false ); 
         } );
     }

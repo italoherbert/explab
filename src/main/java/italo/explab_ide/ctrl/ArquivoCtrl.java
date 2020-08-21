@@ -162,8 +162,13 @@ public class ArquivoCtrl {
             
             ArqArvNo arqNo = (ArqArvNo)arvNo;
             if ( arqNo.isPastaDeProjeto() ) {
+<<<<<<< HEAD
                 aplic.getProjetosXMLLeitor().getProjetos().remove( arqNo.getProjeto().getXMLNo() );        
                 aplic.getProjetoCtrl().atualizaConfigXMLArquivo();                
+=======
+                aplic.getProjetosXMLManager().getProjetos().remove( arqNo.getProjeto().getXMLNo() );        
+                aplic.getProjetosXMLManager().salva( aplic.getConfig().getProjetosXMLConfigCaminho() );
+>>>>>>> origin/versao-2.2
             }
         }
     }

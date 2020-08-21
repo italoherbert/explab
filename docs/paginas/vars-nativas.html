@@ -1,0 +1,110 @@
+
+<div>			
+	<h3 class="titulo">Variáveis globais</h3>
+	
+	<h3 id="pi">PI</h3>
+	<p>A constante PI assume valor em torno de 3,14159... ela pode ser utilizada em expressões numéricas e matriciais. É do tipo real (ponto flutuante).</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+n = 2*3^sqrt( 25 ) + 2*pi;
+</code>
+</pre>
+	
+	<h3 id="e">E</h3>
+	<p>A constante E assume valor em torno de 2,718... ela pode ser utilizada em expressões numéricas e matriciais. É do tipo real (ponto flutuante). Essa constante 
+	corresponde ao valor de X cujo resultado da aplicação de qualquer função matemática a ela é igual ao resultado da aplicação da derivada desta mesma função.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+n = 2*3^sqrt( 25 ) + [1 2 3;4 5 6]*e;
+</code>
+</pre>
+			
+	
+	<h3 id="nan">NaN</h3>
+	<p>A constante NaN representa um valor de ponto flutuante não numérico. Por exemplo, o resultado de uma divisão de zero por zero pode ter como resultado o valor NaN que 
+	significa Not a Number (ou Não um Numérico), ou, ainda, (Não numérico). Obs: existe também a variável div_por_zero que ativa ou desativa o lançamento de uma exceção quando houver 
+	divisão por zero, ao invés da expressão numérica retornar um ou mais valores não numéricos.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+n = nan;
+n = 0 / 0;
+se ( n == nan ) {
+    exibaln "Flag de erro de divisão por zero desativado!";
+} senao {
+    exibaln "Flag de erro de divisão por zero ativado!";
+}
+</code>
+</pre>
+	
+	
+	<h3 id="inf">Inf</h3>
+	<p>A constante Inf representa o número real infinito e positivo. O sinal de menos pode ser utilizado para se obter o número real infinito negativo.</p>
+	<p>Exemplo de uso:</p>
+<pre class="codigo-fonte">
+<code>
+y1 = inf;
+y2 = -inf;
+y3 = 2/0;
+y4 = -2/0;
+se ( y3 == inf &amp; y4 == -inf ) {
+    exibaln "Flag de erro de divisão por zero desativado!";
+} senao {
+    exibaln "Flag de erro de divisão por zero ativado!";
+}
+</code>
+</pre>
+	<p>Perceba que o exemplo acima utiliza a instrução "se" seguida de uma condição (uma expressão booleana). Perceba os operadores de comparação de igualdade 
+	"==" e o operador "&amp;" que corresponde ao operador AND do PASCAL e o &amp;&amp; das linguagens C, C++ e Java.</p>	
+	
+	
+	<h3 id="div-por-zero">div_por_zero</h3>
+	<p>A variável div_por_zero é do tipo booleano. Isto é, pode assumir os valores "verdade" ou "falso" (em português!). Se estiver setada com o valor verdade, ativa o 
+	lançamento de uma exceção e mensagem de erro caso ocorra uma divisão por zero na execução de alguma expressão numérica. Caso contrário, o resultado da expressão será 
+	a constante NaN, ou Inf ou -Inf, que podem, inclusive, estar em elementos de matrizes calculadas com a ocorrência de divisões por zero.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+div_por_zero = verdade;
+div_por_zero = falso;
+
+se ( div_por_zero ) {
+    exibaln "Flag de erro de divisão por zero ativado!";
+} senao {
+    exibaln "Flag de erro de divisão por zero desativado!";
+}
+</code>
+</pre>
+	
+	
+	<h3 id="usuariodir">usuariodir</h3>
+	<p>A constante usuariodir é do tipo string (cadeia de caracteres). Éla é carregada com o valor correspondente ao caminho no sistema de arquivos para o diretório do usuário. 
+	Por exemplo, no windows, para um usuário de nome Italo, esta constante pode valer: "C:/Users/Italo". Para linux e o mesmo usuario, pode valer: "/home/Italo"</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+cd usuariodir
+script s.exp
+</code>
+</pre>
+	<p>No exemplo acima, o comando CD foi utilizado para alterar o diretório corrente para o diretório correspondente ao valor da variável usuariodir. O comando CD é 
+	semelhante ao mesmo do MS-DOS e Shell do linux. Após a mudança do diretório corrente, é executada a instrução SCRIPT que carrega, interpreta e executa o script 
+	de nome "s.exp" que pode conter quaisquer comandos ou declarações conforme as regras de sintaxe e semântica da linguagem EXPLAB.</p>
+	
+	
+	<h3 id="scriptdir">scriptdir</h3>
+	<p>A constante scriptdir é do tipo string (cadeia de caracteres). Éla é carregada com o valor correspondente ao caminho no sistema de arquivos para uma pasta reservada pelo 
+	EXPLAB para o armazenamento dos scripts escritos em EXPLAB.</p>
+	<p>Exemplos de uso:</p>
+<pre class="codigo-fonte">
+<code>
+cd scriptdir
+script s.exp
+</code>
+</pre>
+	<p>O exemplo acima é semelhante ao que utiliza a variável usuariodir, sendo que o diretório corrente é alterado para o valor correspondente ao caminho do diretório de scripts 
+	para que um script armazenado nele, de nome "s.exp", seja carregado, interpretado e executado.</p>
+
+</div>

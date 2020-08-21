@@ -8,7 +8,11 @@ import italo.explab.util.ContadorUtil;
 import italo.explab_ide.config.IDEConfig;
 import italo.explab_ide.controller.ctrl.AutoCompleteControllerCtrl;
 import italo.explab_ide.controller.ctrl.JanelaControllerCtrl;
+<<<<<<< HEAD
 import italo.explab_ide.logica.arquivo.projeto.ProjetosXMLLeitor;
+=======
+import italo.explab_ide.logica.arquivo.projeto.ProjetosXMLManager;
+>>>>>>> origin/versao-2.2
 import italo.explab_ide.ctrl.CodigoFonteCtrl;
 import italo.explab_ide.ctrl.ProjetoCtrl;
 import italo.explab_ide.controller.ctrl.ProjetoOuArquivoControllerCtrl;
@@ -28,7 +32,11 @@ public class ExpLabIDEAplic {
     private final IDEGUI gui;
     private final IDEConfig config = new IDEConfig();
     private final IDEMSGManager msgManager = new IDEMSGManager();
+<<<<<<< HEAD
     private final ProjetosXMLLeitor projetosXMLLeitor = new ProjetosXMLLeitor( this );
+=======
+    private final ProjetosXMLManager projetosXMLLeitor = new ProjetosXMLManager( this );
+>>>>>>> origin/versao-2.2
     
     private final ProjetoCtrl projetoCtrl = new ProjetoCtrl( this );
     private final ArquivoCtrl arquivoCtrl = new ArquivoCtrl( this );
@@ -93,7 +101,11 @@ public class ExpLabIDEAplic {
         return config;
     }
 
+<<<<<<< HEAD
     public ProjetosXMLLeitor getProjetosXMLLeitor() {
+=======
+    public ProjetosXMLManager getProjetosXMLManager() {
+>>>>>>> origin/versao-2.2
         return projetosXMLLeitor;
     }
     

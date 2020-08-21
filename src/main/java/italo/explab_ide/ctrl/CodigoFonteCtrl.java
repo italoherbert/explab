@@ -195,17 +195,25 @@ public class CodigoFonteCtrl {
             }
             
             aplic.getGUI().getPrincipalGUI().getCodigoFonteGUI().getGUITO().setSelecionaTab( arquivosAbertos.getArquivoFocadoI() );                         
+<<<<<<< HEAD
         } catch (IOException ex) {
             Logger.getLogger(CodigoFonteCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }                                        
         
         try {
+=======
+            
+>>>>>>> origin/versao-2.2
             List<String> nosCaminhosParaExpandir = aplic.getRecursosAbertosManager().recuperaNosCaminhosParaExpandir();
             for( String caminho : nosCaminhosParaExpandir )
                 arvGUITO.rolarParaEOuExpande(caminho, false, true );
         } catch (IOException ex) {
             Logger.getLogger(CodigoFonteCtrl.class.getName()).log(Level.SEVERE, null, ex);
+<<<<<<< HEAD
         }
+=======
+        }                                                
+>>>>>>> origin/versao-2.2
     }
     
     public void salvaRecursosAbertos( ArvGUITO arvGUITO ) {

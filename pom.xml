@@ -3,7 +3,11 @@
     <modelVersion>4.0.0</modelVersion>
     <groupId>italo</groupId>
     <artifactId>explab</artifactId>
+<<<<<<< HEAD
     <version>2.0</version>
+=======
+    <version>2.2</version>
+>>>>>>> origin/versao-2.2
     <packaging>jar</packaging>
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
@@ -18,7 +22,11 @@
     <!--repositories>
         <repository>
             <id>repositorio-local</id>
+<<<<<<< HEAD
             <url>file:C:/Softwares/apache-maven-3.6.3/repositorio</url>
+=======
+            <url>file:/home/italo/.m2/repositorio</url>
+>>>>>>> origin/versao-2.2
             <releases>
                 <enabled>true</enabled>
             </releases>
@@ -32,7 +40,11 @@
         <dependency>
             <groupId>italo</groupId>
             <artifactId>iplot</artifactId>
+<<<<<<< HEAD
             <version>1.0</version>
+=======
+            <version>1.2</version>
+>>>>>>> origin/versao-2.2
             <scope>compile</scope>
         </dependency>         
         <dependency>
