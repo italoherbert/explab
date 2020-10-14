@@ -14,6 +14,7 @@ import italo.explab.recursos.classe.util.VariavelNome;
 import italo.explab.var.StringVar;
 import italo.explab.var.Var;
 import italo.explab.var.mat.MatrizVar;
+import italo.explab.var.num.RealVar;
 
 public class PlanoCartesiano3DBuilder {
     
@@ -21,6 +22,7 @@ public class PlanoCartesiano3DBuilder {
     private final GradeConfigBuilder aparenciaCFGBuilder = new GradeConfigBuilder();
     private final Dados3DBuilder dados3DBuilder = new Dados3DBuilder(); 
     private final Func3DBuilder func3DBuilder = new Func3DBuilder();
+    private final PFunc3DBuilder pfunc3DBuilder = new PFunc3DBuilder();
     
     public ExpLabPlanoCartesiano3D build( FuncExp fno, Executor executor, Codigo codigo, Var var, ClasseUtil classeUtil ) throws ClasseUtilException {
         ExpLabPlanoCartesiano3D pc = new ExpLabPlanoCartesiano3D();
@@ -37,7 +39,10 @@ public class PlanoCartesiano3DBuilder {
         StringVar xRotuloVar = classeUtil.stringValor( pcObjRecursos, new VariavelNome( "xrotulo", pc3dObjVN ) );
         StringVar yRotuloVar = classeUtil.stringValor( pcObjRecursos, new VariavelNome( "yrotulo", pc3dObjVN ) );
         StringVar zRotuloVar = classeUtil.stringValor( pcObjRecursos, new VariavelNome( "zrotulo", pc3dObjVN ) );
-
+        RealVar dxVar = classeUtil.realValor( pcObjRecursos, new VariavelNome( "dx", pc3dObjVN ), false );
+        RealVar dyVar = classeUtil.realValor( pcObjRecursos, new VariavelNome( "dy", pc3dObjVN ), false );
+        RealVar dzVar = classeUtil.realValor( pcObjRecursos, new VariavelNome( "dz", pc3dObjVN ), false );
+                
         if ( tituloVar != null )
             pc.setTitulo( tituloVar.getValor() );
         if ( xRotuloVar != null )
@@ -45,7 +50,13 @@ public class PlanoCartesiano3DBuilder {
         if ( yRotuloVar != null )
             pc.setYRotulo( yRotuloVar.getValor() );                
         if ( zRotuloVar != null )
-            pc.setZRotulo( zRotuloVar.getValor() );                
+            pc.setZRotulo( zRotuloVar.getValor() );  
+        if ( dxVar != null )
+            pc.setDX( dxVar.getValor() );  
+        if ( dyVar != null )
+            pc.setDY( dyVar.getValor() );  
+        if ( dzVar != null )
+            pc.setDZ( dzVar.getValor() );  
 
         VariavelNome graficosListaVN = new VariavelNome( "graficos", pc3dObjVN );
         MatrizVar graficosLista = classeUtil.arrayValor(pcObjRecursos, graficosListaVN );
@@ -62,13 +73,18 @@ public class PlanoCartesiano3DBuilder {
                     if ( superficieObj != null ) {       
                         pc.addGrafico( dados3DBuilder.build( superficieObj, vn, true, classeUtil ) );
                     } else {
-                        Objeto funcObj = classeUtil.buscaObjeto( v, "Func3D", vn );
+                        Objeto funcObj = classeUtil.buscaObjeto( v, "Func3D", vn, false );
                         if ( funcObj != null ) {
                             pc.addGrafico( func3DBuilder.build( fno, executor, codigo, funcObj, vn, classeUtil ) );
                         } else {
-                            String vc = classeUtil.variavelCompleta( vn );
-                            String classeNome = "Dados3D, Superficie3D ou Func3D";
-                            throw new ClasseUtilException( ClasseUtilException.INSTANCIA_DE_UMA_DAS_CLASSES_ESPERADA, vc, classeNome );
+                            Objeto pfuncObj = classeUtil.buscaObjeto( v, "PFunc3D", vn, false );
+                            if ( pfuncObj != null ) {
+                                pc.addGrafico( pfunc3DBuilder.build( fno, executor, codigo, pfuncObj, vn, classeUtil ) );
+                            } else {
+                                String vc = classeUtil.variavelCompleta( vn );
+                                String classeNome = "Dados3D, Superficie3D, Func3D ou PFunc3D";
+                                throw new ClasseUtilException( ClasseUtilException.INSTANCIA_DE_UMA_DAS_CLASSES_ESPERADA, vc, classeNome );
+                            }
                         }
                     }                
                 }

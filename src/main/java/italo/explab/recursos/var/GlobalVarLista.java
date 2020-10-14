@@ -14,8 +14,10 @@ public class GlobalVarLista extends VarLista {
     public final static String USUARIO_DIR = "usuariodir";
     public final static String DIV_POR_ZERO = "div_por_zero";
     public final static String ARQ_CHARSET = "arq_charset";
+    public final static String SUAVIZAR2D = "suavizar2d";
         
     private final Variavel divisaoPorZero;
+    private final Variavel suavizar2d;
     
     public GlobalVarLista() {        
         Variavel pi = new Variavel( PI, new NumeroRealVar( Math.PI ) );
@@ -31,12 +33,14 @@ public class GlobalVarLista extends VarLista {
         infPos.setConstante( true );
                         
         divisaoPorZero = new Variavel( DIV_POR_ZERO, new BooleanVar( false ) );
+        suavizar2d = new Variavel( SUAVIZAR2D, new BooleanVar( true ) );
         
         super.vars.add( pi );
         super.vars.add( e );  
         super.vars.add( nan );
         super.vars.add( infPos );
         super.vars.add( divisaoPorZero );
+        super.vars.add( suavizar2d );
     }
             
     public boolean verificaSeVarConstante( String nome ) {

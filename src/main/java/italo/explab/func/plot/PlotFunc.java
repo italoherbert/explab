@@ -36,7 +36,7 @@ public class PlotFunc extends AbstractFunc {
             return new FuncResult( new CodigoErro( this.getClass(), codigo, fno.getI(), ErroMSGs.PARAMS_QUANT_INVALIDA, "1 ou 2" ) );
                 
         ClasseUtil classeUtil = executor.getAplic().getClasseUtil();
-        try {
+        try {                        
             if ( params.length == 1 ) {
                 Var var = params[0].getVar();
 
@@ -86,7 +86,7 @@ public class PlotFunc extends AbstractFunc {
                 dados2d.setDadosY( vy );
                                 
                 pc.addGrafico( dados2d );                
-                
+                                                
                 executor.getAplic().getPlotador().plot( pc );
             }            
             return new FuncResult( this );

@@ -41,25 +41,28 @@ public class CodigoFonteGUIController implements CodigoFonteGUIListener {
     }   
 
     @Override
+    public String textoMouseSobreTab( CodigoFonteTPPainelGUITO guiTO, int i ) {
+        return aplic.getCodigoFonteCtrl().mouseSobreTabTexto( guiTO, i );
+    }
+
+    @Override
     public void removeTodasAsTabs( CodigoFonteGUITO guiTO, int i ) {
-        aplic.getCodigoFonteCtrl().removeTodosTPPainelGUITO();        
-        guiTO.removeTodasAsTabs();
+        aplic.getCodigoFonteCtrl().removeTodasAsTabs( guiTO ); 
     }
 
     @Override
     public void removeOutrasTabs( CodigoFonteGUITO guiTO, int i ) {
-        CodigoFonteTPPainelGUITO tpPainelGUITO = guiTO.getTPPainelGUITO( i );
-        
-        aplic.getCodigoFonteCtrl().removeOutrosTPPainelGUITO( tpPainelGUITO );
-        guiTO.removeOutrasTabs( i );
+        aplic.getCodigoFonteCtrl().removeOutrasTabs( guiTO, i );
     }
 
     @Override
-    public void removeEstaTab( CodigoFonteGUITO guiTO, int i ) {
-        CodigoFonteTPPainelGUITO tpPainelGUITO = guiTO.getTPPainelGUITO( i );
-        
-        aplic.getCodigoFonteCtrl().removeTPPainelGUITO( tpPainelGUITO );
-        guiTO.removeEstaTab( i );
+    public void removeEstaTab( CodigoFonteGUITO guiTO, int i ) {        
+        aplic.getCodigoFonteCtrl().removeEstaTab( guiTO, i );
+    }
+
+    @Override
+    public void executarArquivo(CodigoFonteGUITO guiTO) {
+        aplic.getExecCtrl().executaArquivoSelecionado();
     }
 
 }

@@ -1,0 +1,14 @@
+x = vetesp( -5, 5, 30 );
+y = x;
+xx = xmalhagrade( x, y );
+yy = ymalhagrade( x, y );
+z = 12 * cos( ( xx^2 + yy^2 ) / 4 ) / ( 3 + xx^2 + yy^2 );
+
+superficie = novo Superficie3D();
+superficie.setDados( x, y, z );   // poderia-se utilizar os atributos xvetor, yvetor, zmat
+
+pc = novo PC3D();
+pc.titulo = "Função Circular 3D";
+pc.graficos[] = superficie;
+
+plot3d( pc );

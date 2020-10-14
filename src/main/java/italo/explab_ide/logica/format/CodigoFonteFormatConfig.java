@@ -42,7 +42,7 @@ public class CodigoFonteFormatConfig {
         comentarioStyle.addAttribute( StyleConstants.Foreground, new Color( 100, 100, 100 ) );
         
         varNativaStyle = new SimpleAttributeSet();
-        varNativaStyle.addAttribute( StyleConstants.Foreground, new Color( 30, 100, 50 ) ); 
+        varNativaStyle.addAttribute( StyleConstants.Foreground, new Color( 50, 180, 80 ) ); 
         
         funcNativaStyle = new SimpleAttributeSet();
         funcNativaStyle.addAttribute( StyleConstants.Foreground, new Color( 120, 120, 200 ) ); 

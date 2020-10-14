@@ -12,7 +12,7 @@ public interface IDEErroMSGs {
     
     public final static String NENHUM_ARQUIVO_SELECIONADO = "arquivo.nao.selecionado";
     
-    public final static String ARQ_DE_PROJ_NAO_ENCONTRADO = "arq.proj.nao.encontrado";
+    public final static String ARQS_DE_PROJ_NAO_ENCONTRADOS = "arqs.proj.nao.encontrados";
     
     public final static String PROJETO_NOME_VASIO = "projeto.nome.vasio";
     public final static String PROJETO_JA_EXISTE = "projeto.ja.existe";

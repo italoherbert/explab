@@ -5,7 +5,6 @@ import italo.explab.arvore.exp.VarOuFuncExecResult;
 import italo.explab.msg.Erro;
 import italo.explab.var.Var;
 import italo.explab.var_alterador.VarAlterador;
-import static sun.jvm.hotspot.HelloWorld.e;
 
 public class MatrizExecResult extends VarOuFuncExecResult {
     

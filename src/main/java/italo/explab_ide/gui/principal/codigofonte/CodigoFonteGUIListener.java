@@ -9,10 +9,16 @@ public interface CodigoFonteGUIListener extends CodigoFonteTPPainelGUIListener {
         
     public void antesTabRemovida( CodigoFonteTPPainelGUITO guiTO, int i );        
     
+    public String textoMouseSobreTab( CodigoFonteTPPainelGUITO guiTO, int i );
+    
+    
     public void removeTodasAsTabs( CodigoFonteGUITO guiTO, int i );
 
     public void removeOutrasTabs( CodigoFonteGUITO guiTO, int i );
     
     public void removeEstaTab( CodigoFonteGUITO guiTO, int i );
+    
+    
+    public void executarArquivo( CodigoFonteGUITO guiTO );
     
 }

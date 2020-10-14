@@ -18,21 +18,16 @@ public class ClasseLeituraFormat extends ClasseOuFuncFormat {
         if ( cont == 0 )
             return new AnaliseResult();
         
-        if ( codigo.isCHValido( i+cont ) ) {
-            char ch = codigo.getCH( i+cont );
-            switch( ch ) {
-                case ' ':
-                case '\r':
-                case '\t':
-                case '\n':
-                case ';':
-                    return new AnaliseResult( cont );
-                default:
-                    return new AnaliseResult();
-            }
+        if ( i > 0 ) {
+            char ch = codigo.getSEGCH( i-1 );                
+            if ( Character.isLetterOrDigit( ch ) || ch == '_' )
+                return new AnaliseResult();                    
         }
-                
-        return new AnaliseResult( cont );
+        char ch = codigo.getSEGCH( i+cont );
+        if ( Character.isLetterOrDigit( ch ) || ch == '_' )
+            return new AnaliseResult();
+
+        return new AnaliseResult( cont );                            
     }
    
 }

@@ -9,7 +9,7 @@ import java.io.File;
 import javax.swing.JFileChooser;
 import javax.swing.filechooser.FileFilter;
 
-public class NovoProjetoController implements NovoProjetoGUIListener{   
+public class NovoProjetoController implements NovoProjetoGUIListener {   
     
     private final ExpLabIDEAplic aplic;
     
@@ -25,14 +25,12 @@ public class NovoProjetoController implements NovoProjetoGUIListener{
             return;
         }
         
-        String projPastaCaminho = guiTO.getProjCaminho();
-        String okMSGChave = IDEInfoMSGs.PROJETO_CRIADO;
-        
+        String projPastaCaminho = guiTO.getProjCaminho();        
         if ( !projPastaCaminho.endsWith( File.separator ) )
             projPastaCaminho += File.separator;
         projPastaCaminho += nome;
         
-        aplic.getProjetoCtrl().novoOuAbrir( projPastaCaminho, guiTO, okMSGChave );
+        aplic.getProjetoCtrl().novoProjeto( projPastaCaminho, guiTO );
     }
     
     @Override

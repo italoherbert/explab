@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">        
+
+    <propriedade nome="conf.ajuda.classes.plot2d">${conf.ajuda.classes}/plot2d</propriedade>
+    <propriedade nome="doc.paginas.classes.plot2d">${doc.paginas.classes}/plot2d</propriedade>
+        
+    <pagina url="${doc.paginas.classes.plot2d}/PC2D.html"> 
+        <conteudo>
+            <chave nome="grafico" peso="7" />
+            <chave nome="graficos" peso="7" />
+            <chave nome="plot" peso="10" />
+            <chave nome="classe" peso="6" />                     
+            <chave nome="plano" peso="5" />                        
+            <chave nome="cartesiano" peso="4" />  
+            <chave nome="função" peso="5" />                 
+            <chave nome="function" peso="5" />                      
+            <chave nome="2d" peso="8" />
+            <chave nome="PC2D" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes.plot2d}/Func2D.html"> 
+        <conteudo>  
+            <chave nome="função" peso="9" />                 
+            <chave nome="function" peso="9" />                     
+            <chave nome="Func2D" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes.plot2d}/Dados2D.html"> 
+        <conteudo>
+            <chave nome="dados" peso="7" />
+            <chave nome="Dados2D" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+</conteudos>

@@ -41,8 +41,8 @@ public class FExecFunc extends AbstractFunc {
                 
                 Instrucao[] instrucoes = funcManager.carregaInstrucoes( fexp, func );                
                 fexp.getBloco().setInstrucoes( instrucoes );
-                                                         
-                return funcManager.exec( func, fexp, executor, codigo, pars );
+                                                
+                return funcManager.exec( func, fexp, executor, codigo, pars );                
             } else {
                 int quantParamsEsperado = func.getQuantParametros()+1;
                 return new FuncResult( new CodigoErro( this.getClass(), codigo, ErroMSGs.PARAMS_QUANT_INVALIDA, String.valueOf( quantParamsEsperado ) ) );                 

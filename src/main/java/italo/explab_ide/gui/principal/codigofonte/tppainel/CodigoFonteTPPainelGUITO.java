@@ -16,7 +16,7 @@ import javax.swing.text.AttributeSet;
 import javax.swing.text.BadLocationException;
 import javax.swing.text.Document;
 import javax.swing.text.StyledDocument;
-import libs.gui.tpcombtfechar.TPBTFecharTituloPainel;
+import libs.gui.tpcombtfechar.TPBTFecharTabComponent;
 
 public class CodigoFonteTPPainelGUITO {
     
@@ -137,7 +137,7 @@ public class CodigoFonteTPPainelGUITO {
     
     public void codigoAlterado() {        
         int indice = gui.getTP().indexOfComponent( gui );
-        TPBTFecharTituloPainel pnl = (TPBTFecharTituloPainel)gui.getTP().getTabComponentAt( indice );
+        TPBTFecharTabComponent pnl = (TPBTFecharTabComponent)gui.getTP().getTabComponentAt( indice );
         pnl.getTituloLB().setForeground( Color.BLUE ); 
 
         alterado = true; 
@@ -147,7 +147,7 @@ public class CodigoFonteTPPainelGUITO {
         alterado = false;
         
         int indice = gui.getTP().indexOfComponent( gui );
-        TPBTFecharTituloPainel pnl = (TPBTFecharTituloPainel)gui.getTP().getTabComponentAt( indice );
+        TPBTFecharTabComponent pnl = (TPBTFecharTabComponent)gui.getTP().getTabComponentAt( indice );
         pnl.getTituloLB().setForeground( Color.BLACK ); 
     }        
     
@@ -743,6 +743,10 @@ public class CodigoFonteTPPainelGUITO {
 
     public int getAutoCompleteI() {
         return autoCompleteI;
+    }
+    
+    public CodigoFonteTPPainelGUI getCodigoFonteTPPainelGUI() {
+        return gui;
     }
         
     class CodigoFonte {

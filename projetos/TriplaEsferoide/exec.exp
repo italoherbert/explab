@@ -1,0 +1,34 @@
+t = [0:pi/500:pi];
+
+x = zeros( 3, matnc(t) );
+y = zeros( 3, matnc(t) );
+
+x(0,:) = sen(t)*cos(10*t);
+x(1,:) = sen(t)*cos(12*t);
+x(2,:) = sen(t)*cos(20*t);
+
+y(0,:) = sen(t)*sen(10*t);
+y(1,:) = sen(t)*sen(12*t);
+y(2,:) = sen(t)*sen(20*t);
+
+z = cos(t);
+    
+dados = novo Dados3D();
+dados.setDados( x(0,:), y(0,:), z );
+dados.legenda = "Esferoide 1";
+
+dados2 = novo Dados3D();
+dados2.setDados( x(1,:), y(1,:), z );
+dados2.legenda = "Esferoide 2";
+
+dados3 = novo Dados3D();
+dados3.setDados( x(2,:), y(2,:), z );
+dados3.legenda = "Esferoide 3";
+        
+pc = novo PC3D();
+pc.graficos[] = dados;
+pc.graficos[] = dados2;
+pc.graficos[] = dados3;
+    
+plot3d( pc );
+

@@ -2,8 +2,8 @@ package italo.explab_ide.logica.arquivo.projeto;
 
 public class ProjetoXMLNo {
        
-    private final String nome;
-    private final String basedir;
+    private String nome;
+    private String basedir;
 
     public ProjetoXMLNo( String nome, String basedir ) {
         this.nome = nome;
@@ -16,6 +16,14 @@ public class ProjetoXMLNo {
 
     public String getBasedir() {
         return basedir;
+    }
+    
+    public void setNome( String nome ) {
+        this.nome = nome;
+    }
+    
+    public void setBasedir( String basedir ) {
+        this.basedir = basedir;
     }
     
 }

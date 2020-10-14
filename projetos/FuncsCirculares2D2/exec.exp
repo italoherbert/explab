@@ -1,0 +1,29 @@
+f = novo Func2D( -pi, pi );
+f.y1 = -2.0;
+f.y2 = 2.0;
+f.limitarY = verdade;
+f.xcompleto = verdade;
+f.legenda = "cosseno";
+f.linha.cor = novo RGB( 0, 0, 255 );
+
+f.fun = func( x ) {
+    retorne cos( x );
+};
+
+f2 = novo Func2D( -pi, pi );
+f2.xcompleto = verdade;
+f2.legenda = "seno";
+f2.linha.cor = novo RGB( 255, 0, 0 );
+
+f2.fun = func( x ) {
+    retorne sen( x );
+};
+
+pc = novo PC2D();
+pc.titulo = "Senos e Cossenos";
+pc.xrotulo = "Eixo X";
+pc.yrotulo = "Eixo Y";
+pc.graficos[] = f;
+pc.graficos[] = f2;
+
+plot( pc );

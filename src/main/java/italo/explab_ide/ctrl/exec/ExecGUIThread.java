@@ -4,6 +4,7 @@ import italo.explab.ExpLab;
 import italo.explab.ExpLabAplic;
 import italo.explab.InterException;
 import italo.explab_ide.ExpLabIDEAplic;
+import italo.explab_ide.IDEInfoMSGs;
 import italo.explab_ide.IDELeituraManager;
 import italo.explab_ide.ctrl.CodigoFonteCtrl;
 import italo.explab_ide.ctrl.exec.cmd.CMD;
@@ -66,6 +67,9 @@ public class ExecGUIThread extends Thread implements ExpLabAplic, SaidaTPPainelG
         explab.exec( cmd ); 
                         
         execucaoConcluida = true;
+        
+        String concluidaMSG = aplic.getMSGManager().getInfo( IDEInfoMSGs.EXEC_CONCLUIDA );        
+        guiTO.getOutStream().envia( concluidaMSG ); 
     }
     
     @Override

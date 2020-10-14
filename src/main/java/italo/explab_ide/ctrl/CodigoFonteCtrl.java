@@ -15,8 +15,9 @@ import java.util.Map;
 import java.util.Set;
 import libs.gui.arv.ArvNo;
 import italo.explab_ide.IDEErroMSGs;
-import italo.explab_ide.logica.arquivo.projeto.Projeto;
+import italo.explab_ide.gui.principal.codigofonte.CodigoFonteGUITO;
 import italo.explab_ide.logica.arquivo.projeto.ProjetoConfig;
+import italo.explab_ide.logica.arquivo.projeto.ProjetoXMLNo;
 import italo.explab_ide.logica.arquivo.recursos_abertos.codigosfonte.ArquivoAberto;
 import italo.explab_ide.logica.arquivo.recursos_abertos.codigosfonte.ArquivosAbertos;
 import italo.explab_ide.logica.format.CodigoFonteDocumento;
@@ -37,7 +38,7 @@ public class CodigoFonteCtrl {
     private final ExpLabIDEAplic aplic;
     private final ExpLab explab = new ExpLab();
     
-    private final Map<String, CodigoFonteTPPainelGUITO> tpPainelGUITOs = new HashMap();
+    private Map<String, CodigoFonteTPPainelGUITO> tpPainelGUITOs = new HashMap();
 
     public CodigoFonteCtrl( ExpLabIDEAplic aplic, IDEGUI gui ) {
         this.aplic = aplic;                        
@@ -49,39 +50,103 @@ public class CodigoFonteCtrl {
         } 
     }   
     
-    public void removeTodosTPPainelGUITO() {
-        tpPainelGUITOs.clear();
+    public void setNomePastaParaArquivosAbertos( String pastaUrl, String novaPastaUrl ) {        
+        Map<String, CodigoFonteTPPainelGUITO> copia = tpPainelGUITOs;        
+        tpPainelGUITOs = new HashMap();
+
+        String purl = pastaUrl.replace( "\\", "/" );
+        if ( !purl.endsWith( "/" ) )
+            purl += "/"; 
+        
+        String novaPUrl = novaPastaUrl.replace( "\\", "/" );
+        if ( !novaPUrl.endsWith( "/" ) )
+            novaPUrl += "/";
+        
+        Set<String> keys = copia.keySet();
+        for( String sisarq : keys ) {
+            String caminho = sisarq.replace( "\\", "/" );            
+            if ( caminho.startsWith( purl ) )
+                caminho = caminho.replace( purl, novaPUrl );            
+            
+            tpPainelGUITOs.put( caminho, copia.get( sisarq ) );
+        }
     }
     
-    public void removeOutrosTPPainelGUITO( CodigoFonteTPPainelGUITO guiTO ) {
+    public void removeTodasAsTabs( CodigoFonteGUITO guiTO ) {        
+        tpPainelGUITOs.clear();        
+        guiTO.removeTodasAsTabs();
+    }
+    
+    public void removeOutrasTabs( CodigoFonteGUITO guiTO, int i ) {
+        CodigoFonteTPPainelGUITO tpPainelGUITO = guiTO.getTPPainelGUITO( i );        
+
         Set<String> keys = new HashSet( tpPainelGUITOs.keySet() );
         for( String sisarqCaminho : keys ) {
             Object valor = tpPainelGUITOs.get( sisarqCaminho );
-            if ( !valor.equals( guiTO ) )
-                this.removeTPPainelGUITO( sisarqCaminho );            
+            if ( !valor.equals( tpPainelGUITO ) )
+                this.removeTPPainelGUITO( sisarqCaminho );                        
         }
+        
+        guiTO.removeOutrasTabs( i );
     }       
-                        
-    public boolean removeTPPainelGUITO( CodigoFonteTPPainelGUITO guiTO ) {
+                               
+    public boolean removeEstaTab( CodigoFonteGUITO guiTO, int i ) {
+        CodigoFonteTPPainelGUITO tpPainelGUITO = guiTO.getTPPainelGUITO( i );        
+        
+        boolean removeu = this.removeTPPainelGUITO( tpPainelGUITO );
+        if ( removeu )
+            guiTO.removeEstaTab( i );
+       
+        return removeu;
+    }
+
+    public boolean removeTPPainelGUITO( CodigoFonteTPPainelGUITO tpPainelGUITO ) {                       
         Set<String> keys = tpPainelGUITOs.keySet();
         for( String sisarqCaminho : keys ) {
             Object valor = tpPainelGUITOs.get( sisarqCaminho );
-            if ( valor.equals( guiTO ) ) {
-                this.removeTPPainelGUITO( sisarqCaminho );            
+            if ( valor.equals( tpPainelGUITO ) ) {
+                tpPainelGUITOs.remove( sisarqCaminho );
                 return true;
             }
         }        
         return false;
     }
-    
+        
     public CodigoFonteTPPainelGUITO removeTPPainelGUITO( String sisarqCaminho ) {                       
         Iterator<String> keysIT = tpPainelGUITOs.keySet().iterator();
         while( keysIT.hasNext() ) {
             String sisarqCaminho2 = keysIT.next();
-            if ( sisarqCaminho.equals( sisarqCaminho2 ) )
+            if ( sisarqCaminho.equals( sisarqCaminho2 ) ) {
                 return tpPainelGUITOs.remove( sisarqCaminho2 );             
+            }
         }
         return null;               
+    }        
+    
+    public String mouseSobreTabTexto( CodigoFonteTPPainelGUITO tpPainelGUITO, int i ) {
+        Set<String> keys = tpPainelGUITOs.keySet();
+        for( String sisarqCaminho : keys ) {
+            Object valor = tpPainelGUITOs.get( sisarqCaminho );
+            if ( valor.equals( tpPainelGUITO ) )
+                return sisarqCaminho;            
+        }        
+        return null;
+    }
+    
+    public List<CodigoFonteTPPainelGUITO> removeArquivosDeProjeto( String projetoSysArqCaminho ) {
+        Iterator<String> keysIT = tpPainelGUITOs.keySet().iterator();
+        List<String> removerList = new ArrayList();
+        while( keysIT.hasNext() ) {
+            String sisarqCaminho2 = keysIT.next();
+            if ( sisarqCaminho2.startsWith( projetoSysArqCaminho ) )
+                removerList.add( sisarqCaminho2 );
+        }
+        
+        List<CodigoFonteTPPainelGUITO> lista = new ArrayList();
+        for( String key : removerList )
+            lista.add( tpPainelGUITOs.remove( key ) );
+            
+        return lista;
     }
     
     public CodigoFonteTPPainelGUITO getTPPainelGUITO( String sisarqCaminho ) {
@@ -93,7 +158,18 @@ public class CodigoFonteCtrl {
         }
         return null; 
     }
-                
+    
+    public String getSisArqPorTPPainelGUITO( CodigoFonteTPPainelGUITO guiTO ) {
+        Iterator<String> keysIT = tpPainelGUITOs.keySet().iterator();
+        while( keysIT.hasNext() ) {
+            String sisarqCaminho = keysIT.next();
+            CodigoFonteTPPainelGUITO valor = tpPainelGUITOs.get( sisarqCaminho );
+            if ( valor.equals( guiTO ) ) 
+                return sisarqCaminho;             
+        }
+        return null; 
+    }
+                        
     public boolean temArquivoNaoSalvo() {
         Set<String> keys = tpPainelGUITOs.keySet();
         for( String sisarqCaminho : keys ) {
@@ -107,8 +183,8 @@ public class CodigoFonteCtrl {
     public void salvaArquivosModificados() {
         Set<String> keys = tpPainelGUITOs.keySet();
         for( String sisarqCaminho : keys ) {
-            CodigoFonteTPPainelGUITO guiTO = tpPainelGUITOs.get( sisarqCaminho );
-            if ( guiTO.isAlterado() ) {
+            CodigoFonteTPPainelGUITO cfGUITO = tpPainelGUITOs.get( sisarqCaminho );
+            if ( cfGUITO.isAlterado() ) {
                 try {   
                     String charset = this.leProjCharset( sisarqCaminho );
                                             
@@ -117,15 +193,16 @@ public class CodigoFonteCtrl {
                         file.createNewFile();
 
                     try ( PrintWriter pw = new PrintWriter( file, charset ) ) {
-                        pw.print( guiTO.getDocText() );
+                        pw.print( cfGUITO.getDocText() );
                     }
 
-                    guiTO.arquivoSalvoEAtualizado();                    
+                    cfGUITO.arquivoSalvoEAtualizado();                    
                 } catch (IOException ex) {
                     aplic.getMSGManager().mostraErro( "arquivo.nao.encontrado", sisarqCaminho ); 
                 }                
             }
         }
+        aplic.getGUI().getPrincipalGUI().salvoIcone();
     }
     
     public void formataArquivoModificado( CodigoFonteTPPainelGUITO guiTO ) {
@@ -198,7 +275,13 @@ public class CodigoFonteCtrl {
             
             List<String> nosCaminhosParaExpandir = aplic.getRecursosAbertosManager().recuperaNosCaminhosParaExpandir();
             for( String caminho : nosCaminhosParaExpandir )
-                arvGUITO.rolarParaEOuExpande(caminho, false, true );
+                arvGUITO.rolarParaEOuExpande( caminho, false, true );
+            
+            String noSelecionadoCaminho = aplic.getRecursosAbertosManager().recuperaNoSelecionadoCaminho();
+            if ( noSelecionadoCaminho != null ) {
+                if ( arvGUITO.getNoPorCaminho( noSelecionadoCaminho ) != null )
+                    arvGUITO.rolarParaESelecionar( noSelecionadoCaminho );                       
+            }
         } catch (IOException ex) {
             Logger.getLogger(CodigoFonteCtrl.class.getName()).log(Level.SEVERE, null, ex);
         }                                                
@@ -220,9 +303,17 @@ public class CodigoFonteCtrl {
             aplic.getRecursosAbertosManager().salvaNosCaminhosParaExpandir( nosParaExpandir );
         } catch (IOException ex) {
             
+        }
+
+        try {
+            String noSelecionadoCaminho = arvGUITO.getSelecaoCaminho();
+            if ( noSelecionadoCaminho != null )
+                aplic.getRecursosAbertosManager().salvaNoSelecionadoCaminho( noSelecionadoCaminho );
+        } catch (IOException ex) {
+            
         }        
     }
-    
+            
     private ArquivosAbertos carregaArquivosAbertos() {
         CodigoFonteTPPainelGUITO selectGUITO = aplic.getGUI().getPrincipalGUI().getCodigoFonteGUI().getGUITO().getSelecionadoTPPainelGUITO();
         
@@ -254,7 +345,7 @@ public class CodigoFonteCtrl {
         if ( node.getChildCount() > 0 ) {
             Enumeration<TreeNode> filhosIT = node.children();
             
-            while( filhosIT.hasMoreElements())
+            while( filhosIT.hasMoreElements() )
                 this.carregaNosParaExpandir( arvGUITO, nosParaExpandir, (DefaultMutableTreeNode)filhosIT.nextElement() );
         }
     }
@@ -264,7 +355,7 @@ public class CodigoFonteCtrl {
         String charset = aplic.getConfig().getProjetoCharsetPadrao();
         ArvNo no = aplic.getProjetoCtrl().getArvNo( sisarqCaminho );
         if ( no != null ) {
-            Projeto proj = ((ArqArvNo)no).getProjeto();
+            ProjetoXMLNo proj = ((ArqArvNo)no).getProjeto();
             ProjetoConfig config = aplic.getProjetoConfigLeitor().le( proj );
             return config.getCharset();
         }

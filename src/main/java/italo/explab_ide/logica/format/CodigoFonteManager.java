@@ -50,7 +50,7 @@ public class CodigoFonteManager {
         this.funcNativaFormat = new FuncNativaFormat( aplic );
         
         this.classeLeituraFormat = new ClasseLeituraFormat( aplic );
-        this.funcLeituraFormat = new FuncLeituraFormat( aplic );
+        this.funcLeituraFormat = new FuncLeituraFormat( aplic, palavraReservadaFormat );
         
         valorFormatadores = new ValorFormat[] {
             palavraReservadaFormat,

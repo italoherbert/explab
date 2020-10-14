@@ -13,6 +13,7 @@ import javax.swing.JSplitPane;
 import javax.swing.JToolBar;
 import italo.explab_ide.gui.IDEGUIConfig;
 import italo.explab_ide.gui.icones.GUIIcones;
+import java.awt.Dimension;
 import java.awt.FlowLayout;
 import java.awt.event.ActionListener;
 import java.awt.event.WindowEvent;
@@ -72,6 +73,7 @@ public class PrincipalGUI extends JFrame implements ActionListener, WindowListen
         executarBT = new JIconeButton( config.getTextoRotulo( IDEGUI.BT_EXECUTAR ), execIcone );
                                 
         ferramentasTBar = new JToolBar();
+        ferramentasTBar.setPreferredSize( new Dimension( 400, 65 ) );
         ferramentasTBar.setLayout( new FlowLayout( FlowLayout.LEFT ) ); 
         ferramentasTBar.add( novoProjetoBT );
         ferramentasTBar.add( abrirProjetoBT );
@@ -80,18 +82,18 @@ public class PrincipalGUI extends JFrame implements ActionListener, WindowListen
         
         principalSplit = new JSplitPane( JSplitPane.VERTICAL_SPLIT );
         topSplit = new JSplitPane( JSplitPane.HORIZONTAL_SPLIT );
+                
+        topSplit.setLeftComponent( new JScrollPane( projetosGUI ) );        
+        topSplit.setRightComponent( codigoFonteEditorGUI );
         
         principalSplit.setLeftComponent( topSplit );
         principalSplit.setRightComponent( new JScrollPane( saidaGUI ) );
         
-        topSplit.setLeftComponent( new JScrollPane( projetosGUI ) );        
-        topSplit.setRightComponent( codigoFonteEditorGUI );
-
         JPanel conteudoPNL = new JPanel( new BorderLayout() );
-        conteudoPNL.add( BorderLayout.NORTH, ferramentasTBar );
+        conteudoPNL.add( BorderLayout.PAGE_START, ferramentasTBar );
         conteudoPNL.add( BorderLayout.CENTER, principalSplit );
         
-        super.setTitle( config.getTextoRotulo(IDEGUI.PRINCIPAL_JFRAME_TITULO ) ); 
+        super.setTitle( config.getTextoRotulo( IDEGUI.PRINCIPAL_JFRAME_TITULO ) ); 
         super.setContentPane( conteudoPNL );
         super.setJMenuBar( principalJMenuBar ); 
         super.setDefaultCloseOperation( JFrame.EXIT_ON_CLOSE );
@@ -100,7 +102,7 @@ public class PrincipalGUI extends JFrame implements ActionListener, WindowListen
         super.setExtendedState( JFrame.MAXIMIZED_BOTH );
 
         principalSplit.setResizeWeight( 0.75 ); 
-        topSplit.setResizeWeight( 0.2 );
+        topSplit.setResizeWeight( 0.25 );
 
         this.salvoIcone();
         

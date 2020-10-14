@@ -8,9 +8,10 @@ import italo.explab_ide.ctrl.exec.cmd.CMD;
 import italo.explab_ide.ctrl.exec.cmd.ExecCMD;
 import italo.explab_ide.ctrl.exec.cmd.NormalExecCMD;
 import italo.explab_ide.ctrl.exec.cmd.ScriptExecCMD;
+import italo.explab_ide.gui.principal.codigofonte.tppainel.CodigoFonteTPPainelGUITO;
 import italo.explab_ide.logica.arquivo.ArqArvNo;
-import italo.explab_ide.logica.arquivo.projeto.Projeto;
 import italo.explab_ide.logica.arquivo.projeto.ProjetoConfig;
+import italo.explab_ide.logica.arquivo.projeto.ProjetoXMLNo;
 import java.util.ArrayList;
 import java.util.List;
 import libs.gui.arv.ArvGUITO;
@@ -31,43 +32,55 @@ public class ExecCtrl {
         return execucoes.get( 0 );
     }
     
-    public void executaArquivo() {
+    public void executaProjetoSelecionado() {        
         ArvGUITO arvGUITO = aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO();
+                   
         String noCaminho = arvGUITO.getCaminhoNoSelecionado();
-        ArvNo arvNo = arvGUITO.getNoPorCaminho( noCaminho );
-        
-        ArqArvNo arqNo = (ArqArvNo)arvNo;
-        if ( arqNo.isPastaDeProjeto() ) {
-            this.executaProjeto();
-        } else {        
-            this.executaScript( arvNo.getSisArqCaminho() );
-        }
-    }
-    
-    public void executaProjeto() {
-         this.executaScript( null );
-    }
-    
-    public void executaScript( String execScript ) {        
-        this.fechaTabsExecucoesConcluidas();
-        
-        String caminho = aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO().getCaminhoNoSelecionado();        
-        if ( caminho == null ) {                             
+        ArvNo no = arvGUITO.getNoPorCaminho( noCaminho );        
+              
+        if ( no == null ) {                                                       
             aplic.getMSGManager().mostraErro( IDEErroMSGs.NENHUM_PROJETO_SELECIONADO ); 
-        } else {               
-            ArvNo no = aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO().getNoPorCaminho( caminho );
-                                 
-            Projeto proj = ((ArqArvNo)no).getProjeto();
+        } else {         
+            ProjetoXMLNo proj = ((ArqArvNo)no).getProjeto();                        
+            String projNome = proj.getNome();
+            String projBasedir = proj.getBasedir();
 
             ProjetoConfig projCFG = aplic.getProjetoConfigLeitor().le( proj );
             String charset = projCFG.getCharset();
+            String execScript = projCFG.getExecScript();
+            this.executaScript( projNome, projBasedir, execScript, charset );        
+        }
+    }
+    
+    public void executaArquivoSelecionado() {        
+        ArvGUITO arvGUITO = aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO();
+                     
+        CodigoFonteTPPainelGUITO guiTO = aplic.getGUI().getPrincipalGUI().getCodigoFonteGUI().getSelecionadoTPPainelGUITO();
+        if ( guiTO != null ) {            
+            String sisarqCaminho = aplic.getCodigoFonteCtrl().getSisArqPorTPPainelGUITO( guiTO );
+            ArvNo no = aplic.getArquivoManager().getArvNo( arvGUITO.getNoRaiz(), sisarqCaminho, aplic.getConfig().getComparador() );
             
-            ExecCMD execCMD = new ScriptExecCMD( aplic, proj, projCFG, execScript );            
-            ExecGUIThread thread = new ExecGUIThread( aplic, execCMD, charset );
-            thread.start();
+            if ( no != null ) {              
+                ProjetoXMLNo proj = ((ArqArvNo)no).getProjeto();                        
+
+                ProjetoConfig projCFG = aplic.getProjetoConfigLeitor().le( proj );
+                String charset = projCFG.getCharset();
+                
+                String projNome = proj.getNome();
             
-            execucoes.add( thread );
-        }                            
+                this.executaScript( projNome, "", sisarqCaminho, charset );            
+            }
+        }        
+    }
+        
+    public void executaScript( String projNome, String projBasedir, String execScript, String charset ) {        
+        this.fechaTabsExecucoesConcluidas();
+        
+        ExecCMD execCMD = new ScriptExecCMD( aplic, projNome, projBasedir, execScript );            
+        ExecGUIThread thread = new ExecGUIThread( aplic, execCMD, charset );
+        thread.start();
+
+        execucoes.add( thread );
     }
     
     public void executaCMD( CMD cmd )  {

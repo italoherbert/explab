@@ -16,6 +16,7 @@ public class IDEConfig implements ArvConfig {
     private String projetosXMLConfigCaminho;
     private String arquivosAbertosConfigCaminho;
     private String projNosParaExpandirConfigCaminho;
+    private String noSelecionadoConfigCaminho;
     
     private String projetoBaseDirPadrao;
     private String projetoConfigArqPadrao;
@@ -78,6 +79,14 @@ public class IDEConfig implements ArvConfig {
 
     public void setArquivosAbertosConfigCaminho(String arquivosAbertosConfigCaminho) {
         this.arquivosAbertosConfigCaminho = arquivosAbertosConfigCaminho;
+    }
+
+    public String getNoSelecionadoConfigCaminho() {
+        return noSelecionadoConfigCaminho;
+    }
+
+    public void setNoSelecionadoConfigCaminho(String noSelecionadoConfigCaminho) {
+        this.noSelecionadoConfigCaminho = noSelecionadoConfigCaminho;
     }
 
     public String getProjNosParaExpandirConfigCaminho() {

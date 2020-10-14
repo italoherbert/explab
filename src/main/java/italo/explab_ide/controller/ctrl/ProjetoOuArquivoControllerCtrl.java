@@ -54,18 +54,13 @@ public class ProjetoOuArquivoControllerCtrl {
         ArvGUITO arvGUITO = aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO();
         aplic.getArquivoCtrl().recarregarPastaSelecionada( arvGUITO ); 
     }
-    
-    public void executarProjetoAcionado() {
-        aplic.getExecCtrl().executaProjeto();
-    }
-    
+        
     public void executarScriptAcionado() {
-        aplic.getExecCtrl().executaArquivo();
+        aplic.getExecCtrl().executaProjetoSelecionado();
     }
     
-    public void salvarTudoAcionado( PrincipalGUITO guiTO) {
+    public void salvarTudoAcionado( PrincipalGUITO guiTO ) {
         aplic.getCodigoFonteCtrl().salvaArquivosModificados();
-        guiTO.salvoIcone();
     }
     
     public void novoProjetoAcionado() {
@@ -113,31 +108,42 @@ public class ProjetoOuArquivoControllerCtrl {
         fc.setDialogTitle( aplic.getMSGManager().getInfo( IDEInfoMSGs.PROJETO_ABRIR_TITULO ) );
         fc.setAcceptAllFileFilterUsed( true );
         fc.setFileSelectionMode( JFileChooser.FILES_AND_DIRECTORIES );
+        fc.setMultiSelectionEnabled( true ); 
         fc.setCurrentDirectory( new File( aplic.getConfig().getProjetoBaseDirPadrao() ) );
         int result = fc.showOpenDialog( null );
         if ( result == JFileChooser.APPROVE_OPTION ) {
             String projCFGArqPadrao = aplic.getConfig().getProjetoConfigArqPadrao();
             
-            String projPastaCaminho = null;
             
-            File file = fc.getSelectedFile();
-            if ( file.isDirectory() ) {
-                File[] files = file.listFiles();
-                for( int j = 0; projPastaCaminho == null && j < files.length; j++ )
-                    if ( comparador.igual( files[j].getName(), projCFGArqPadrao ) )
-                        projPastaCaminho = file.getAbsolutePath();
-            } else if ( comparador.igual( file.getName(), projCFGArqPadrao ) ) {     
-                projPastaCaminho = file.getParent();
-            }
-                
-            if ( projPastaCaminho != null ) {                                
-                String okMSGChave = IDEInfoMSGs.PROJETO_ABERTO;
-                
-                GUIVisivel guivisivel = ( v ) -> {};
-                
-                aplic.getProjetoCtrl().novoOuAbrir( projPastaCaminho, guivisivel, okMSGChave ); 
-            } else {
-                aplic.getMSGManager().mostraErro( IDEErroMSGs.ARQ_DE_PROJ_NAO_ENCONTRADO ); 
+            File[] arquivosSelecionados = fc.getSelectedFiles();
+            if ( arquivosSelecionados != null ) {
+                boolean arqNaoEncontrado = false;
+                boolean abriuUm = false;
+                for( File file : arquivosSelecionados ) {
+                    String projPastaCaminho = null;
+                    
+                    if ( file.isDirectory() ) {
+                        File[] files = file.listFiles();
+                        for( int j = 0; projPastaCaminho == null && j < files.length; j++ )
+                            if ( comparador.igual( files[j].getName(), projCFGArqPadrao ) )
+                                projPastaCaminho = file.getAbsolutePath();
+                    } else if ( comparador.igual( file.getName(), projCFGArqPadrao ) ) {     
+                        projPastaCaminho = file.getParent();
+                    }
+
+                    if ( projPastaCaminho != null ) {                                
+                        boolean abriu = aplic.getProjetoCtrl().abrirProjeto( projPastaCaminho ); 
+                        if ( abriu )
+                            abriuUm = true;
+                    } else {
+                        arqNaoEncontrado = true;
+                    }
+                }                
+                if ( arqNaoEncontrado ) {
+                    aplic.getMSGManager().mostraErro( IDEErroMSGs.ARQS_DE_PROJ_NAO_ENCONTRADOS ); 
+                } else if ( abriuUm ) {
+                    aplic.getMSGManager().mostraInfo( IDEInfoMSGs.PROJETOS_ABERTOS );
+                }
             }
         }
     }
@@ -147,16 +153,12 @@ public class ProjetoOuArquivoControllerCtrl {
         
         List<String> arquivosOuPastasCaminhos = new ArrayList( 1 );
         List<String> projetosCaminhos = new ArrayList( 0 );
-                
-        StringBuilder projetosNomes = new StringBuilder();
-        
+                        
         TreePath[] paths = arvGUITO.getJTree().getSelectionPaths();
         for( TreePath path : paths ) {
             String caminho = arvGUITO.getCaminho( path );
             ArqArvNo arqNo = (ArqArvNo)arvGUITO.getNoPorCaminho( caminho );
-            if ( arqNo.isPastaDeProjeto() ) {
-                projetosNomes.append( "\n\t " );
-                projetosNomes.append( arqNo.getNome() );
+            if ( arqNo.isPastaDeProjeto() ) {                
                 projetosCaminhos.add( caminho );
             } else {
                 arquivosOuPastasCaminhos.add( caminho );            
@@ -190,7 +192,7 @@ public class ProjetoOuArquivoControllerCtrl {
         if ( !projetosCaminhos.isEmpty() ) {                                            
             DeletarProjetoPNL pnl = aplic.getGUI().criaDeletarProjetoPNL();
             
-            String pergunta = aplic.getMSGManager().getInfo( IDEInfoMSGs.PERGUNTA_DELETAR_PROJETOS ).replace( "%1", projetosNomes.toString() ); 
+            String pergunta = aplic.getMSGManager().getInfo( IDEInfoMSGs.PERGUNTA_DELETAR_PROJETOS ); 
             
             pnl.getGUITO().setMensagem( pergunta );
             pnl.getGUITO().setRemoverProjArqsRotulo( aplic.getMSGManager().getInfo( IDEInfoMSGs.PERGUNTA_DELETAR_PROJETOS_ARQS ) ); 

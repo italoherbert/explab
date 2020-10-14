@@ -1,0 +1,29 @@
+npu = npv = 20;
+
+fx = func( u, v ) {
+    retorne cos( u ) * sen( v );
+};
+fy = func( u, v ) {
+    retorne sen( u ) * sen( v );
+};
+fz = func( u, v ) {
+    retorne cos( v );
+};
+
+pfun3d = novo PFunc3D();
+pfun3d.u1 = 0;
+pfun3d.u2 = 2*pi;
+pfun3d.v1 = 0;
+pfun3d.v2 = pi;
+pfun3d.npu = npu;
+pfun3d.npv = npv;
+pfun3d.funX = fx;
+pfun3d.funY = fy;
+pfun3d.funZ = fz;
+
+pc = novo PC3D(); 
+pc.titulo = "Esferoide";
+pc.dy = 1.0;                
+pc.graficos[] = pfun3d;          
+
+plot3d( pc );    

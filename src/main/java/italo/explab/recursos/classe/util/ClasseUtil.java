@@ -49,29 +49,40 @@ public class ClasseUtil {
         int g = (int)gvar.getValor();
         int b = (int)bvar.getValor();
 
-        if ( r < 0 || r > 255)
+        if ( r < 0 || r > 255 )
             throw new ClasseUtilException( ClasseUtilException.RGB_FORA_DA_FAIXA, vcr );
-        if ( g < 0 || g > 255)
+        if ( g < 0 || g > 255 )
             throw new ClasseUtilException( ClasseUtilException.RGB_FORA_DA_FAIXA, vcg );
-        if ( b < 0 || b > 255)
+        if ( b < 0 || b > 255 )
             throw new ClasseUtilException( ClasseUtilException.RGB_FORA_DA_FAIXA, vcb );
 
         return new Color( r, g, b );                                         
     }
     
     public MatrizVar arrayValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {
+        return this.arrayValor( recursos, varnome, true );
+    }
+    
+    public MatrizVar arrayValor( RecursoManager recursos, VariavelNome varnome, boolean excecaoAtivada ) throws ClasseUtilException {
         MatrizVar matrizVar = this.matrizValor( recursos, varnome );
         if ( matrizVar == null )
             return null;
         
         String vc = this.variavelCompleta( varnome );
-        if ( matrizVar.getNL() != 1 )
-            throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "array", matrizVar.getStringTipo() );
+        if ( matrizVar.getNL() != 1 ) {
+            if ( excecaoAtivada )
+                throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "array", matrizVar.getStringTipo() );
+            return null;
+        }
         
         return matrizVar;
     }
     
     public MatrizVar matrizValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {
+        return this.matrizValor( recursos, varnome, true );
+    }
+    
+    public MatrizVar matrizValor( RecursoManager recursos, VariavelNome varnome, boolean excecaoAtivada ) throws ClasseUtilException {
         String vc = this.variavelCompleta( varnome );
         
         Variavel matrizVar = recursos.getVarLista().buscaLocal( varnome.getNome() );
@@ -81,26 +92,44 @@ public class ClasseUtil {
         if ( matrizVar.getVar().getTipo() == Var.MATRIZ )
             return (MatrizVar)matrizVar.getVar();        
                 
-        throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "matriz", matrizVar.getVar().getStringTipo() );
+        if ( excecaoAtivada )
+            throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "matriz", matrizVar.getVar().getStringTipo() );
+        
+        return null;
     }
     
-    public RealVar realValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {        
+    public RealVar realValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {
+        return this.realValor( recursos, varnome, true );
+    }
+    
+    public RealVar realValor( RecursoManager recursos, VariavelNome varnome, boolean excecaoAtivada ) throws ClasseUtilException {        
         Variavel realVr = recursos.getVarLista().buscaLocal( varnome.getNome() );
         if ( realVr == null )
             return null;
         
-        return this.realValor( realVr.getVar(), varnome );        
+        return this.realValor( realVr.getVar(), varnome, excecaoAtivada );        
+    }
+
+    public RealVar realValor( Var var, VariavelNome varnome ) throws ClasseUtilException {
+        return this.realValor( var, varnome, true );
     }
     
-    public RealVar realValor( Var var, VariavelNome varnome ) throws ClasseUtilException {
+    public RealVar realValor( Var var, VariavelNome varnome, boolean excecaoAtivada ) throws ClasseUtilException {
         if ( var.getTipo() == Var.REAL )
             return (RealVar)var;
         
         String vc = this.variavelCompleta( varnome );
-        throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "real", var.getStringTipo() );
+        
+        if ( excecaoAtivada )
+            throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "real", var.getStringTipo() );
+        return null;
     }
     
     public StringVar stringValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {
+        return this.stringValor( recursos, varnome, true );
+    }
+    
+    public StringVar stringValor( RecursoManager recursos, VariavelNome varnome, boolean excecaoAtivada ) throws ClasseUtilException {
         String vc = this.variavelCompleta( varnome );
         
         Variavel stringVar = recursos.getVarLista().buscaLocal( varnome.getNome() );
@@ -113,7 +142,9 @@ public class ClasseUtil {
         if ( stringVar.getVar().getTipo() == Var.STRING )
             return (StringVar)stringVar.getVar();
                 
-        throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "string", stringVar.getVar().getStringTipo() );
+        if ( excecaoAtivada )
+            throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "string", stringVar.getVar().getStringTipo() );
+        return null;
     }
     
     public BooleanVar booleanValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {
@@ -128,8 +159,12 @@ public class ClasseUtil {
         
         throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "boolean", booleanVar.getVar().getStringTipo() );
     }
-            
+
     public ObjetoVar objetoRefValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {
+        return this.objetoRefValor( recursos, varnome, true );
+    }
+            
+    public ObjetoVar objetoRefValor( RecursoManager recursos, VariavelNome varnome, boolean excecaoAtivada ) throws ClasseUtilException {
         String vc = this.variavelCompleta( varnome );
         
         Variavel objvar = recursos.getVarLista().buscaLocal( varnome.getNome() );
@@ -139,10 +174,16 @@ public class ClasseUtil {
         if ( objvar.getVar().getTipo() == Var.OBJETO_REF )            
             return (ObjetoVar)objvar.getVar();        
         
-        throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "objeto", objvar.getVar().getStringTipo() );
+        if ( excecaoAtivada )
+            throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "objeto", objvar.getVar().getStringTipo() );
+        return null;
     }
     
     public FuncVar funcValor( RecursoManager recursos, VariavelNome varnome ) throws ClasseUtilException {
+        return this.funcValor( recursos, varnome, true );
+    }
+    
+    public FuncVar funcValor( RecursoManager recursos, VariavelNome varnome, boolean excecaoAtivada ) throws ClasseUtilException {
         String vc = this.variavelCompleta( varnome );
         
         Variavel funcVar = recursos.getVarLista().buscaLocal( varnome.getNome() );
@@ -152,7 +193,10 @@ public class ClasseUtil {
         if ( funcVar.getVar().getTipo() == Var.FUNC )
             return (FuncVar)funcVar.getVar();
         
-        throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "func", funcVar.getVar().getStringTipo() );
+        if ( excecaoAtivada )
+            throw new ClasseUtilException( ClasseUtilException.TIPO_INVALIDO, vc, "func", funcVar.getVar().getStringTipo() );
+        
+        return null;
     }
 
     public Objeto buscaObjeto( RecursoManager recursos, String classeNome, VariavelNome varnome ) throws ClasseUtilException {        
@@ -200,7 +244,7 @@ public class ClasseUtil {
             case ClasseUtilException.RGB_FORA_DA_FAIXA:
                 return new CodigoErro( this.getClass(), codigo, ErroMSGs.RGB_FORA_DA_FAIXA, params );
             case ClasseUtilException.VALOR_NAO_NULO_ESPERADO:
-                return new CodigoErro( this.getClass(), codigo, "var.valor.nao.nulo.esperado", params );
+                return new CodigoErro( this.getClass(), codigo, ErroMSGs.VALOR_NAO_NULO_ESPERADO, params );
             case ClasseUtilException.TIPO_INVALIDO:
                 return new CodigoErro( this.getClass(), codigo, ErroMSGs.VAR_TIPO_INVALIDO, params );
             case ClasseUtilException.INSTANCIA_DE_CLASSE_ESPERADA:

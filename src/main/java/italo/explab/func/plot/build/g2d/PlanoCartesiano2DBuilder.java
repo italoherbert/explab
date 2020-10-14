@@ -21,6 +21,7 @@ public class PlanoCartesiano2DBuilder {
     private final GradeConfigBuilder gradeCFGBuilder = new GradeConfigBuilder();
     private final Dados2DBuilder dados2DCFGBuilder = new Dados2DBuilder();
     private final Func2DBuilder func2DCFGBuilder = new Func2DBuilder();
+    private final PFunc2DBuilder pfunc2DCFGBuilder = new PFunc2DBuilder();
     
     public ExpLabPlanoCartesiano2D build( FuncExp fno, Executor executor, Codigo codigo, Var var, ClasseUtil classeUtil ) throws ClasseUtilException {
         ExpLabPlanoCartesiano2D pc = new ExpLabPlanoCartesiano2D();
@@ -59,9 +60,14 @@ public class PlanoCartesiano2DBuilder {
                     if ( funcObj != null ) {
                         pc.addGrafico( func2DCFGBuilder.build( fno, executor, codigo, funcObj, vn, classeUtil ) ); 
                     } else {
-                        String vc = classeUtil.variavelCompleta( vn );
-                        String classeNome = "Dados2D ou Func2D";
-                        throw new ClasseUtilException( ClasseUtilException.INSTANCIA_DE_UMA_DAS_CLASSES_ESPERADA, vc, classeNome );
+                        Objeto pfuncObj = classeUtil.buscaObjeto( v, "PFunc2D", vn, false );
+                        if ( pfuncObj != null ) {
+                            pc.addGrafico( pfunc2DCFGBuilder.build( fno, executor, codigo, pfuncObj, vn, classeUtil ) ); 
+                        } else {
+                            String vc = classeUtil.variavelCompleta( vn );
+                            String classeNome = "Dados2D ou Func2D";
+                            throw new ClasseUtilException( ClasseUtilException.INSTANCIA_DE_UMA_DAS_CLASSES_ESPERADA, vc, classeNome );
+                        }
                     }
                 }                
             }

@@ -1,0 +1,30 @@
+
+r = 5;
+
+fx = func( u, v ) {
+    retorne r * cos( u ) * sin( v );
+}; 
+
+fy = func( u, v ) {
+    retorne r * sin( u ) * sin( v );
+}
+
+fz = func( u, v ) {
+    retorne r * cos( v );
+}
+
+pfunc3d = novo PFunc3D(); 
+pfunc3d.u1 = 0;
+pfunc3d.u2 = PI;
+pfunc3d.v1 = 0;
+pfunc3d.v2 = 2*PI;
+
+pfunc3d.funX = fx;
+pfunc3d.funY = fy;
+pfunc3d.funZ = fz;
+
+pc = novo PC3D();                 // instancia a classe PC3D
+pc.graficos[] = pfunc3d;          // adiciona o objeto superficie ao vetor de dados
+
+plot3d( pc );                     // plota o gráfico
+

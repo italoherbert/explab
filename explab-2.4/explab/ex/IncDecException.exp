@@ -1,0 +1,13 @@
+pacote explab.ex;
+
+classe IncDecException extende RuntimeException {
+
+    construtor() {}
+
+    construtor( msg ) {
+        super( msg );
+    }
+
+}
+
+

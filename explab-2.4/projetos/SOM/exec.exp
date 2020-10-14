@@ -1,0 +1,46 @@
+use SOM;
+
+som = novo SOM();
+amostras = carregue( 'dados3d.txt' );
+
+neuronios = som.treina( amostras, 1000 );
+est = som.estrutura( neuronios );
+
+amostras_nl = matnl( amostras );
+
+amostras_x = zeros( amostras_nl );
+amostras_y = zeros( amostras_nl );
+amostras_z = zeros( amostras_nl );
+
+para( i = 0; i < amostras_nl; i++ ) {
+    amostras_x(i) = amostras(i,0);
+    amostras_y(i) = amostras(i,1);
+    amostras_z(i) = amostras(i,2);
+}
+
+amostrasDados3d = novo Dados3D();
+amostrasDados3d.xvetor = amostras_x;
+amostrasDados3d.yvetor = amostras_y;
+amostrasDados3d.zvetor = amostras_z;
+amostrasDados3d.linha.visivel = falso;
+amostrasDados3d.ponto.visivel = verdade;
+amostrasDados3d.ponto.raio = 2;
+amostrasDados3d.ponto.cor = novo RGB( 0, 0, 255 );
+
+neuroniosGrafo3d = novo Dados3D();
+neuroniosGrafo3d.xvetor = est.vx;
+neuroniosGrafo3d.yvetor = est.vy;
+neuroniosGrafo3d.zvetor = est.vz;
+neuroniosGrafo3d.arestas = est.arestas;
+neuroniosGrafo3d.linha.visivel = verdade;
+neuroniosGrafo3d.ponto.visivel = falso;
+neuroniosGrafo3d.ponto.raio = 2;
+neuroniosGrafo3d.ponto.cor = novo RGB( 255, 0, 0 );
+
+pc = novo PC3D();
+pc.graficos[] = amostrasDados3d;
+pc.graficos[] = neuroniosGrafo3d;
+pc.janela.largura = 800;
+pc.janela.altura = 600;
+
+plot3d( pc );

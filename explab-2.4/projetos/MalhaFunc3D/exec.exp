@@ -1,0 +1,16 @@
+x = [-2*pi:0.5:2*pi];
+y = [-2*pi:0.5:2*pi];
+
+xx = xmalhagrade( x, y );
+yy = ymalhagrade( x, y );
+
+z = yy*sen(xx)-xx*cos(yy);
+
+superficie = novo Superficie3D();
+superficie.setDados( x, y, z );
+        
+pc = novo PC3D();
+pc.titulo = "Malha 3D";
+pc.graficos[] = superficie;
+
+plot3d( pc );

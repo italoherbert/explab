@@ -28,6 +28,7 @@ import libs.gui.tpcombtfechar.TPComBTFechar;
 public class CodigoFonteTPPainelGUI extends JPanel implements KeyListener {
     
     private final JTextPane docTextoPane = new JTextPane() {
+        @Override
         public boolean getScrollableTracksViewportWidth() {
             return getUI().getPreferredSize( this ).width <= getParent().getSize().width;
         }
@@ -88,7 +89,7 @@ public class CodigoFonteTPPainelGUI extends JPanel implements KeyListener {
         super.setLayout( new GridLayout() );
         super.add( scroll );         
 
-        docTextoPane.addKeyListener( this );         
+        docTextoPane.addKeyListener( this );          
     }
        
     public void setCharset( String charset ) {
@@ -261,7 +262,7 @@ public class CodigoFonteTPPainelGUI extends JPanel implements KeyListener {
                     
     @Override
     public void keyTyped( KeyEvent e ) {}
-
+    
     public void setCodigoFonteTPPainelGUIListener( CodigoFonteTPPainelGUIListener listener ) {
         this.listener = listener;
     }
@@ -294,9 +295,9 @@ public class CodigoFonteTPPainelGUI extends JPanel implements KeyListener {
             int linhasCont = contaQuantLinhas();
             
             int q = (int)Math.log10( linhasCont );
-            int desloc = q+1;
-            if ( desloc <= 1 )
-                desloc = 2;
+            int desloc = q+2;
+            if ( desloc <= 2 )
+                desloc = 3;
             
             g.setFont( docTextoFont ); 
                                     
@@ -304,11 +305,11 @@ public class CodigoFonteTPPainelGUI extends JPanel implements KeyListener {
             Rectangle2D r = fm.getMaxCharBounds( g );
             int w = (int)r.getWidth();
             int h = (int)r.getHeight();
-                        
-            super.setPreferredSize( new Dimension( desloc * w, scroll.getVerticalScrollBar().getMaximum() ) );                                                    
-            super.setSize( new Dimension( desloc * w, scroll.getVerticalScrollBar().getMaximum() ) );                                        
+                                    
+            super.setPreferredSize( new Dimension( (desloc+1) * w, scroll.getVerticalScrollBar().getMaximum() ) );                                                    
+            super.setSize( new Dimension( (desloc+1) * w, scroll.getVerticalScrollBar().getMaximum() ) );                                        
                                         
-            String formato = "%"+(desloc+1)+"d";
+            String formato = "%"+(desloc)+"d";
             
             Document doc = docTextoPane.getDocument();
             int len = doc.getLength();

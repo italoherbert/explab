@@ -20,6 +20,7 @@ import javax.xml.transform.TransformerException;
 import javax.xml.transform.TransformerFactory;
 import javax.xml.transform.dom.DOMSource;
 import javax.xml.transform.stream.StreamResult;
+import libs.comparador.Comparador;
 import org.w3c.dom.Node;
 
 public class ProjetosXMLManager {
@@ -33,6 +34,8 @@ public class ProjetosXMLManager {
     }    
     
     public void carrega( String arquivo ) {        
+        projetos.clear();
+        
         DocumentBuilderFactory factory = DocumentBuilderFactory.newInstance();
         try {
             DocumentBuilder builder = factory.newDocumentBuilder();
@@ -56,7 +59,7 @@ public class ProjetosXMLManager {
         }        
     }
         
-    public boolean salva( String arquivo ) {        
+    public boolean salva( String arquivo ) { 
         try {
             DocumentBuilder xmlBuilder = DocumentBuilderFactory.newInstance().newDocumentBuilder();
             Document doc = xmlBuilder.newDocument();                                
@@ -89,6 +92,33 @@ public class ProjetosXMLManager {
         return false;
     }
 
+    public void setProjetoNome( String nome, String novoNome, Comparador comp ) {
+        ProjetoXMLNo no = this.getProjeto( nome, comp );
+        if ( no != null ) {
+            no.setNome( novoNome );                 
+            
+            int i1 = no.getBasedir().lastIndexOf( nome );
+            int i2 = i1 + nome.length();
+            int len = no.getBasedir().length();
+            no.setBasedir( no.getBasedir().substring( 0, i1 ) + novoNome + no.getBasedir().substring( i2, len ) );
+        }
+    }
+    
+    public String getBasedir( String nome, Comparador comp ) {
+        ProjetoXMLNo no = this.getProjeto( nome, comp );
+        if ( no != null )
+            return no.getBasedir();
+        
+        return null;
+    }
+    
+    public ProjetoXMLNo getProjeto( String nome, Comparador comp ) {
+        for( ProjetoXMLNo no : projetos )
+            if ( comp.igual( no.getNome(), nome ) )                 
+                return no;        
+        return null;
+    }
+    
     public List<ProjetoXMLNo> getProjetos() {
         return projetos;
     }        

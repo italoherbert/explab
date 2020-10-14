@@ -112,12 +112,10 @@ public class SaidaTPPainelGUI extends JPanel implements KeyListener, MouseListen
     }
 
     public void antesTabRemovida(int i) {
-        if ( listener != null ) {
-            SaidaTPPainelGUI pgui = (SaidaTPPainelGUI)tp.getComponentAt( i );
-            listener.antesTabRemovida( pgui.getGUITO(), i );
-        }
+        if ( listener != null )
+            listener.antesTabRemovida( to, i );        
     }
-    
+        
     public SaidaTPPainelGUIListener getSaidaTPPainelGUIListener() {
         return listener;
     }

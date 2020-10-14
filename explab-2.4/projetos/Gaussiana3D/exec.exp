@@ -1,0 +1,20 @@
+altura =  12;                     // altura da gaussiana proporcional aos limites de x e y
+raio = 10;                        // raio da gaussiana proporcional aos limites de x e y
+
+x = y = vetesp( -10, 10, 20 );    // gera 20 valores no intervalo de -10 a 10 e atribui em x e y
+xx = xmalhagrade( x, y );         // gera a matriz x da malha
+yy = ymalhagrade( x, y );         // gera a matriz y da malha
+
+d = rquad( xx^2 + yy^2 );          // distância euclidiana
+z = altura * e^( - ( (( d / raio )^2) * 4 ) );  // gera a matriz z a partir das matrizes xx e yy
+                                                // com a fórmula da gaussiana
+
+superficie = novo Superficie3D();   // instancia a classe Superficie3D
+superficie.xvetor = x;              // seta o vetor x
+superficie.yvetor = y;              // seta o vetor y
+superficie.zmat = z;                // seta a matriz z
+
+pc = novo PC3D();                   // instancia a classe PC3D
+pc.graficos[] = superficie;         // adiciona o objeto superficie ao vetor de graficos
+
+plot3d( pc );                       // plota o gráfico

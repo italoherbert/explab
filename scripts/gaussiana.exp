@@ -6,7 +6,7 @@ xx = xmalhagrade( x, y );         // gera a matriz x da malha
 yy = ymalhagrade( x, y );         // gera a matriz y da malha
 
 d = rquad( xx^2 + yy^2 );          // distância euclidiana
-z = altura * E^( - ( (( d / raio )^2) * 4 ) );  // gera a matriz z a partir das matrizes xx e yy
+z = altura * e^( - ( (( d / raio )^2) * 4 ) );  // gera a matriz z a partir das matrizes xx e yy
                                                 // com a fórmula da gaussiana
 
 superficie = novo Superficie3D();   // instancia a classe Superficie3D

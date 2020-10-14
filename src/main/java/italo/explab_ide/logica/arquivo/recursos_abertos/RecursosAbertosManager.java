@@ -4,13 +4,7 @@ import italo.explab_ide.ExpLabIDEAplic;
 import italo.explab_ide.logica.arquivo.recursos_abertos.codigosfonte.ArquivosAbertos;
 import italo.explab_ide.logica.arquivo.recursos_abertos.codigosfonte.ArquivosAbertosManager;
 import italo.explab_ide.logica.arquivo.recursos_abertos.projarv.ProjArvoreManager;
-import java.io.BufferedReader;
-import java.io.FileInputStream;
-import java.io.FileOutputStream;
 import java.io.IOException;
-import java.io.InputStreamReader;
-import java.io.PrintStream;
-import java.util.ArrayList;
 import java.util.List;
 
 public class RecursosAbertosManager {
@@ -18,20 +12,25 @@ public class RecursosAbertosManager {
     private final ArquivosAbertosManager arqsAbertosManager;
     private final ProjArvoreManager projArvoreManager;
     
-    private final ExpLabIDEAplic aplic;
-
     public RecursosAbertosManager( ExpLabIDEAplic aplic ) {
-        this.aplic = aplic;
         arqsAbertosManager = new ArquivosAbertosManager( aplic );
         projArvoreManager = new ProjArvoreManager( aplic );        
     }
     
     public void salvaNosCaminhosParaExpandir( List<String> nosCaminhos ) throws IOException {
-        projArvoreManager.salva( nosCaminhos );
+        projArvoreManager.salvaNosParaExpandir( nosCaminhos );
     }
     
     public List<String> recuperaNosCaminhosParaExpandir() throws IOException {
-        return projArvoreManager.carrega();
+        return projArvoreManager.carregaNosParaExpandirCaminho();
+    }
+    
+    public void salvaNoSelecionadoCaminho( String noSelecionadoCaminho ) throws IOException {
+        projArvoreManager.salvaNoSelecionado( noSelecionadoCaminho ); 
+    }
+    
+    public String recuperaNoSelecionadoCaminho() throws IOException {
+        return projArvoreManager.carregaNoSelecionadoCaminho();
     }
     
     public void salvaDadosArquivosAbertos( ArquivosAbertos arqAbertos ) throws IOException {
@@ -41,5 +40,5 @@ public class RecursosAbertosManager {
     public ArquivosAbertos recuperaDadosArquivosAbertos() throws IOException {
         return arqsAbertosManager.carrega();
     }
-    
+        
 }

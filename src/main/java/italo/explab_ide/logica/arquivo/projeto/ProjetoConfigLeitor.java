@@ -11,13 +11,13 @@ import java.util.logging.Logger;
 
 public class ProjetoConfigLeitor {
     
-    private ExpLabIDEAplic aplic;
+    private final ExpLabIDEAplic aplic;
     
     public ProjetoConfigLeitor( ExpLabIDEAplic aplic ) {
         this.aplic = aplic;
     }
     
-    public ProjetoConfig le( Projeto proj ) {
+    public ProjetoConfig le( ProjetoXMLNo proj ) {
         String execScript = aplic.getConfig().getProjetoExecScriptPadrao();
         String charset = aplic.getConfig().getProjetoCharsetPadrao();
         Properties p = new Properties();

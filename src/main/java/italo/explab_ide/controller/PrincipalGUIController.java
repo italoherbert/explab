@@ -29,7 +29,7 @@ public class PrincipalGUIController implements PrincipalGUIListener {
 
     @Override
     public void executarBTAcionado( PrincipalGUITO guiTO ) {
-        aplic.getProjetoOuArquivoControllerCtrl().executarProjetoAcionado();
+        aplic.getProjetoOuArquivoControllerCtrl().executarScriptAcionado();
     }
 
     @Override

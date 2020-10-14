@@ -1,5 +1,6 @@
 package italo.explab_ide.gui.principal.projetos;
 
+import italo.explab_ide.gui.IDEGUI;
 import italo.explab_ide.gui.IDEGUIConfig;
 import italo.explab_ide.gui.principal.projetos.popupmenu.ProjetosPopupMenu;
 import java.awt.Component;
@@ -73,9 +74,15 @@ public class ProjetosGUI extends JPanel implements MouseListener, KeyListener, J
         raizArvNo.addNoFilho( no );         
     }
     
-    public void carrega() {        
+    
+    public void carrega() { 
+        String caminho = arqArvGUITO.getCaminhoNoSelecionado();
+        
         arqArvGUITO.carrega( raizArvNo );
         raizJTree.setRootVisible( false );         
+        
+        if ( caminho != null )
+            arqArvGUITO.rolarParaEOuExpande( caminho, true );
     }
         
     @Override

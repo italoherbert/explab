@@ -1,0 +1,41 @@
+pacote explab.plot.plot2d;
+
+classe PFunc2D {
+
+    minX = -1;
+    maxX = 1;
+    minY = -1;
+    maxY = 1;
+
+    t1 = -1;
+    t2 = 1;
+
+    npt = 20;
+
+    limitarX = falso; 
+    limitarY = falso; 
+
+    legenda = null;
+        
+    linha = novo LinhaConfig();
+    ponto = novo PontoConfig();
+    poligono = novo PoligonoConfig();
+
+    linha.cor = novo RGB( 0, 0, 0 );
+
+    construtor() {}
+
+    este.funX = func( t ) {
+        retorne t;
+    };
+
+    este.funY = func( t ) {
+        retorne t;
+    };
+
+    este.funOpers = null;
+    
+}
+
+
+

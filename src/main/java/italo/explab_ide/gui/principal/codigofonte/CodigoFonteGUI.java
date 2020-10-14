@@ -8,6 +8,7 @@ import italo.explab_ide.gui.principal.codigofonte.tppainel.CodigoFonteTPPainelGU
 import java.awt.Component;
 import java.awt.GridLayout;
 import java.awt.Point;
+import java.awt.Rectangle;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
@@ -21,7 +22,7 @@ import libs.gui.tpcombtfechar.TPComBTFechar;
 import libs.gui.tpcombtfechar.TPComBTFecharListener;
 
 public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionListener, MouseListener, TPComBTFecharListener, CodigoFonteTPPainelGUIListener {
-        
+            
     private final TPComBTFechar tp = new TPComBTFechar();            
    
     private final CodigoFonteGUITO to = new CodigoFonteGUITO( this );
@@ -29,14 +30,14 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
     private CodigoFonteGUIListener listener;
     
     private final CFTPPopupMenu cftpPopupMenu;
-    private int ultimaTabClicadaI = -1;
+    private int ultimaTabClicadaBT3_i = -1;
     
     public CodigoFonteGUI( IDEGUIConfig cfg ) {        
         this.cftpPopupMenu = new CFTPPopupMenu( cfg );
         
         super.setLayout( new GridLayout() );
         super.add( tp );
-             
+                    
         tp.setTPListener( this );                
         tp.addChangeListener( this ); 
         tp.addMouseListener( this ); 
@@ -44,6 +45,7 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
         cftpPopupMenu.getFecharTodosBT().addActionListener( this );
         cftpPopupMenu.getFecharOutrosBT().addActionListener( this );
         cftpPopupMenu.getFecharEstaBT().addActionListener( this );
+        cftpPopupMenu.getExecutarArquivoBT().addActionListener( this );
     }
     
     public CodigoFonteTPPainelGUITO addTabPainel( String tabRotulo ) {
@@ -51,6 +53,11 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
         gui.setCodigoFonteTPPainelGUIListener( this ); 
         tp.addTabPainel( tabRotulo, gui );        
         return gui.getGUITO();
+    }
+    
+    public void removeTabPainels() {
+        while( tp.getTabCount() > 0 )
+            tp.removeTabAt( 0 ); 
     }
     
     public CodigoFonteTPPainelGUITO getTPPainelGUITO( int i ) {
@@ -66,6 +73,18 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
             return ((CodigoFonteTPPainelGUI)c).getGUITO();
         return null;
     }
+    
+    private void processaCFTPPopupMenu( MouseEvent e, Rectangle tabBounds ) {
+        if ( e.getButton() == MouseEvent.BUTTON3 ) {      
+            int len = tp.getTabCount();
+            ultimaTabClicadaBT3_i = -1;
+            for( int i = 0; ultimaTabClicadaBT3_i == -1 && i < len; i++ )
+                if ( tp.getBoundsAt( i ).contains( e.getPoint() ) )
+                    ultimaTabClicadaBT3_i = i;
+            
+            cftpPopupMenu.show( (Component)e.getSource(), e.getX(), e.getY() );
+        }
+    }
 
     @Override
     public void stateChanged(ChangeEvent e) {
@@ -80,25 +99,27 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
             return;
         
         if ( e.getSource() == cftpPopupMenu.getFecharTodosBT() ) {
-            listener.removeTodasAsTabs( to, ultimaTabClicadaI );
+            listener.removeTodasAsTabs( to, ultimaTabClicadaBT3_i );
         } else if ( e.getSource() == cftpPopupMenu.getFecharOutrosBT() ) {
-            listener.removeOutrasTabs( to, ultimaTabClicadaI );
+            listener.removeOutrasTabs( to, ultimaTabClicadaBT3_i );
         } else if ( e.getSource() == cftpPopupMenu.getFecharEstaBT() ) {
-            listener.removeEstaTab( to, ultimaTabClicadaI );
+            listener.removeEstaTab( to, ultimaTabClicadaBT3_i );
+        } else if ( e.getSource() == cftpPopupMenu.getExecutarArquivoBT() ) {
+            listener.executarArquivo( to ); 
         }
     }
    
     @Override
-    public void mousePressed(MouseEvent e) {
-        if ( e.getButton() == MouseEvent.BUTTON3 ) {
+    public void mousePressed(MouseEvent e) {        
+        if ( e.getButton() == MouseEvent.BUTTON3 ) {      
             int len = tp.getTabCount();
-            ultimaTabClicadaI = -1;
-            for( int i = 0; ultimaTabClicadaI == -1 && i < len; i++ )
+            ultimaTabClicadaBT3_i = -1;
+            for( int i = 0; ultimaTabClicadaBT3_i == -1 && i < len; i++ )
                 if ( tp.getBoundsAt( i ).contains( e.getPoint() ) )
-                    ultimaTabClicadaI = i;
+                    ultimaTabClicadaBT3_i = i;
             
-            cftpPopupMenu.show( this, e.getX(), e.getY() ); 
-        }
+            cftpPopupMenu.show( tp, e.getX(), e.getY() );
+        }        
     }
 
     @Override
@@ -112,8 +133,26 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
 
     @Override
     public void mouseExited(MouseEvent e) {}
-    
-    
+
+    @Override
+    public void mousePressionadoEmTab( int i, MouseEvent e ) {
+        if ( e.getButton() == MouseEvent.BUTTON3 ) {      
+            ultimaTabClicadaBT3_i = -1;    
+            cftpPopupMenu.show( (Component)e.getSource(), e.getX(), e.getY() ); 
+        }
+    }
+
+    @Override
+    public void mouseSobreTab( int i, MouseEvent e ) {        
+        if ( listener == null )
+            return;
+        
+        CodigoFonteTPPainelGUI tpPNLGUI = (CodigoFonteTPPainelGUI)tp.getComponentAt( i );
+                
+        String texto = listener.textoMouseSobreTab( tpPNLGUI.getGUITO(), i );
+        if ( texto != null )
+            tp.setTabToolTipTexto( texto, i );                                    
+    }        
 
     @Override
     public void teclaDigitada( CodigoFonteTPPainelGUITO guiTO, Point p ) {
@@ -160,11 +199,14 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
         private final JMenuItem fecharTodosBT;
         private final JMenuItem fecharOutrosBT;
         private final JMenuItem fecharEsteBT;
+        private final JMenuItem executarArquivoBT;
         
         public CFTPPopupMenu( IDEGUIConfig cfg ) {
             super.add( this.fecharTodosBT = new JMenuItem( cfg.getTextoRotulo( IDEGUI.BT_FECHAR_TODOS ) ) );
             super.add( this.fecharOutrosBT = new JMenuItem( cfg.getTextoRotulo( IDEGUI.BT_FECHAR_OUTROS ) ) );
             super.add( this.fecharEsteBT = new JMenuItem( cfg.getTextoRotulo( IDEGUI.BT_FECHAR_ESTE ) ) );
+            super.addSeparator();
+            super.add( this.executarArquivoBT = new JMenuItem( cfg.getTextoRotulo( IDEGUI.BT_EXECUTAR_ARQUIVO ) ) );
         }
 
         public JMenuItem getFecharTodosBT() {
@@ -177,6 +219,10 @@ public class CodigoFonteGUI extends JPanel implements ChangeListener, ActionList
 
         public JMenuItem getFecharEstaBT() {
             return fecharEsteBT;
+        }
+
+        public JMenuItem getExecutarArquivoBT() {
+            return executarArquivoBT;
         }
         
     }

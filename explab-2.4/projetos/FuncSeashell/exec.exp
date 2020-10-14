@@ -1,0 +1,31 @@
+npu = npv = 20;
+
+a = 1.25;
+b = 2 * pi;
+
+fx = func( u, v ) {
+    retorne a * ( 1 - v/b ) * cos( 2*v ) * ( 1 + cos( u ) ) + cos( 2*v );
+};
+fy = func( u, v ) {
+    retorne a * ( 1 - v/b ) * sen( 2*v ) * ( 1 + cos( u ) ) + sen( 2*v );
+};
+fz = func( u, v ) {
+    retorne 10*v/b + a * ( 1 - v/b ) * sen( u ) + 15;
+};
+
+pfun3d = novo PFunc3D();
+pfun3d.u1 = -pi;
+pfun3d.u2 = pi;
+pfun3d.v1 = -pi;
+pfun3d.v2 = pi;
+pfun3d.npu = npu;
+pfun3d.npv = npv;
+pfun3d.funX = fx;
+pfun3d.funY = fy;
+pfun3d.funZ = fz;
+
+pc = novo PC3D(); 
+pc.dy = 1.0;                
+pc.graficos[] = pfun3d;          
+
+plot3d( pc );    

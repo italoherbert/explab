@@ -2,17 +2,17 @@ package italo.explab_ide.logica.arquivo.projeto;
 
 public class ProjetoConfig {
     
-    private final Projeto projeto;
+    private final ProjetoXMLNo projeto;
     private final String charset;
     private final String execScript;
 
-    public ProjetoConfig(Projeto projeto, String charset, String execScript) {
+    public ProjetoConfig(ProjetoXMLNo projeto, String charset, String execScript) {
         this.projeto = projeto;
         this.charset = charset;
         this.execScript = execScript;
     }
 
-    public Projeto getProjeto() {
+    public ProjetoXMLNo getProjeto() {
         return projeto;
     }
 

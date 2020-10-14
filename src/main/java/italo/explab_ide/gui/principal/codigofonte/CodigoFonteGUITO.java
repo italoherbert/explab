@@ -1,6 +1,7 @@
 package italo.explab_ide.gui.principal.codigofonte;
 
 import italo.explab_ide.gui.principal.codigofonte.tppainel.CodigoFonteTPPainelGUITO;
+import javax.swing.JPanel;
 
 public class CodigoFonteGUITO {
 
@@ -10,6 +11,10 @@ public class CodigoFonteGUITO {
     public CodigoFonteGUITO( CodigoFonteGUI gui ) {
         this.gui = gui;
     }           
+    
+    public void removeTab( JPanel tabPainel ) {
+        gui.getTP().removeTabPainel( tabPainel ); 
+    }
     
     public void removeTodasAsTabs() {
         int len = gui.getTP().getTabCount();
@@ -34,7 +39,8 @@ public class CodigoFonteGUITO {
     }
     
     public void setSelecionaTab( int i ) {
-        gui.getTP().setSelectedIndex( i );
+        if ( i < gui.getTP().getTabCount() )
+            gui.getTP().setSelectedIndex( i );
     }
     
     public CodigoFonteTPPainelGUITO getTPPainelGUITO( int i ) {

@@ -1,8 +1,10 @@
 package italo.explab_ide.logica.arquivo;
 
-import italo.explab_ide.logica.arquivo.projeto.Projeto;
 import italo.explab_ide.ExpLabIDEAplic;
+import italo.explab_ide.logica.arquivo.projeto.ProjetoXMLNo;
 import java.io.File;
+import java.util.List;
+import libs.comparador.Comparador;
 import libs.gui.arv.ArvNo;
 
 public class ArquivoManager {
@@ -12,7 +14,7 @@ public class ArquivoManager {
     public ArquivoManager( ExpLabIDEAplic aplic ) {
         this.aplic = aplic;
     }
-            
+                    
     public void move( String orig, String dest ) {                       
         File origFile = new File( orig );
         String arq = origFile.getName();         
@@ -39,7 +41,23 @@ public class ArquivoManager {
         file.delete();
     }
     
-    public ArqArvNo geraArvRaiz( Projeto proj ) {
+    public ArvNo getArvNo( ArvNo raiz, String sisarqCaminho, Comparador comp ) {
+        if ( comp.igual( raiz.getSisArqCaminho(), sisarqCaminho ) )
+            return raiz;
+        
+        List<ArvNo> filhos = raiz.getFilhos();
+        if ( filhos != null ) {
+            for( ArvNo no : filhos ) {
+                ArvNo no2 = this.getArvNo( no, sisarqCaminho, comp );
+                if ( no2 != null )
+                    return no2;
+            }
+        }
+        
+        return null;
+    }
+    
+    public ArqArvNo geraArvRaiz( ProjetoXMLNo proj ) {
         File file = new File( proj.getBasedir() );
         if ( file.exists() ) {
             ArqArvNo raiz = new ArqArvNo();
@@ -71,7 +89,7 @@ public class ArquivoManager {
         }
     }
         
-    public void carregaArv( Projeto proj, ArvNo parente, File file ) {
+    public void carregaArv( ProjetoXMLNo proj, ArvNo parente, File file ) {
         ArqArvNo no = new ArqArvNo();
         no.setEhPastaDeProjeto( false ); 
         no.setNome( file.getName() ); 
@@ -90,7 +108,7 @@ public class ArquivoManager {
             parente.addNoFilho( no );   
     }
     
-    private void carregaFilhos( Projeto proj, ArqArvNo no, File[] files ) {
+    private void carregaFilhos( ProjetoXMLNo proj, ArqArvNo no, File[] files ) {
         String elext = aplic.getConfig().getScriptELExt();
         String projConfigArqPadrao = aplic.getConfig().getProjetoConfigArqPadrao();
         if ( files != null ) {
@@ -110,7 +128,6 @@ public class ArquivoManager {
                     if ( f.getName().equalsIgnoreCase( projConfigArqPadrao ) )
                         this.carregaArv( proj, no, f );
         }
-    }
-
+    }        
     
 }

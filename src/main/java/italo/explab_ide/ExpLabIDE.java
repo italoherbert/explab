@@ -2,7 +2,6 @@ package italo.explab_ide;
 
 import italo.explab.InterException;
 import italo.explab.gui.splash.SplashGUI;
-import italo.explab_cmd.controlador.CMDExpLabControlador;
 import italo.explab_ide.controller.AutoCompleteController;
 import italo.explab_ide.controller.CodigoFonteGUIController;
 import italo.explab_ide.controller.NovoProjetoController;
@@ -27,6 +26,7 @@ public class ExpLabIDE {
     private final static String PROJETOS_XML_CONFIG = "conf/ide/projetos.xml";
     private final static String ARQUIVOS_ABERTOS_CONFIG = "conf/ide/arquivos-abertos.cfg";
     private final static String PROJ_NOS_PARA_EXPANDIR_CONFIG = "conf/ide/proj-nos-para-expandir.cfg";
+    private final static String NO_SELECIONADO_CONFIG = "conf/ide/no-selecionado.cfg";
     
     private final static String PROJETO_DIR = "projetos";
     private final static String PROJETO_CONFIG_ARQ_PADRAO = "config.proj";
@@ -72,10 +72,12 @@ public class ExpLabIDE {
             projdir += PROJETO_DIR;
                         
             aplic = new ExpLabIDEAplic( IDE_CONFIG, GUI_MSGS_ARQ, INFO_MSGS_ARQ, ERRO_MSGS_ARQ, PROJETOS_XML_CONFIG );
+            
             aplic.getConfig().setScriptELExt( SCRIPT_EL_EXT ); 
             aplic.getConfig().setProjetosXMLConfigCaminho( PROJETOS_XML_CONFIG ); 
             aplic.getConfig().setArquivosAbertosConfigCaminho( ARQUIVOS_ABERTOS_CONFIG );
             aplic.getConfig().setProjNosParaExpandirConfigCaminho( PROJ_NOS_PARA_EXPANDIR_CONFIG ); 
+            aplic.getConfig().setNoSelecionadoConfigCaminho(NO_SELECIONADO_CONFIG ); 
             
             aplic.getConfig().setProjetoBaseDirPadrao( projdir );
             aplic.getConfig().setProjetoConfigArqPadrao( PROJETO_CONFIG_ARQ_PADRAO );
@@ -97,12 +99,12 @@ public class ExpLabIDE {
             aplic.getGUI().getAutoCompleteGUI().setAutoCompleteGUIListener( new AutoCompleteController( aplic ) ); 
             
             aplic.getProjetoCtrl().carregaProjs();                        
-                        
+                                  
             SwingUtilities.invokeLater( () -> {
                 aplic.getGUI().getPrincipalGUI().setVisible( true );
                 splash.setVisible( false );                                                 
                 
-                aplic.getCodigoFonteCtrl().recuperaRecursosAbertos( aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO() );
+                aplic.getCodigoFonteCtrl().recuperaRecursosAbertos( aplic.getGUI().getPrincipalGUI().getProjetosGUI().getArvGUITO() );                
             });
         } catch ( IOException | InterException ex ) {
             splash.setVisible( false ); 

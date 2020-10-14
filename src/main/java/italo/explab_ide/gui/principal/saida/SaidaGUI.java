@@ -2,6 +2,7 @@ package italo.explab_ide.gui.principal.saida;
 
 import java.awt.Component;
 import java.awt.GridLayout;
+import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import libs.gui.tpcombtfechar.TPComBTFechar;
 import libs.gui.tpcombtfechar.TPComBTFecharListener;
@@ -42,6 +43,16 @@ public class SaidaGUI extends JPanel implements TPComBTFecharListener {
 
     @Override
     public void aposTabRemovida(int i) {
+        
+    }
+
+    @Override
+    public void mousePressionadoEmTab(int i, MouseEvent e) {
+        
+    }
+
+    @Override
+    public void mouseSobreTab(int i, MouseEvent e) {
         
     }
     

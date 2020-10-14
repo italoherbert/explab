@@ -8,8 +8,11 @@ import italo.explab_ide.ExpLabIDEAplic;
 
 public class FuncLeituraFormat extends ClasseOuFuncFormat {
 
-    public FuncLeituraFormat(ExpLabIDEAplic aplic) {
+    private PalavraReservadaFormat prformat;
+    
+    public FuncLeituraFormat(ExpLabIDEAplic aplic, PalavraReservadaFormat prformat ) {
         super(aplic);
+        this.prformat = prformat;
     }        
     
     @Override
@@ -17,20 +20,24 @@ public class FuncLeituraFormat extends ClasseOuFuncFormat {
         ContadorUtil contUtil = aplic.getContadorUtil();
         
         int cont = contUtil.contaTextoValor( codigo, i, PalavrasReservadas.FUNC );
-                
-        int j = 0;
+        
         if ( cont == 0 )
             return new AnaliseResult();
         
-        j += cont;
-        j += contUtil.contaEsps( codigo, i+j );
-        j += contUtil.contaComentariosTam( codigo, i+j );
-        j += contUtil.contaEsps( codigo, i+j );
+        boolean ok = ( i == 0 ) ;
+        if ( !ok ) {
+            char ch = codigo.getSEGCH( i-1 );
+            if ( !Character.isLetterOrDigit( ch ) )                                             
+                ok = true;                         
+        }
+
+        if ( ok ) {
+            char ch = codigo.getSEGCH( i+cont );
+            if ( !Character.isLetterOrDigit( ch ) )               
+                return new AnaliseResult( cont );               
+        }      
         
-        if ( codigo.getSEGCH( i+j ) == '(' )
-            return new AnaliseResult();
-        
-        return new AnaliseResult( cont );
+        return new AnaliseResult();                
     }
    
 }

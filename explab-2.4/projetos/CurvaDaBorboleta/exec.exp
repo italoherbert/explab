@@ -1,0 +1,22 @@
+f = novo PFunc2D();
+f.t1 = 0;
+f.t2 = 12*pi;
+f.npt = 800;
+f.legenda = "curva";
+f.linha.cor = novo RGB( 0, 0, 255 );
+
+f.funX = func( t ) {
+    retorne sen( t ) * ( e^cos(t) - 2*cos(4*t) - sen( t/12 )^5 );
+};
+
+f.funY = func( t ) {
+    retorne cos( t ) * ( e^cos(t) - 2*cos(4*t) - sen( t/12 )^5 );
+};
+
+pc = novo PC2D();
+pc.titulo = "Curva da Borboleta";
+pc.xrotulo = "Eixo X";
+pc.yrotulo = "Eixo Y";
+pc.graficos[] = f;
+
+plot( pc );

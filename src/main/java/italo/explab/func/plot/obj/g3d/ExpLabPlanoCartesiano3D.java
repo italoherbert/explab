@@ -11,6 +11,9 @@ public class ExpLabPlanoCartesiano3D {
     private String xrotulo = null;
     private String yrotulo = null;
     private String zrotulo = null;
+    private double dx = -1;
+    private double dy = -1;
+    private double dz = -1;
             
     private final List<ExpLabGrafico3D> graficos = new ArrayList();
     
@@ -23,6 +26,30 @@ public class ExpLabPlanoCartesiano3D {
     
     public List<ExpLabGrafico3D> getGraficos() {
         return graficos;
+    }
+
+    public double getDX() {
+        return dx;
+    }
+
+    public void setDX(double dx) {
+        this.dx = dx;
+    }
+
+    public double getDY() {
+        return dy;
+    }
+
+    public void setDY(double dy) {
+        this.dy = dy;
+    }
+
+    public double getDZ() {
+        return dz;
+    }
+
+    public void setDZ(double dz) {
+        this.dz = dz;
     }
     
     public String getTitulo() {

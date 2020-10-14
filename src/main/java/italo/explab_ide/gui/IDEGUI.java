@@ -60,6 +60,7 @@ public class IDEGUI implements IDEGUIConfig {
     public final static String BT_FECHAR_TODOS = "bt.fechar.todos";
     public final static String BT_FECHAR_OUTROS = "bt.fechar.outros";
     public final static String BT_FECHAR_ESTE = "bt.fechar.este";
+    public final static String BT_EXECUTAR_ARQUIVO = "bt.executar.arquivo";
 
     public final static String MENU_ARQUIVO = "menu.arquivo";
     public final static String MENU_EDITAR = "menu.editar";
@@ -75,7 +76,7 @@ public class IDEGUI implements IDEGUIConfig {
     public final static String DELETAR_PROJETO_TITULO = "deletar.projeto.titulo";
     
     public final static String PRINCIPAL_JFRAME_TITULO = "principal.jframe.titulo";
-    
+        
     private final Map<String, String> mensagensMap = new HashMap();
     private final Font tituloFont = new Font( Font.SANS_SERIF, Font.BOLD, 24 ); 
         
