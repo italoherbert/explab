@@ -45,7 +45,7 @@ para ( i = 0; i < k; i++ ) {
     dados3d.ponto.visivel = verdade;
     dados3d.linha.cor = novo RGB( 100, 200, 200 );
     dados3d.linha.visivel = falso;    
-    dados3d.legenda = "classe("+(i +1)+")";
+    dados3d.legenda = "classe("+(i+1)+")";
     
     pc.graficos[] = dados3d;
 }

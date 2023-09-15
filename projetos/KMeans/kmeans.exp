@@ -32,7 +32,7 @@ classe KMeans {
             }             
             
             se ( !convergencia ) {
-                para( j = 0; j < dim; j++ ) {
+                para( j = 0; j < k; j++ ) {
                     media = zeros( dim );
                     cont = 0;
                     para ( i = 0; i < dados_len; i++ ) {
