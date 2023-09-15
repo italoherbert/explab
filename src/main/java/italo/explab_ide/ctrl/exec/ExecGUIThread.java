@@ -64,6 +64,7 @@ public class ExecGUIThread extends Thread implements ExpLabAplic, SaidaTPPainelG
             guiTO.setCharset( charset );
         guiTO.append( cmd+"\n\n" );        
 
+        aplic.getCodigoFonteCtrl().salvaArquivosModificados();
         explab.exec( cmd ); 
                         
         execucaoConcluida = true;

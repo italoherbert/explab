@@ -37,7 +37,7 @@ public class ArquivoCtrl {
     
         ArvNo pstNo = no;
         DefaultMutableTreeNode pstTreeNo = treeNo;
-        if ( !no.isPasta() ) {
+        if ( !no.isEhPasta() ) {
             pstNo = no.getParente();
             pstTreeNo = (DefaultMutableTreeNode)treeNo.getParent();
         }
@@ -153,7 +153,7 @@ public class ArquivoCtrl {
                     ((ArqArvNo)arqNo).setProjeto( aplic.getProjetosXMLManager().getProjeto( nomeNovo, comparador ) ); 
                 }
                 
-                if ( arqNo.isPasta() ) {
+                if ( arqNo.isEhPasta() ) {
                     if ( arqNo.getFilhos() != null )
                         arqNo.getFilhos().clear();
                     

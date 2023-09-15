@@ -1,0 +1,64 @@
+use kmeans;
+
+dados = carregue( 'Atom.txt' );
+k = 2;
+dados_len = matnl( dados );
+
+exibaln "Executando...";
+
+kmeans = novo KMeans();
+result = kmeans.treina( dados, k );
+
+centroides = result.centroides;
+grupos = result.grupos;
+
+cores = kmeans.sorteia_cores( centroides );
+
+exibaln "Executou! Carregando gráfico...";
+
+pc = novo PC3D();
+
+dados3d_vet = zeros( k );
+para ( i = 0; i < k; i++ ) {
+    dados3d = novo Dados3D();
+    xvetor = [];
+    yvetor = [];
+    zvetor = [];
+    para ( j = 0; j < dados_len; j++ ) {
+        se ( grupos( j ) == i ) {
+            xvetor[] = dados(j,0);
+            yvetor[] = dados(j,1);
+            zvetor[] = dados(j,2);
+        }
+    }
+    
+    cor = novo RGB();
+    cor.r = cores(i,0);
+    cor.g = cores(i,1);
+    cor.b = cores(i,2);
+    
+    dados3d.xvetor = xvetor;
+    dados3d.yvetor = yvetor;
+    dados3d.zvetor = zvetor;
+    dados3d.ponto.raio=2;
+    dados3d.ponto.cor = cor;
+    dados3d.ponto.visivel = verdade;
+    dados3d.linha.cor = novo RGB( 100, 200, 200 );
+    dados3d.linha.visivel = falso;    
+    dados3d.legenda = "classe("+(i+1)+")";
+    
+    pc.graficos[] = dados3d;
+}
+
+centroides3d = novo Dados3D();
+centroides3d.xvetor = centroides(:,0)';
+centroides3d.yvetor = centroides(:,1)';
+centroides3d.zvetor = centroides(:,2)';
+centroides3d.legenda = "centroides";
+centroides3d.ponto.raio=2;
+centroides3d.ponto.cor = novo RGB( 255, 0, 0 );
+centroides3d.ponto.visivel = verdade;
+centroides3d.linha.visivel = falso;
+pc.graficos[] = centroides3d;
+
+plot3d( pc );

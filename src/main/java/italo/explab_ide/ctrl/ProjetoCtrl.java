@@ -177,7 +177,7 @@ public class ProjetoCtrl {
         if ( aplic.getConfig().getComparador().igual( no.getSisArqCaminho(), sisarqCaminho ) )
             return no;
         
-        if ( no.isPasta() && !no.isVazio() ) {
+        if ( no.isEhPasta() && !no.isVazio() ) {
             List<ArvNo> filhos = no.getFilhos();
             if ( filhos != null ) {
                 for( ArvNo filho : filhos ) {

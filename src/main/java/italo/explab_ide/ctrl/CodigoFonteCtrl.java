@@ -217,7 +217,7 @@ public class CodigoFonteCtrl {
     }
 
     public void carregaArquivoArvNo( ArvNo no ) {
-        if ( no.isPasta() )
+        if ( no.isEhPasta() )
             return;
         
         this.carregaArquivo( no.getSisArqCaminho(), no.getNome() );

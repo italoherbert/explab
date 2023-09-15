@@ -49,7 +49,7 @@ public class ELArvCellRenderer extends DefaultTreeCellRenderer {
         
         if ( leaf ) {
             ArvNode arvNode = (ArvNode)value;
-            if ( arvNode.getArvUserObject().isPasta() ) {
+            if ( arvNode.getArvUserObject().isEhPasta() ) {
                 super.setIcon( pastaIcon );
             } else {
                 if ( arvNode.getArvUserObject().getNome().endsWith( elext ) ) {

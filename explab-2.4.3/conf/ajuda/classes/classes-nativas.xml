@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<conteudos xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+            xsi:noNamespaceSchemaLocation="conteudos.xsd">
+        
+    <arquivo>${conf.ajuda.classes}/g2d-classes-nativas.xml</arquivo>
+    <arquivo>${conf.ajuda.classes}/g3d-classes-nativas.xml</arquivo>
+    
+    <pagina url="${doc.paginas.classes}/RGB.html"> 
+        <conteudo>
+            <chave nome="classe" peso="6" />                       
+            <chave nome="cor" peso="8" />                       
+            <chave nome="cores" peso="8" />                       
+            <chave nome="color" peso="8" />                      
+            <chave nome="RGB" peso="10" />                        
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes}/JanelaConfig.html"> 
+        <conteudo>            
+            <chave nome="JanelaConfig" peso="10" />                        
+            <chave nome="Janela" peso="8" />                        
+            <chave nome="Config" peso="4" />
+            <chave nome="classe" peso="6" />
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes}/GradeConfig.html"> 
+        <conteudo>
+            <chave nome="GradeConfig" peso="10" />                        
+            <chave nome="Grade" peso="8" />                        
+            <chave nome="Config" peso="4" />                        
+            <chave nome="classe" peso="6" />
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes}/PontoConfig.html"> 
+        <conteudo>
+            <chave nome="PontoConfig" peso="10" />                        
+            <chave nome="Ponto" peso="8" />                        
+            <chave nome="Config" peso="4" />                        
+            <chave nome="classe" peso="6" />
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes}/LinhaConfig.html"> 
+        <conteudo>
+            <chave nome="LinhaConfig" peso="10" />                        
+            <chave nome="Linha" peso="8" />                        
+            <chave nome="Config" peso="4" />                        
+            <chave nome="classe" peso="6" />
+        </conteudo>
+    </pagina>
+    
+    <pagina url="${doc.paginas.classes}/PoligonoConfig.html"> 
+        <conteudo>
+            <chave nome="PoligonoConfig" peso="10" />                        
+            <chave nome="Poligono" peso="8" />                        
+            <chave nome="Config" peso="4" />                        
+            <chave nome="classe" peso="6" />
+        </conteudo>
+    </pagina>
+    
+</conteudos>
